@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NoticeUserService {
@@ -25,5 +26,19 @@ public class NoticeUserService {
     }
     public List<NoticeUser> GetNotices() {
         return this.noticeUserRepository.findAll();
+    }
+
+    public ResponseEntity<NoticeUser> DeleteNotice(Long id) {
+        Optional<NoticeUser> optNoticeUser = this.noticeUserRepository.findById(id);
+
+        if(optNoticeUser.isEmpty()){
+        System.out.println("[Error:DeletedNoticeId] There is no notice user with id (" + id + ")");
+        TODO:
+            return ResponseEntity.notFound().build();
+        }
+        else{
+            this.noticeUserRepository.delete(optNoticeUser.get());
+        }
+        return ResponseEntity.ok().build();
     }
 }
