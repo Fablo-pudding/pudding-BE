@@ -27,6 +27,13 @@ public class NoticeUserController {
         return this.noticeUserService.GetNotices();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<NoticeUser> PutNoticeById(@RequestBody NoticeUser noticeUser, @PathVariable Long id) {
+        System.out.println("[NoticeUser:PutNoticeById]" + noticeUser);
+
+        return this.noticeUserService.PutNoticeById(noticeUser, id);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<NoticeUser> DeleteNotice(@PathVariable Long id) {
         System.out.println("[NoticeUser:DeleteNotice]" + id);

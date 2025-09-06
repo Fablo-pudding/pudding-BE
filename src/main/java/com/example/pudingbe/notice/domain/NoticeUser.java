@@ -39,8 +39,6 @@ public class NoticeUser {
     @NotNull
     private String registerEmployeeNo;
 
-
-
     @Column(length = 20)
     @NotNull
     private String updateEmployeeNo;
