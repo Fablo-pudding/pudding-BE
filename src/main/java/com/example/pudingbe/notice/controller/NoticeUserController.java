@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/notice")
 public class NoticeUserController {
@@ -18,5 +20,10 @@ public class NoticeUserController {
 
         return this.noticeUserService.PostNotice(noticeUser);
 
+    }
+    @GetMapping("")
+    public List<NoticeUser> GetNotices(){
+        System.out.println("[NoticeUser:GetNotices]");
+        return this.noticeUserService.GetNotices();
     }
 }

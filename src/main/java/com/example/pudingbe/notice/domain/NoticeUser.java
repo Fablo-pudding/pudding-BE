@@ -21,27 +21,35 @@ public class NoticeUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(length = 6)
-    @NotNull
-    private String registerEmployeeNo;
-
-    @CreatedDate
-    @NotNull
-    private LocalDateTime registerDatetime;
-
-    @Column(length = 20)
-    @NotNull
-    private String updateEmployeeNo;
-
-    @CreatedDate
-    @NotNull
-    private LocalDateTime updateDatetime;
-
     @Column (length = 200)
     private String title;
 
     @Column (columnDefinition = "TEXT")
     private String content;
+
+    @CreatedDate
+    @NotNull
+    private LocalDateTime updateDatetime;
+
+    @CreatedDate
+    @NotNull
+    private LocalDateTime registerDatetime;
+
+    @Column(length = 6)
+    @NotNull
+    private String registerEmployeeNo;
+
+
+
+    @Column(length = 20)
+    @NotNull
+    private String updateEmployeeNo;
+
+
+
+
+
+
 
 
 }
