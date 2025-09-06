@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class NoticeUserService {
@@ -21,5 +22,8 @@ public class NoticeUserService {
         this.noticeUserRepository.save(noticeUser);
 
         return ResponseEntity.ok().build();
+    }
+    public List<NoticeUser> GetNotices() {
+        return this.noticeUserRepository.findAll();
     }
 }
