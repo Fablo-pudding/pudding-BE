@@ -14,9 +14,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())            // 개발용: CSRF 끔
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().authenticated()        // 전부 인증 필요 (admin/1234)
+                        .anyRequest().authenticated()      
                 )
-                .httpBasic(Customizer.withDefaults());   // Basic Auth 사용
+                .httpBasic(Customizer.withDefaults());
         return http.build();
     }
 }
