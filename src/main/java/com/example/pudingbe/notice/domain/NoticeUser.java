@@ -21,7 +21,7 @@ public class NoticeUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column (length = 200)
+    @Column (columnDefinition = "VARCHAR(200)")
     private String title;
 
     @Column (columnDefinition = "TEXT")
@@ -42,12 +42,4 @@ public class NoticeUser {
     @Column(length = 20)
     @NotNull
     private String updateEmployeeNo;
-
-
-
-
-
-
-
-
 }

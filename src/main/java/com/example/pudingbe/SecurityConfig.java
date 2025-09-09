@@ -1,4 +1,4 @@
-package com.example.pudingbe;  // ★ PudingBeApplication 과 같은 패키지
+package com.example.pudingbe;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())            // 개발용: CSRF 끔
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().authenticated()      
                 )
