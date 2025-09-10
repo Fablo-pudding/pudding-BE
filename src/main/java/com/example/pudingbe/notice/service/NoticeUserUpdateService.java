@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 public class NoticeUserUpdateService {
     private final NoticeUserRepository noticeUserRepository;
-    public ResponseEntity<NoticeUser> PutNoticeById(NoticeUser noticeUser, long id) {
+    public ResponseEntity<NoticeUser> updateNotice(NoticeUser noticeUser, long id) {
         Optional<NoticeUser> optNoticeUser = this.noticeUserRepository.findById(id);
         if(optNoticeUser.isEmpty()) {
             System.out.println("[Error:PutNoticeId] There is no data of id (" + id + ")");

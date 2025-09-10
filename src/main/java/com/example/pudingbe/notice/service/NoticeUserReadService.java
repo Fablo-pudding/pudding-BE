@@ -14,7 +14,7 @@ public class NoticeUserReadService {
     @Autowired
     private NoticeUserRepository noticeUserRepository;
     private LocalDateTime localDateTime = LocalDateTime.now();
-    public List<NoticeUser> GetNotices() {
+    public List<NoticeUser> readNotices() {
         return this.noticeUserRepository.findAll();
     }
 }

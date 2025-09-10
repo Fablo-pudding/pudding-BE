@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-
 @Service
 
 public class NoticeUserCreateService {
@@ -14,7 +13,7 @@ public class NoticeUserCreateService {
     private NoticeUserRepository noticeUserRepository;
     private LocalDateTime localDateTime = LocalDateTime.now();
 
-    public ResponseEntity<NoticeUser> PostNotice(NoticeUser noticeUser) {
+    public ResponseEntity<NoticeUser> createNotice(NoticeUser noticeUser) {
         noticeUser.setUpdateDatetime(localDateTime);
         noticeUser.setRegisterDatetime(localDateTime);
 

@@ -22,32 +22,27 @@ public class NoticeUserController {
     @Autowired
     private NoticeUserDeleteService noticeUserDeleteService;
 
-
     //create
     @PostMapping("")
-    public ResponseEntity<NoticeUser> PostNotice(@RequestBody NoticeUser noticeUser) {
-        System.out.println("[NoticeUser:PostNotice]" + noticeUser);
-        return this.noticeUserCreateService.PostNotice(noticeUser);
+    public ResponseEntity<NoticeUser> createNotice(@RequestBody NoticeUser noticeUser) {
+        return this.noticeUserCreateService.createNotice(noticeUser);
     }
 
     //read
     @GetMapping("")
-    public List<NoticeUser> GetNotices(){
-        System.out.println("[NoticeUser:GetNotices]");
-        return this.noticeUserReadService.GetNotices();
+    public List<NoticeUser> readNotices(){
+        return this.noticeUserReadService.readNotices();
     }
 
     //update
     @PutMapping("/{id}")
-    public ResponseEntity<NoticeUser> PutNoticeById(@RequestBody NoticeUser noticeUser, @PathVariable Long id) {
-        System.out.println("[NoticeUser:PutNoticeById]" + noticeUser);
-        return this.noticeUserUpdateService.PutNoticeById(noticeUser, id);
+    public ResponseEntity<NoticeUser> updateNotice(@RequestBody NoticeUser noticeUser, @PathVariable Long id) {
+        return this.noticeUserUpdateService.updateNotice(noticeUser, id);
     }
 
     //delete
     @DeleteMapping("/{id}")
     public ResponseEntity<NoticeUser> deleteNotice(@PathVariable Long id) {
-        System.out.println("[NoticeUser:DeleteNotice] id (" + id + ")");
-        return this.noticeUserDeleteService.DeleteNotice(id);
+        return this.noticeUserDeleteService.deleteNotice(id);
     }
 }

@@ -12,7 +12,7 @@ public class NoticeUserDeleteService {
     @Autowired
     private NoticeUserRepository noticeUserRepository;
 
-    public ResponseEntity<NoticeUser> DeleteNotice(Long id) {
+    public ResponseEntity<NoticeUser> deleteNotice(Long id) {
         Optional<NoticeUser> optNoticeUser = this.noticeUserRepository.findById(id);
         if (optNoticeUser.isEmpty()) {
             System.out.println("[Error:DeletedNoticeId] There is no notice user with id (" + id + ")");
