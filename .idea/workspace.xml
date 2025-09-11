@@ -12,6 +12,16 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pudingbe/inquiry/domain/entity/Inquiry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pudingbe/inquiry/domain/entity/Inquiry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pudingbe/inquiry/domain/repository/InquiryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pudingbe/inquiry/domain/repository/InquiryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pudingbe/inquiry/domain/service/InquiryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pudingbe/inquiry/domain/service/InquiryService.java" afterDir="false" />
+    <list default="true" id="626fb188-7b5b-4ca0-b86c-1c4f3dfd22fb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +70,17 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="32YRqIzv0scEBx7Y7JKsbIpsFOZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
-    <option name="showScratchesAndConsoles" value="false" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
@@ -112,10 +130,22 @@
       </set>
     </attachedChunks>
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="eda9f3b9-6e0a-4ff8-8fbf-11a22e43a135" name="Changes" comment="" />
-      <created>1756381253101</created>
+      <changelist id="626fb188-7b5b-4ca0-b86c-1c4f3dfd22fb" name="Changes" comment="" />
+      <created>1757595710831</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756381253101</updated>
@@ -167,5 +197,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+      <updated>1757595710831</updated>
+      <workItem from="1757595712280" duration="3000" />
+    </task>
+    <servers />
   </component>
 </project>
