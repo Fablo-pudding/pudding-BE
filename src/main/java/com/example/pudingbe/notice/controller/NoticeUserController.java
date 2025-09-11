@@ -5,6 +5,7 @@ import com.example.pudingbe.notice.service.NoticeUserCreateService;
 import com.example.pudingbe.notice.service.NoticeUserDeleteService;
 import com.example.pudingbe.notice.service.NoticeUserReadService;
 import com.example.pudingbe.notice.service.NoticeUserUpdateService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/notice")
+@RequiredArgsConstructor
 public class NoticeUserController {
-    @Autowired
-    private NoticeUserCreateService noticeUserCreateService;
-    @Autowired
-    private NoticeUserReadService noticeUserReadService;
-    @Autowired
-    private NoticeUserUpdateService noticeUserUpdateService;
-    @Autowired
-    private NoticeUserDeleteService noticeUserDeleteService;
+
+    private final NoticeUserCreateService noticeUserCreateService;
+    private final NoticeUserReadService   noticeUserReadService;
+    private final NoticeUserUpdateService noticeUserUpdateService;
+    private final NoticeUserDeleteService noticeUserDeleteService;
+
 
     //create
     @PostMapping("")
