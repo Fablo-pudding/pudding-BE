@@ -29,6 +29,10 @@ public class User {
     @Enumerated(EnumType.STRING) //DB에 문자열로 저장
     private Gender gender;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Builder
     public User(String name, String password, Long brith, Long batch, Gender gender) {
         this.name = name;
