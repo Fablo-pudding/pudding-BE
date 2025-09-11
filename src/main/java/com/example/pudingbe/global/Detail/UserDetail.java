@@ -1,5 +1,6 @@
-package com.example.pudingbe.user.domain;
+package com.example.pudingbe.global.Detail;
 
+import com.example.pudingbe.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
