@@ -3,11 +3,11 @@ package com.example.pudingbe.user.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+@AllArgsConstructor
+@Builder
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Getter
-@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private Long brith;
+    private Long birth;
 
     @Column(nullable = false)
     private Long batch;
@@ -33,10 +33,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String name, String password, Long brith, Long batch, Gender gender) {
+    public User(String name, String password, Long birth, Long batch, Gender gender) {
         this.name = name;
         this.password = password;
-        this.brith = brith;
+        this.birth = birth;
         this.batch = batch;
         this.gender = gender;
     }
