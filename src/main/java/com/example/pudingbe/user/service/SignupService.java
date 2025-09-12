@@ -20,7 +20,7 @@ public class SignupService {
         User user = User.builder()
                 .name(signUpRequest.getName())
                 .password(encoder.encode(signUpRequest.getPassword())) // 암호화
-                .brith(signUpRequest.getBirth())
+                .birth(signUpRequest.getBirth())
                 .batch(signUpRequest.getBatch())
                 .gender(signUpRequest.getGender())
                 .build();
