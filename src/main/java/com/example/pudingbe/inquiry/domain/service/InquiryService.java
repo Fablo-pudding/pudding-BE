@@ -1,5 +1,6 @@
 package com.example.pudingbe.inquiry.domain.service;
 
+import com.example.pudingbe.inquiry.domain.dto.InquiryReplyRequest;
 import com.example.pudingbe.inquiry.domain.dto.InquiryRequest;
 import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
 import com.example.pudingbe.inquiry.domain.entity.Inquiry;
@@ -24,6 +25,7 @@ public class InquiryService {
                 .createdAt(LocalDateTime.now())
                 .build();
         Inquiry saved = inquiryRepository.save(inquiry);
+        return mapToResponse(saved);
     }
 
     public List<InquiryResponse> getAllInquiries() {
@@ -38,6 +40,14 @@ public class InquiryService {
         return mapToResponse(inquiry);
     }
 
+    public InquiryResponse replyToInquiry(Long id, InquiryReplyRequest request){
+        Inquiry inquiry = inquiryRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("해당 문의가 존재하지 않습니다."));
+        inquiry.replyToInquiry(request.getReply());
+        Inquiry saved = inquiryRepository.save(inquiry);
+        return mapToResponse(saved);
+    }
+
     private InquiryResponse mapToResponse(Inquiry inquiry){
         return InquiryResponse.builder()
                 .id(inquiry.getId())
@@ -45,6 +55,7 @@ public class InquiryService {
                 .title(inquiry.getTitle())
                 .content(inquiry.getContent())
                 .createdAt(inquiry.getCreatedAt())
+                .reply(inquiry.getReply())
                 .build();
     }
 }

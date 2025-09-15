@@ -17,10 +17,10 @@ public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inquiry_id")
-    private long id;
+    private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private long userId;
+    private Long userId;
 
     @Column(name = "title", length = 100, nullable = false)
     private String title;
@@ -30,6 +30,13 @@ public class Inquiry {
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "reply", length = 512)
+    private String reply;
+
+    public void replyToInquiry(String reply) {
+        this.reply = reply;
+    }
 
     @Builder
     public Inquiry(Long userId, String title, String content, LocalDateTime createdAt) {

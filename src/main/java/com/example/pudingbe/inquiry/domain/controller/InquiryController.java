@@ -1,5 +1,6 @@
 package com.example.pudingbe.inquiry.domain.controller;
 
+import com.example.pudingbe.inquiry.domain.dto.InquiryReplyRequest;
 import com.example.pudingbe.inquiry.domain.dto.InquiryRequest;
 import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
 import com.example.pudingbe.inquiry.domain.service.InquiryService;
@@ -28,5 +29,11 @@ public class InquiryController {
     @GetMapping("/{id}")
     public ResponseEntity<InquiryResponse> getInquiryById(@PathVariable Long id){
         return ResponseEntity.ok(inquiryService.getInquiryById(id));
+    }
+
+    @PostMapping("/{id}/reply")
+    public ResponseEntity<InquiryResponse> replyToInquiry(@PathVariable Long id, @RequestBody InquiryReplyRequest request){
+        //TODO: ADMIN 권한 체크
+        return ResponseEntity.ok(inquiryService.replyToInquiry(id, request));
     }
 }

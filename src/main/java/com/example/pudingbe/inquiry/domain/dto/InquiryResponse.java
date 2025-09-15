@@ -13,13 +13,15 @@ public class InquiryResponse {
     private String title;
     private String content;
     private LocalDateTime createdAt;
+    private String reply;
 
     @Builder
-    public InquiryResponse(Long id, Long userId, String title, String content, LocalDateTime createdAt) {
+    public InquiryResponse(Long id, Long userId, String title, String content, LocalDateTime createdAt, String reply) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
+        this.reply = reply;
     }
 }
