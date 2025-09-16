@@ -1,4 +1,4 @@
-package com.example.pudingbe.inquiry.domain.repository;
+package com.example.pudingbe.inquiry.repository;
 
 import com.example.pudingbe.inquiry.domain.entity.Inquiry;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -38,7 +38,6 @@ public class Inquiry {
         this.reply = reply;
     }
 
-    @Builder
     public Inquiry(Long userId, String title, String content, LocalDateTime createdAt) {
         this.userId = userId;
         this.title = title;
