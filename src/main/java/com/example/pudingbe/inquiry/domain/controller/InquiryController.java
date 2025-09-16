@@ -17,23 +17,29 @@ public class InquiryController {
     private final InquiryService inquiryService;
 
     @PostMapping
-    public ResponseEntity<InquiryResponse> createInquiry(@RequestBody InquiryRequest request){
+    public ResponseEntity<InquiryResponse> createInquiry(@RequestBody InquiryRequest request) {
         return ResponseEntity.ok(inquiryService.createInquiry((request)));
     }
 
     @GetMapping
-    public ResponseEntity<List<InquiryResponse>> getAllInquiries(){
+    public ResponseEntity<List<InquiryResponse>> getAllInquiries() {
+        //TODO: ADMIN 권한 체크
         return ResponseEntity.ok(inquiryService.getAllInquiries());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<InquiryResponse> getInquiryById(@PathVariable Long id){
+    public ResponseEntity<InquiryResponse> getInquiryById(@PathVariable Long id) {
         return ResponseEntity.ok(inquiryService.getInquiryById(id));
     }
 
     @PostMapping("/{id}/reply")
-    public ResponseEntity<InquiryResponse> replyToInquiry(@PathVariable Long id, @RequestBody InquiryReplyRequest request){
+    public ResponseEntity<InquiryResponse> replyToInquiry(@PathVariable Long id, @RequestBody InquiryReplyRequest request) {
         //TODO: ADMIN 권한 체크
         return ResponseEntity.ok(inquiryService.replyToInquiry(id, request));
+    }
+
+    @GetMapping("/my/{userId}")
+    public ResponseEntity<List<InquiryResponse>> getMyInquiries(@PathVariable Long userId) {
+        return ResponseEntity.ok(inquiryService.getMyInquiries(userId));
     }
 }

@@ -34,6 +34,12 @@ public class InquiryService {
                 .collect(Collectors.toList());
     }
 
+    public List<InquiryResponse> getMyInquiries(Long userId) {
+        return inquiryRepository.findByUserId(userId).stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+    }
+
     public InquiryResponse getInquiryById(Long id){
         Inquiry inquiry = inquiryRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 문의가 존재하지 않습니다."));
