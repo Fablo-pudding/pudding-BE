@@ -1,4 +1,4 @@
-package com.example.pudingbe.global.Detail;
+package com.example.pudingbe.global.detail;
 
 import com.example.pudingbe.user.domain.User;
 import com.example.pudingbe.user.repository.UserRepository;

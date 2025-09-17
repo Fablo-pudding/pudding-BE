@@ -1,4 +1,4 @@
-package com.example.pudingbe.global.Detail;
+package com.example.pudingbe.global.detail;
 
 import com.example.pudingbe.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,10 +26,9 @@ public class UserDetail implements UserDetails { // 로그인 과정에서 검�
     } // 로그인에 사용되는 암호화된 비밀번호
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() // UserDetail 구성시 필수 요소
-    {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
-        // 기본 role
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // User 엔티티의 Role 기반 권한 생성
+        return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name().toUpperCase()));
     }
 
     @Override // 아래는 UserDetails 구조상 필요하지만 JWT를 쓴다면 전혀 필요없음.

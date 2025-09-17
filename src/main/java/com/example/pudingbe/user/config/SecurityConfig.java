@@ -1,5 +1,7 @@
 package com.example.pudingbe.user.config;
 
+import com.example.pudingbe.global.jwt.JwtAuthenticationFilter;
+import com.example.pudingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +12,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity // spring security 활성
+@EnableWebSecurity // spring SecurityConfig 활성
 @RequiredArgsConstructor
-public class security {
+public class SecurityConfig { // 접근 허용
+
+    private final JwtTokenProvider jwtTokenProvider;
+
     @Bean
     public PasswordEncoder passwordEncoder() { //비밀번호 암호화
         return new BCryptPasswordEncoder();
@@ -38,7 +44,9 @@ public class security {
                                 .requestMatchers("/user/signup", "/user/login").permitAll()
                                 // 모두 허용
                                 .anyRequest().authenticated() // 그외는 인증 필요
-                );
+                )
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
+                        UsernamePasswordAuthenticationFilter.class); // 필터추가
 
         return http.build();
     }

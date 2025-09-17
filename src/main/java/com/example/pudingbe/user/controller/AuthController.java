@@ -1,6 +1,8 @@
 package com.example.pudingbe.user.controller;
 
+import com.example.pudingbe.global.jwt.JwtToken;
 import com.example.pudingbe.global.request.LoginRequest;
+import com.example.pudingbe.global.service.LoginService;
 import com.example.pudingbe.user.request.SignUpRequest;
 import com.example.pudingbe.user.service.SignupService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final SignupService signupService;
+    private final LoginService loginService;
 
     @PostMapping("/signup")
     public ResponseEntity<HttpStatus> signup(@RequestBody SignUpRequest signUpRequest) {
@@ -22,12 +25,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<HttpStatus> login(@RequestBody LoginRequest loginRequest) {
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping("logout")
-    public ResponseEntity<HttpStatus> logout() {
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<JwtToken> login(@RequestBody LoginRequest loginRequest) {
+        JwtToken jwtToken = loginService.login(loginRequest.getName(), loginRequest.getPassword());
+        return ResponseEntity.ok(jwtToken);
     }
 }

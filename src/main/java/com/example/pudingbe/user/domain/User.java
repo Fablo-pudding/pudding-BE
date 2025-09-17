@@ -33,11 +33,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String name, String password, Long birth, Long batch, Gender gender) {
+    public User(String name, String password, Long birth, Long batch, Gender gender, Role role) {
         this.name = name;
         this.password = password;
         this.birth = birth;
         this.batch = batch;
         this.gender = gender;
+        this.role = role;
     }
 }
