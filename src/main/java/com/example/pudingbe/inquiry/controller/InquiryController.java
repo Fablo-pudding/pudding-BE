@@ -21,11 +21,13 @@ public class InquiryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<InquiryResponse> getInquiryById(@PathVariable Long id) {
+        //TODO: ADMIN, 작성자 권한 체크
         return ResponseEntity.ok(inquiryReadService.getInquiryById(id));
     }
 
     @GetMapping("/my/{userId}")
     public ResponseEntity<List<InquiryResponse>> getMyInquiries(@PathVariable Long userId) {
+        //TODO: 작성자 권한 체크
         return ResponseEntity.ok(inquiryReadService.getMyInquiries(userId));
     }
 }
