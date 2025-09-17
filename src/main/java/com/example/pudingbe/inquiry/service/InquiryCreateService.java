@@ -15,7 +15,7 @@ public class InquiryCreateService {
     private final InquiryRepository inquiryRepository;
     private final InquiryMapper inquiryMapper;
 
-    public InquiryResponse createInquiry(InquiryRequest request) {
+    public void createInquiry(InquiryRequest request) {
         Inquiry inquiry = Inquiry.builder()
                 .userId(request.getUserId())
                 .title(request.getTitle()   )
@@ -23,6 +23,6 @@ public class InquiryCreateService {
                 .createdAt(LocalDateTime.now())
                 .build();
         Inquiry saved = inquiryRepository.save(inquiry);
-        return inquiryMapper.toResponse(saved);
+        inquiryMapper.toResponse(saved);
     }
 }
