@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class    Inquiry {
+public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inquiry_id")
@@ -31,7 +31,7 @@ public class    Inquiry {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "reply", length = 512)
+    @Column(name = "reply", length = 512, nullable = true)
     private String reply;
 
     public void replyToInquiry(String reply) {
