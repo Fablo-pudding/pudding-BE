@@ -5,8 +5,8 @@ spring:
       &serverTimezone=Asia/Seoul
       &characterEncoding=UTF-8
       &allowPublicKeyRetrieval=true
-    username: root
-    password: user
+    username: ${DB_NAME}
+    password: ${DB_PWD}
 
   security:
     user:
