@@ -1,6 +1,8 @@
 package com.example.puddingbe.domain.feed.entity;
 
 import com.example.puddingbe.domain.comment.entity.Comment;
+import com.example.puddingbe.domain.comment.entity.dto.CommentResponseDTO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -38,6 +40,7 @@ public class Post {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
     @Builder

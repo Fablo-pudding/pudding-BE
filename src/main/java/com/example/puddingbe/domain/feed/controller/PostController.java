@@ -2,6 +2,7 @@ package com.example.puddingbe.domain.feed.controller;
 
 import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.entity.Post;
+import com.example.puddingbe.domain.feed.entity.dto.PostResponseDTO;
 import com.example.puddingbe.domain.feed.service.PostCreateService;
 import com.example.puddingbe.domain.feed.service.PostDeleteService;
 import com.example.puddingbe.domain.feed.service.PostReadService;
@@ -22,27 +23,32 @@ public class PostController {
     private final PostUpdateService postUpdateService;
     private final PostDeleteService postDeleteService;
 
+    // 게시글 생성
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody @Validated PostRequestDTO req) {
         postCreateService.createPost(req);
     }
 
+    // 게시글 리스트 가져오기
     @GetMapping
-    public List<Post> getPostAll() {
-        return postReadService.getPostList();
+    public List<PostResponseDTO> getPostAll() {
+        return postReadService.getPosts();
     }
 
+    // 게시글 자세한거 가져오기
     @GetMapping("/{id}")
     public Post getPostDetail(@PathVariable Long id) {
         return postReadService.getPostDetail(id);
     }
 
+    // 게시글 수정하기
     @PatchMapping("/{id}")
     public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto){
         postUpdateService.updatePost(id, dto);
     }
 
+    // 게시글 삭제하기 - 일단 임시로 path로 userId가져옴
     @DeleteMapping("/{postId}/{userId}")
     public void deletePost(@PathVariable Long postId, @PathVariable Long userId) {
         postDeleteService.delete(postId, userId);
