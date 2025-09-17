@@ -14,16 +14,13 @@ public class CommentCreateService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
-    public void create(CommentRequestDTO dto){
-        Post post = postRepository.findById(dto.getPostId()).orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않음"));
-
-        if(!post.getUserId().equals(dto.getUserId())) {
-            throw new IllegalArgumentException("유저가 일치하지 않음");
-        }
+    public void create(Long postId, CommentRequestDTO dto){
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않음"));
 
         Comment comment = Comment.builder()
+                .post(post)
                 .content(dto.getContent())
-                .userId(dto.getUserId())
+                .userId(dto.getUser_id())
                 .build();
 
         commentRepository.save(comment);
