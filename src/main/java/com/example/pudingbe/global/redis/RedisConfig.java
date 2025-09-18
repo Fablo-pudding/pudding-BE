@@ -18,11 +18,17 @@ public class RedisConfig {
     @Value("${spring.data.redis.port}")
     private int port;
 
+    @Value("${spring.data.redis.password:}")
+    private String password;
+
     @Bean // redis와 연결하는 객체 생성
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
         redisStandaloneConfiguration.setHostName(host);
         redisStandaloneConfiguration.setPort(port);
+        if (!password.isEmpty()) {
+            redisStandaloneConfiguration.setPassword(password); // 비밀번호 설정
+        }
         return new LettuceConnectionFactory(redisStandaloneConfiguration); // 스프링이 redis에 연결할 수 있게 도와줌
         // lettuce vs Jedis? 공부 필요
     }

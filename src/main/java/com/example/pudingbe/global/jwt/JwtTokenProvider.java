@@ -16,7 +16,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
 import java.security.Key;
 import java.time.Duration;
 import java.util.Base64;
@@ -44,7 +43,7 @@ public class JwtTokenProvider { // secretKey 생성
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.detailService = detailService;
         this.redisDao = redisDao;
-    }
+    } // yml 에서 secretkey 가져오기
 
     public JwtToken generateToken(Authentication authentication) { // 토큰 생성
         String authorities = authentication.getAuthorities().stream()

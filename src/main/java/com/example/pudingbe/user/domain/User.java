@@ -31,7 +31,7 @@ public class User {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
 
     public User(String name, String password, Long birth, Long batch, Gender gender, Role role) {
         this.name = name;

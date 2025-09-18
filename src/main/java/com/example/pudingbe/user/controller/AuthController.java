@@ -5,6 +5,7 @@ import com.example.pudingbe.global.request.LoginRequest;
 import com.example.pudingbe.global.service.LoginService;
 import com.example.pudingbe.user.request.SignUpRequest;
 import com.example.pudingbe.user.service.SignupService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,14 @@ public class AuthController {
     private final LoginService loginService;
 
     @PostMapping("/signup")
-    public ResponseEntity<HttpStatus> signup(@RequestBody SignUpRequest signUpRequest) {
+    public ResponseEntity<HttpStatus> signup(@Valid @RequestBody SignUpRequest signUpRequest) { // Valid를 추가해야 dto의 조건들 적용가능
         signupService.save(signUpRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtToken> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<JwtToken> login(@Valid @RequestBody LoginRequest loginRequest) {
         JwtToken jwtToken = loginService.login(loginRequest.getName(), loginRequest.getPassword());
-        return ResponseEntity.ok(jwtToken);
+        return ResponseEntity.ok(jwtToken); // jwt 반환
     }
 }

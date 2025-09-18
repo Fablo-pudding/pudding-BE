@@ -20,7 +20,7 @@ public class RedisDao {
         return redisTemplate.opsForValue().get(key);
     } // value 조회 (refresh 토큰 검증시 사용)
 
-    public void deleteValues(String key) {
-        redisTemplate.delete(key);
-    } // key 삭제 (로그아웃시 refresh 토큰 삭제시 사용)
+//    public void deleteValues(String key) {
+//        redisTemplate.delete(key);
+//    } // key 삭제 (로그아웃시 refresh 토큰 삭제시 사용)
 }

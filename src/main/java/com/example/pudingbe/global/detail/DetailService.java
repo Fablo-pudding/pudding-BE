@@ -24,6 +24,7 @@ public class DetailService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getName())
                 .password(user.getPassword())
+                .authorities("ROLE_" + user.getRole().name().toUpperCase())
                 .build();
     }
 }

@@ -4,7 +4,6 @@ import com.example.pudingbe.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -27,7 +26,6 @@ public class UserDetail implements UserDetails { // 로그인 과정에서 검�
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // User 엔티티의 Role 기반 권한 생성
         return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name().toUpperCase()));
     }
 

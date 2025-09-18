@@ -31,7 +31,6 @@ public class LoginService {
         Authentication authentication =
                 new UsernamePasswordAuthenticationToken(userDetail, password, userDetail.getAuthorities());
 
-
-        return jwtTokenProvider.generateToken(authentication);
+        return jwtTokenProvider.generateToken(authentication); // 토큰 반환
     }
 }

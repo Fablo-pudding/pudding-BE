@@ -1,6 +1,5 @@
 package com.example.pudingbe.Mypage;
 
-import com.example.pudingbe.global.exception.CustomJwtException;
 import com.example.pudingbe.global.jwt.JwtTokenProvider;
 import com.example.pudingbe.user.domain.User;
 import com.example.pudingbe.user.repository.UserRepository;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.NoSuchElementException;
 
 @RestController
@@ -22,12 +20,10 @@ public class MyPageController {
     private final UserRepository userRepository;
 
     @GetMapping("/mypage")
-    public ResponseEntity<APIBody<MyPageResponse>> showMyPage(@RequestHeader("Authorization") String authorizationHeader)
-    {
+    public ResponseEntity<MyPageResponse> showMyPage(@RequestHeader("Authorization") String authorizationHeader) {
         try {
             if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                        .body(APIBody.of(401, "인증 토큰이 없습니다.", null));
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
 
             String token = authorizationHeader.substring(7);
@@ -43,13 +39,12 @@ public class MyPageController {
                     "푸딩과함께 공부하자",
                     null,
                     "https://default.image.url/profile.png"
-                    );
+            );
 
-            return ResponseEntity.ok(APIBody.of(200, "마이페이지 조회 성공", response));
+            return ResponseEntity.ok(response);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(APIBody.of(500, "서버 오류", null));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
