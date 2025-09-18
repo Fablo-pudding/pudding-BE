@@ -1,7 +1,6 @@
 package com.example.pudingbe.inquiry.service;
 
 import com.example.pudingbe.inquiry.domain.dto.InquiryRequest;
-import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
 import com.example.pudingbe.inquiry.domain.entity.Inquiry;
 import com.example.pudingbe.inquiry.repository.InquiryRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +15,9 @@ public class InquiryCreateService {
     public void createInquiry(InquiryRequest request) {
         Inquiry inquiry = Inquiry.builder()
                 .userId(request.getUserId())
-                .title(request.getTitle()   )
+                .title(request.getTitle())
                 .content(request.getContent())
                 .createdAt(LocalDateTime.now())
                 .build();
-        Inquiry saved = inquiryRepository.save(inquiry);
     }
 }
