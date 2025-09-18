@@ -15,9 +15,9 @@ public class InquiryController {
 
     @PostMapping("/{id}/reply")
     @ResponseStatus(HttpStatus.CREATED)
-    public InquiryResponse replyToInquiry(@PathVariable Long id, @RequestBody InquiryReplyRequest request) {
+    public void replyToInquiry(@PathVariable Long id, @RequestBody InquiryReplyRequest request) {
         //TODO: ADMIN 권한 체크
         boolean isAdmin = true; //임시
-        return inquiryUpdateService.replyToInquiry(id, request, isAdmin);
+        inquiryUpdateService.replyToInquiry(id, request, isAdmin);
     }
 }
