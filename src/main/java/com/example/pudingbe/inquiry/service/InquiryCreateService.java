@@ -1,6 +1,5 @@
 package com.example.pudingbe.inquiry.service;
 
-import com.example.pudingbe.inquiry.domain.mapper.InquiryMapper;
 import com.example.pudingbe.inquiry.domain.dto.InquiryRequest;
 import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
 import com.example.pudingbe.inquiry.domain.entity.Inquiry;
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
 @Service
 public class InquiryCreateService {
     private final InquiryRepository inquiryRepository;
-    private final InquiryMapper inquiryMapper;
 
     public void createInquiry(InquiryRequest request) {
         Inquiry inquiry = Inquiry.builder()
@@ -23,6 +21,5 @@ public class InquiryCreateService {
                 .createdAt(LocalDateTime.now())
                 .build();
         Inquiry saved = inquiryRepository.save(inquiry);
-        inquiryMapper.toResponse(saved);
     }
 }
