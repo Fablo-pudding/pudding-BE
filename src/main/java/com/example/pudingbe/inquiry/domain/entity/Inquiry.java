@@ -31,7 +31,7 @@ public class Inquiry {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "reply", length = 512)
+    @Column(name = "reply", length = 512, nullable = true)
     private String reply;
 
     public void replyToInquiry(String reply) {
