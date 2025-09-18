@@ -1,5 +1,6 @@
 package com.example.pudingbe.inquiry.domain.dto;
 
+import com.example.pudingbe.inquiry.domain.entity.Inquiry;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,16 @@ public class InquiryResponse {
         this.content = content;
         this.createdAt = createdAt;
         this.reply = reply;
+    }
+
+    public static InquiryResponse from(Inquiry inquiry) {
+        return InquiryResponse.builder()
+                .id(inquiry.getId())
+                .userId(inquiry.getUserId())
+                .title(inquiry.getTitle())
+                .content(inquiry.getContent())
+                .createdAt(inquiry.getCreatedAt())
+                .reply(inquiry.getReply())
+                .build();
     }
 }
