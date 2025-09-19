@@ -1,50 +1,18 @@
 package com.example.pudingbe.Mypage;
 
-import com.example.pudingbe.global.jwt.JwtTokenProvider;
-import com.example.pudingbe.user.domain.User;
-import com.example.pudingbe.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.NoSuchElementException;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class MyPageController {
-    private final JwtTokenProvider jwtTokenProvider;
-    private final UserRepository userRepository;
+    private final MyPageService myPageService;
 
     @GetMapping("/mypage")
-    public ResponseEntity<MyPageResponse> showMyPage(@RequestHeader("Authorization") String authorizationHeader) {
-        try {
-            if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-
-            String token = authorizationHeader.substring(7);
-            jwtTokenProvider.validateToken(token); // 예외 발생 시 401
-
-            String name = jwtTokenProvider.getNameFromToken(token);
-
-            User findUser = userRepository.findByName(name)
-                    .orElseThrow(() -> new NoSuchElementException("해당 사용자가 존재하지 않습니다."));
-
-            MyPageResponse response = new MyPageResponse(
-                    findUser.getName(),
-                    "푸딩과함께 공부하자",
-                    null,
-                    "https://default.image.url/profile.png"
-            );
-
-            return ResponseEntity.ok(response);
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    @ResponseStatus(HttpStatus.OK) // 상태 코드 반환
+    public MyPageResponse showMyPage(@RequestHeader("Authorization") String authorizationHeader) {
+        return myPageService.showMyPage(authorizationHeader); // 조회 정보 응답
     }
 }
