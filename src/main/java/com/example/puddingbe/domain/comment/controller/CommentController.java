@@ -25,7 +25,8 @@ public class CommentController {
     private final CommentDeleteService commentDeleteService;
 
     // 댓글 추가
-    @PostMapping("/{postId}")
+    @PostMapping("/{post-id}")
+
     @ResponseStatus(HttpStatus.CREATED)
     public void createComment(@PathVariable Long postId, @RequestBody @Validated CommentRequestDTO dto) {
         commentCreateService.create(postId, dto);
