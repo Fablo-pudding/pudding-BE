@@ -8,24 +8,25 @@ import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
 public class CommentUpdateService {
     private final CommentRepository commentRepository;
-    private static final Logger logger = LoggerFactory.getLogger(AutoCloseable.class);
 
     @Transactional
     public void update(Long commentId, CommentRequestDTO dto) {
-        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new IllegalArgumentException("댓글이 존재하지 않음"));
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        if(!comment.getUser_id().equals(dto.getUser_id())) {
-            throw new IllegalArgumentException("수정 권한이 없는 유저");
+        if(!comment.getUserId().equals(dto.getUserId())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
-        logger.debug("아잉오잉오잉오"+dto.getContent());
         comment.update(dto.getContent());
+        commentRepository.save(comment);
     }
 }

@@ -6,7 +6,9 @@ import com.example.puddingbe.domain.comment.entity.repository.CommentRepository;
 import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -15,14 +17,22 @@ public class CommentCreateService {
     private final PostRepository postRepository;
 
     public void create(Long postId, CommentRequestDTO dto){
-        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않음"));
+        Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        Comment comment = Comment.builder()
-                .post(post)
-                .content(dto.getContent())
-                .userId(dto.getUser_id())
-                .build();
+        if (dto.getContent() == null || dto.getContent().trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
 
-        commentRepository.save(comment);
+        try {
+            Comment comment = Comment.builder()
+                    .postId(post.getPostId())
+                    .userId(dto.getUserId())
+                    .content(dto.getContent())
+                    .build();
+
+            commentRepository.save(comment);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
