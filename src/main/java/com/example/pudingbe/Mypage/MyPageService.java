@@ -26,6 +26,7 @@ public class MyPageService {
                 .orElseThrow(() -> new RuntimeException("해당 사용자가 존재하지 않습니다."));
 
         return MyPageResponse.builder()
+                .userId(findUser.getId())
                 .name(findUser.getName())
                 .statusMessage("푸딩과함께 공부하자")
                 .ranking(null)

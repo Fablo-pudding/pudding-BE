@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MyPageResponse {
+    private Long userId;
     private String name;
     private String statusMessage;
     private Long ranking;
