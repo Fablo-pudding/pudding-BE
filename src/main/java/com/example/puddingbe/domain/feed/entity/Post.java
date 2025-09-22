@@ -1,8 +1,6 @@
 package com.example.puddingbe.domain.feed.entity;
 
 import com.example.puddingbe.domain.comment.entity.Comment;
-import com.example.puddingbe.domain.comment.entity.dto.CommentResponseDTO;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -15,6 +13,7 @@ import java.util.List;
 
 @Getter
 @Entity
+@Table(name = "post")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post {
 
@@ -23,11 +22,7 @@ public class Post {
     @Column(name = "post_id")
     private Long postId;
 
-    // 테스트때는 밑에 Long userId 쓰고 나중에 합칠때 위에 주석 풀고, 밑에 주석처리
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private Long userId;
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     @Column(nullable = false, length = 100)
@@ -39,8 +34,8 @@ public class Post {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id")
     private List<Comment> comments = new ArrayList<>();
 
     @Builder

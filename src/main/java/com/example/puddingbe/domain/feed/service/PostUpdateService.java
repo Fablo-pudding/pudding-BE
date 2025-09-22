@@ -4,22 +4,25 @@ import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class PostUpdateService {
     private final PostRepository postRepository;
 
 
     public void updatePost(Long postId, PostRequestDTO req){
-        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없음"));
+        Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // 유저 확인
-        if(!post.getPostId().equals(req.getUserId())){
-            throw new IllegalArgumentException("권한 없음");
+        if(!post.getUserId().equals(req.getUserId())){
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
         post.update(req.getTitle(), req.getContent());
+        postRepository.save(post);
     }
 }

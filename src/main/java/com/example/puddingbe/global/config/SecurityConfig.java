@@ -15,13 +15,27 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.
-                csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/feed/**", "/comment/**").permitAll()
-                        .anyRequest().permitAll());
+        disableCsrf(http);
+        configureSession(http);
+        configureAuthorization(http);
 
         return http.build();
+    }
+
+    // CSRF 설정
+    private void disableCsrf(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable());
+    }
+
+    // 세션 관리
+    private void configureSession(HttpSecurity http) throws Exception {
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    }
+
+    // 요청 권한 설정
+    private void configureAuthorization(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/feed/**", "/comment/**").permitAll()
+                .anyRequest().permitAll());
     }
 }
