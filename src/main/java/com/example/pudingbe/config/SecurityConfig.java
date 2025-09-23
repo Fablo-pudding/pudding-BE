@@ -13,7 +13,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf ->csrf.disable())
                 .authorizeHttpRequests(auth ->auth
-                        .requestMatchers(HttpMethod.POST, "/inquiry/{id}/reply").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .httpBasic(httpBasic-> httpBasic.disable());

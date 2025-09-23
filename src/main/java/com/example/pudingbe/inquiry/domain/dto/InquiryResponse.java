@@ -1,13 +1,14 @@
 package com.example.pudingbe.inquiry.domain.dto;
 
 import com.example.pudingbe.inquiry.domain.entity.Inquiry;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class InquiryResponse {
     private long id;
     private long userId;
@@ -16,24 +17,12 @@ public class InquiryResponse {
     private LocalDateTime createdAt;
     private String reply;
 
-    @Builder
-    public InquiryResponse(Long id, Long userId, String title, String content, LocalDateTime createdAt, String reply) {
-        this.id = id;
-        this.userId = userId;
-        this.title = title;
-        this.content = content;
-        this.createdAt = createdAt;
-        this.reply = reply;
-    }
-
-    public static InquiryResponse from(Inquiry inquiry) {
-        return InquiryResponse.builder()
-                .id(inquiry.getId())
-                .userId(inquiry.getUserId())
-                .title(inquiry.getTitle())
-                .content(inquiry.getContent())
-                .createdAt(inquiry.getCreatedAt())
-                .reply(inquiry.getReply())
-                .build();
+    public InquiryResponse(Inquiry inquiry) {
+        this.id = inquiry.getId();
+        this.userId = inquiry.getUserId();
+        this.title = inquiry.getTitle();
+        this.content = inquiry.getContent();
+        this.createdAt = inquiry.getCreatedAt();
+        this.reply = inquiry.getReply();
     }
 }

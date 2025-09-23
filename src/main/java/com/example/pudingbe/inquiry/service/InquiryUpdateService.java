@@ -2,7 +2,6 @@ package com.example.pudingbe.inquiry.service;
 
 import com.example.pudingbe.exception.InquiryNotFoundException;
 import com.example.pudingbe.inquiry.domain.dto.InquiryReplyRequest;
-import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
 import com.example.pudingbe.inquiry.domain.entity.Inquiry;
 import com.example.pudingbe.inquiry.repository.InquiryRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +17,6 @@ public class InquiryUpdateService {
                 .orElseThrow(()->new InquiryNotFoundException(id));
         //TODO: admin 권한 체크
         inquiry.replyToInquiry(request.getReply());
-        InquiryResponse.from(inquiryRepository.save(inquiry));
+        inquiryRepository.save(inquiry);
     }
 }
