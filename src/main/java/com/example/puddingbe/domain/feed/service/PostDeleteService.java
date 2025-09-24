@@ -14,13 +14,13 @@ public class PostDeleteService {
 
     public void delete(Long postId, Long userId){
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        // userId 맞는지 확인
+        if (!post.getUserId().equals(userId)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }
+
         try
         {
-            // userId 맞는지 확인
-            if (!post.getUserId().equals(userId)) {
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-            }
-
             postRepository.delete(post);
 
         }catch (Exception e) {
