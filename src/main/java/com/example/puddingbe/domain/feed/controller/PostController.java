@@ -27,34 +27,36 @@ public class PostController {
 
     // 게시글 생성
     @PostMapping("/create")
-    public ResponseEntity<Void> create(@RequestBody @Validated PostRequestDTO req) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody @Validated PostRequestDTO req) {
         postCreateService.createPost(req);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     // 게시글 리스트 가져오기
     @GetMapping("/get-list")
-    public ResponseEntity<List<PostListResponseDTO>> getPostAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(postReadService.getPosts());
+    @ResponseStatus(HttpStatus.OK)
+    public List<PostListResponseDTO> getPostAll() {
+        return postReadService.getPosts();
     }
 
     // 게시글 자세한거 가져오기
     @GetMapping("/get-detail/{id}")
-    public ResponseEntity<PostDetailResponseDTO> getPostDetail(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(postReadService.getPostDetail(id));
+    @ResponseStatus(HttpStatus.OK)
+    public PostDetailResponseDTO getPostDetail(@PathVariable Long id) {
+        return postReadService.getPostDetail(id);
     }
 
     // 게시글 수정하기
     @PatchMapping("/update/{id}")
-    public ResponseEntity<Void> updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto){
         postUpdateService.updatePost(id, dto);
-        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     // 게시글 삭제하기 - 일단 임시로 path로 userId가져옴
     @DeleteMapping("/delete/{post-id}/{user-id}")
-    public ResponseEntity<Void> deletePost(@PathVariable("post-id") Long postId, @PathVariable("user-id") Long userId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePost(@PathVariable("post-id") Long postId, @PathVariable("user-id") Long userId) {
         postDeleteService.delete(postId, userId);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
