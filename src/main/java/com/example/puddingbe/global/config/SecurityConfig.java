@@ -1,5 +1,6 @@
 package com.example.puddingbe.global.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -37,3 +38,19 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user);
     }
 }
+@Configuration
+public class SecurityConfig {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf ->csrf.disable())
+                .authorizeHttpRequests(auth ->auth
+                        .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
+                        .anyRequest().permitAll()
+                )
+                .httpBasic(httpBasic-> httpBasic.disable());
+        return http.build();
+    }
+}
+
