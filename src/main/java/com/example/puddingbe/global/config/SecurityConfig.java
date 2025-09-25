@@ -15,6 +15,16 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf ->csrf.disable())
+                .authorizeHttpRequests(auth ->auth
+                        .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
+
+                        .anyRequest().permitAll()
+                )
+                .httpBasic(httpBasic-> httpBasic.disable());
         disableCsrf(http);
         configureSession(http);
         configureAuthorization(http);
