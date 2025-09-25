@@ -16,6 +16,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/inquiry").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/inquiry/my/{user-id}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/inquiry/{inquiry-id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
                         .anyRequest().permitAll()
                 )
                 .httpBasic(httpBasic-> httpBasic.disable());
