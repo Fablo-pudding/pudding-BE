@@ -5,11 +5,6 @@ import com.example.puddingbe.domain.user.exception.DuplicateUserException;
 import com.example.puddingbe.domain.user.request.SignUpRequest;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.repository.UserRepository;
-import com.example.puddingbe.domain.user.exception.DuplicateUserException;
-import com.example.puddingbe.domain.user.repository.UserRepository;
-import com.example.puddingbe.domain.user.domain.Role;
-import com.example.puddingbe.domain.user.request.SignUpRequest;
-import com.example.puddingbe.domain.user.domain.User;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +17,6 @@ public class SignupService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder encoder;
-    private final PasswordEncoder encoder; // 비밀번호 암호화
-
 
     @Transactional
     public void save(SignUpRequest signUpRequest) {
