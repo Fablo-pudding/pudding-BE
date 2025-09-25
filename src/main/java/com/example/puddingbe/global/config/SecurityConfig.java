@@ -17,12 +17,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
                         .anyRequest().permitAll()
-                
+
                 )
                 .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     } // jwt 추가 필요함
 
-}
 }
