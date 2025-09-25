@@ -1,4 +1,4 @@
-package com.example.puddingbe.global.request;
+package com.example.puddingbe.domain.user.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

@@ -1,4 +1,4 @@
-package com.example.puddingbe.global.service;
+package com.example.puddingbe.domain.user.service;
 
 import com.example.puddingbe.global.detail.UserDetail;
 import com.example.puddingbe.global.jwt.JwtToken;
