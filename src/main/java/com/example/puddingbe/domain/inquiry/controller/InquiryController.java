@@ -1,8 +1,7 @@
-package com.example.pudingbe.inquiry.controller;
+package com.example.puddingbe.domain.inquiry.controller;
 
-import com.example.pudingbe.inquiry.domain.dto.InquiryReplyRequest;
-import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
-import com.example.pudingbe.inquiry.service.InquiryUpdateService;
+import com.example.puddingbe.domain.inquiry.domain.dto.InquiryReplyRequest;
+import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
