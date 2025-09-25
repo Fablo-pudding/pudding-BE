@@ -34,9 +34,15 @@ public class InquiryController {
         inquiryDeleteService.deleteInquiry(id, currentUserId, isAdmin);
     }
 
+        @PostMapping
+        @ResponseStatus(HttpStatus.CREATED)
+        public void createInquiry (@RequestBody InquiryRequest request){
+            inquiryCreateService.createInquiry(request);
+        }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createInquiry(@RequestBody InquiryRequest request) {
         inquiryCreateService.createInquiry(request);
+
     }
-}
+

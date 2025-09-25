@@ -11,11 +11,31 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @RequiredArgsConstructor
 @EnableMethodSecurity
+
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/notice/**").authenticated()
+                        .anyRequest().permitAll()
+                )
+                .httpBasic(Customizer.withDefaults());
+        return http.build();
+    }
+
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User.withUsername("pudding")
+                .password("{noop}pudding123!")
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(user);
+
                 .csrf(csrf ->csrf.disable())
                 .authorizeHttpRequests(auth ->auth
                         .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").hasRole("ADMIN")
@@ -47,5 +67,6 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/feed/**", "/comment/**").permitAll()
                 .anyRequest().permitAll());
+
     }
 }
