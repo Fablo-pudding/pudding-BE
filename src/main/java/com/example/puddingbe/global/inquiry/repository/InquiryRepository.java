@@ -1,6 +1,6 @@
-package com.example.pudingbe.inquiry.repository;
+package com.example.puddingbe.global.inquiry.repository;
 
-import com.example.pudingbe.inquiry.domain.entity.Inquiry;
+import com.example.puddingbe.global.inquiry.domain.entity.Inquiry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

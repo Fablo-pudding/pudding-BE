@@ -1,12 +1,12 @@
-package com.example.pudingbe.inquiry.controller;
+package com.example.puddingbe.global.inquiry.controller;
 
-import com.example.pudingbe.inquiry.domain.dto.InquiryReplyRequest;
-import com.example.pudingbe.inquiry.domain.dto.InquiryRequest;
-import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
-import com.example.pudingbe.inquiry.service.InquiryCreateService;
-import com.example.pudingbe.inquiry.service.InquiryDeleteService;
-import com.example.pudingbe.inquiry.service.InquiryReadService;
-import com.example.pudingbe.inquiry.service.InquiryUpdateService;
+import com.example.puddingbe.global.inquiry.domain.dto.InquiryReplyRequest;
+import com.example.puddingbe.global.inquiry.domain.dto.InquiryRequest;
+import com.example.puddingbe.global.inquiry.domain.dto.InquiryResponse;
+import com.example.puddingbe.global.inquiry.service.InquiryCreateService;
+import com.example.puddingbe.global.inquiry.service.InquiryDeleteService;
+import com.example.puddingbe.global.inquiry.service.InquiryReadService;
+import com.example.puddingbe.global.inquiry.service.InquiryUpdateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

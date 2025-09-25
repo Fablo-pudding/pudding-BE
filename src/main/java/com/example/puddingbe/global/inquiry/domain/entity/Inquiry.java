@@ -1,4 +1,4 @@
-package com.example.pudingbe.inquiry.domain.entity;
+package com.example.puddingbe.global.inquiry.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

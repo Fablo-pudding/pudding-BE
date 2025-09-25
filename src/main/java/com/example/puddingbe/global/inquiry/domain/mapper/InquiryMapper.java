@@ -1,7 +1,7 @@
-package com.example.pudingbe.inquiry.domain.mapper;
+package com.example.puddingbe.global.inquiry.domain.mapper;
 
-import com.example.pudingbe.inquiry.domain.dto.InquiryResponse;
-import com.example.pudingbe.inquiry.domain.entity.Inquiry;
+import com.example.puddingbe.global.inquiry.domain.dto.InquiryResponse;
+import com.example.puddingbe.global.inquiry.domain.entity.Inquiry;
 import org.springframework.stereotype.Component;
 
 @Component
