@@ -40,14 +40,19 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
-
+    
 server:
   port: 8080
   
+
 jwt:
   secret: ${JWT_SECRET_KEY}
   access-token:
     expire-time: 900000
   refresh-token:
+
     expire-time: 2592000
+
+    expire-time: 2592000
+
 
