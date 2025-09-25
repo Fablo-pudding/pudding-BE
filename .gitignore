@@ -38,9 +38,25 @@ out/
 ### VS Code ###
 .vscode/
 
+### IntelliJ ###
+.idea/
+
+### Gradle ###
+.gradle/
+
+### OS ###
+.DS_Store
+Thumbs.db
+
 ### env ###
 .env
 *.properties
 
 ### log ###
 *.log
+
+### tmp ###
+*.tmp
+*.swp
+
+
