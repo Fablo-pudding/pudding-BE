@@ -24,6 +24,7 @@ public class InquiryController {
         inquiryUpdateService.replyToInquiry(id, request, isAdmin);
 
     private final InquiryDeleteService inquiryDeleteService;
+    private final InquiryCreateService inquiryCreateService;
 
     @DeleteMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -31,8 +32,7 @@ public class InquiryController {
         Long currentUserId = 0L; //임시 값 TODO: 로그인 사용자 ID 체크
         boolean isAdmin = false; //임시 값 TODO: 로그인 사용자 권한 체크
         inquiryDeleteService.deleteInquiry(id, currentUserId, isAdmin);
-
-    private final InquiryCreateService inquiryCreateService;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
