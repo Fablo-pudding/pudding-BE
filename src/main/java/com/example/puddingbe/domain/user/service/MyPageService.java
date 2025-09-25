@@ -1,5 +1,6 @@
-package com.example.puddingbe.domain.Mypage;
+package com.example.puddingbe.domain.user.service;
 
+import com.example.puddingbe.domain.user.response.MyPageResponse;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.repository.UserRepository;

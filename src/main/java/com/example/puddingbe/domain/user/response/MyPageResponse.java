@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.Mypage;
+package com.example.puddingbe.domain.user.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

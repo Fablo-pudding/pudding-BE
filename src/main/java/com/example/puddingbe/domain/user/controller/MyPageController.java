@@ -1,5 +1,7 @@
-package com.example.puddingbe.domain.Mypage;
+package com.example.puddingbe.domain.user.controller;
 
+import com.example.puddingbe.domain.user.response.MyPageResponse;
+import com.example.puddingbe.domain.user.service.MyPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
