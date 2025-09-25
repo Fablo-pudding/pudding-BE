@@ -1,6 +1,6 @@
-package com.example.pudingbe.inquiry.controller;
+package com.example.puddingbe.domain.inquiry.controller;
 
-import com.example.pudingbe.inquiry.service.InquiryDeleteService;
+import com.example.puddingbe.domain.inquiry.service.InquiryDeleteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.example.pudingbe.exception;
+package com.example.puddingbe.global.exception;
 
 public class UnauthorizedException extends RuntimeException {
     public UnauthorizedException(String message) {

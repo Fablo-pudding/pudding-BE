@@ -1,4 +1,4 @@
-package com.example.pudingbe.exception;
+package com.example.puddingbe.global.exception;
 
 public class InquiryNotFoundException extends RuntimeException {
     public InquiryNotFoundException(Long id) {
