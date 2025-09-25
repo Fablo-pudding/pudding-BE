@@ -26,5 +26,3 @@ public class InquiryResponse {
         this.reply = inquiry.getReply();
     }
 }
-
-}

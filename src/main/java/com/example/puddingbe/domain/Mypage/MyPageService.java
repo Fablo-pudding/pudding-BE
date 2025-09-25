@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.user.Mypage;
+package com.example.puddingbe.domain.Mypage;
 
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import com.example.puddingbe.domain.user.domain.User;
