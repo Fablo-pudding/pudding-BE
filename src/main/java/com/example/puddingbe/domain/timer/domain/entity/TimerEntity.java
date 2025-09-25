@@ -1,4 +1,4 @@
-package com.example.pudingbe.timer.domain.entity;
+package com.example.puddingbe.domain.timer.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

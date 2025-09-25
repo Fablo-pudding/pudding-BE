@@ -1,6 +1,6 @@
-package com.example.pudingbe.timer.repository;
+package com.example.puddingbe.domain.timer.repository;
 
-import com.example.pudingbe.timer.domain.entity.TimerEntity;
+import com.example.puddingbe.domain.timer.domain.entity.TimerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

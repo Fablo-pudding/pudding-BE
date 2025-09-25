@@ -1,8 +1,8 @@
-package com.example.pudingbe.timer.sevice;
+package com.example.puddingbe.domain.timer.sevice;
 
-import com.example.pudingbe.timer.domain.dto.TimerRequest;
-import com.example.pudingbe.timer.domain.entity.TimerEntity;
-import com.example.pudingbe.timer.repository.TimerRepository;
+import com.example.puddingbe.domain.timer.domain.dto.TimerRequest;
+import com.example.puddingbe.domain.timer.domain.entity.TimerEntity;
+import com.example.puddingbe.domain.timer.repository.TimerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

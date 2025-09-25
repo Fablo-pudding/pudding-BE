@@ -1,12 +1,10 @@
-package com.example.pudingbe.timer.controller;
+package com.example.puddingbe.domain.timer.controller;
 
-import com.example.pudingbe.timer.domain.dto.TimerRequest;
-import com.example.pudingbe.timer.sevice.TimerService;
+import com.example.puddingbe.domain.timer.sevice.TimerService;
+import com.example.puddingbe.domain.timer.domain.dto.TimerRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Timer;
 
 @RestController
 @RequiredArgsConstructor // final 필드에 대한 생성자 자동 생성
