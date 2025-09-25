@@ -38,10 +38,12 @@ public class SecurityConfig {
 
                 .csrf(csrf ->csrf.disable())
                 .authorizeHttpRequests(auth ->auth
+                        .requestMatchers(HttpMethod.GET, "/inquiry").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/inquiry/my/{user-id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
-
                         .anyRequest().permitAll()
                 )
                 .httpBasic(httpBasic-> httpBasic.disable());

@@ -50,6 +50,9 @@ Thumbs.db
 
 ### env ###
 .env
+
+*.properties
+
 *.properties
 
 ### log ###
@@ -58,5 +61,4 @@ Thumbs.db
 ### tmp ###
 *.tmp
 *.swp
-
 

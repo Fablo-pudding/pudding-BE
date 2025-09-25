@@ -1,0 +1,34 @@
+package com.example.puddingbe.domain.inquiry.service;
+
+import com.example.puddingbe.domain.inquiry.domain.dto.InquiryResponse;
+import com.example.puddingbe.domain.inquiry.domain.entity.Inquiry;
+import com.example.puddingbe.domain.inquiry.repository.InquiryRepository;
+import com.example.puddingbe.global.exception.InquiryNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@RequiredArgsConstructor
+@Service
+public class InquiryReadService {
+    private final InquiryRepository inquiryRepository;
+
+    public List<InquiryResponse> getAllInquiries() {
+        return inquiryRepository.findAll().stream()
+                .map(InquiryResponse::new)
+                .collect(Collectors.toList());
+    }
+
+    public List<InquiryResponse> getMyInquiries(Long userId) {
+        return inquiryRepository.findByUserId(userId).stream()
+                .map(InquiryResponse::new)
+                .collect(Collectors.toList());
+    }
+
+    public InquiryResponse getInquiryById(Long id) {
+        Inquiry inquiry = inquiryRepository.findById(id)
+                .orElseThrow(()->new InquiryNotFoundException(id));
+        return new InquiryResponse(inquiry);
+    }
+}
