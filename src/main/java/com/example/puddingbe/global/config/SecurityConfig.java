@@ -11,20 +11,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf ->csrf.disable())
-                .authorizeHttpRequests(auth ->auth
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/timer/**").permitAll() // 테스트용 permitAll (수정해야됨)
-                        .anyRequest().permitAll()
-                )
-                .httpBasic(httpBasic-> httpBasic.disable());
-
-        return http.build();
-    } // jwt 추가 필요함
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
                         .anyRequest().permitAll()
+                
                 )
-                .httpBasic(httpBasic-> httpBasic.disable());
+                .httpBasic(httpBasic -> httpBasic.disable());
+
         return http.build();
-    }
+    } // jwt 추가 필요함
+
+}
 }
