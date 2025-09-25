@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class SignupService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder encoder; // 비밀번호 암호화
+    private final PasswordEncoder encoder;
 
     @Transactional
     public void save(SignUpRequest signUpRequest) {
