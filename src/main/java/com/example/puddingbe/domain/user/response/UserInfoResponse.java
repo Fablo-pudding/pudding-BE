@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.Mypage;
+package com.example.puddingbe.domain.user.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyPageResponse {
+public class UserInfoResponse {
     private Long userId;
     private String name;
     private String statusMessage;
