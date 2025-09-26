@@ -1,6 +1,6 @@
 package com.example.puddingbe.domain.user.service;
 
-import com.example.puddingbe.domain.user.response.MyPageResponse;
+import com.example.puddingbe.domain.user.response.UserInfoResponse;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.repository.UserRepository;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MyPageService {
+public class UserInfoService {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
 
-    public MyPageResponse showMyPage(String authorizationHeader) {
+    public UserInfoResponse showInformation(String authorizationHeader) {
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
                 throw new RuntimeException();
         }
@@ -26,7 +26,7 @@ public class MyPageService {
         User findUser = userRepository.findByName(name) // 저장된 name 값과 이름 일치 여부 확인
                 .orElseThrow(() -> new RuntimeException("해당 사용자가 존재하지 않습니다."));
 
-        return MyPageResponse.builder()
+        return UserInfoResponse.builder()
                 .userId(findUser.getId())
                 .name(findUser.getName())
                 .statusMessage("푸딩과함께 공부하자")

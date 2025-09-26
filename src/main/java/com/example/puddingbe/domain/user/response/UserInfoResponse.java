@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyPageResponse {
+public class UserInfoResponse {
     private Long userId;
     private String name;
     private String statusMessage;
