@@ -1,5 +1,7 @@
 package com.example.puddingbe.global.config;
 
+import com.example.puddingbe.global.jwt.JwtAuthenticationFilter;
+import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +13,23 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @RequiredArgsConstructor
 @EnableMethodSecurity
 public class SecurityConfig {
+
+    private final JwtTokenProvider jwtTokenProvider;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() { //비밀번호 암호화
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -27,6 +39,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // notice API
                         .requestMatchers("/api/notice/**").authenticated()
+
+                        //user API
+                        .requestMatchers("/user/signup", "/user/login").permitAll()
+
+                        //timer API
+                        .requestMatchers("/timer/**").authenticated()
 
                         // inquiry API
                         .requestMatchers(HttpMethod.GET, "/inquiry").hasRole("ADMIN")
@@ -41,8 +59,8 @@ public class SecurityConfig {
 
                         .anyRequest().permitAll()
                 )
-                .httpBasic(Customizer.withDefaults());
-
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
+                        UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
