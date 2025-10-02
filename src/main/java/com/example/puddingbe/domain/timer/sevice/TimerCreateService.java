@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TimerService {
+public class TimerCreateService {
     private final TimerRepository timerRepository;
 
     @Transactional
