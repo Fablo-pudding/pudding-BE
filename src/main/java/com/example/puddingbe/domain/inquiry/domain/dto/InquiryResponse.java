@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 public class InquiryResponse {
     private long id;
     private long userId;
