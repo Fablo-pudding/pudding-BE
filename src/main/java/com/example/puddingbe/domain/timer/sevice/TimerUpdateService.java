@@ -20,6 +20,5 @@ public class TimerUpdateService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
 
         timerEntity.update(timerRequest.getElapsedTime());
-        timerRepository.save(timerEntity);
     }
 }
