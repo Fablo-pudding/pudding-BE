@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class TimerController {
     private final TimerCreateService timerCreateService;
 
-    @PostMapping("")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createTimer(@RequestBody TimerRequest timerRequest) {
         timerCreateService.createTimer(timerRequest);

@@ -44,7 +44,9 @@ public class SecurityConfig {
                         .requestMatchers("/user/signup", "/user/login").permitAll()
 
                         //timer API
-                        .requestMatchers("/timer/**").authenticated()
+                        .requestMatchers("/timer").authenticated()
+                        .requestMatchers("/timer/update").authenticated()
+                        .requestMatchers("/timer/read").authenticated()
 
                         // inquiry API
                         .requestMatchers(HttpMethod.GET, "/inquiry").hasRole("ADMIN")
