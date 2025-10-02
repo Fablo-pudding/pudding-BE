@@ -12,10 +12,9 @@ import org.springframework.stereotype.Service;
 public class InquiryUpdateService {
     private final InquiryRepository inquiryRepository;
 
-    public void replyToInquiry(Long id, InquiryReplyRequest request, boolean isAdmin) {
+    public void replyToInquiry(Long id, InquiryReplyRequest request) {
         Inquiry inquiry = inquiryRepository.findById(id)
                 .orElseThrow(()->new InquiryNotFoundException(id));
-        //TODO: admin 권한 체크
         inquiry.replyToInquiry(request.getReply());
         inquiryRepository.save(inquiry);
     }

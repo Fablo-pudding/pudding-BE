@@ -14,6 +14,10 @@ public class UserDetail implements UserDetails { // 로그인 과정에서 검�
         this.user = user;
     }
 
+    public Long getId() {
+        return user.getId();
+    }
+
     @Override
     public String getUsername() {
         return user.getName();
