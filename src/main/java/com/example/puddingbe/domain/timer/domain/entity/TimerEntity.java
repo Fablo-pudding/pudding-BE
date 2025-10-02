@@ -15,4 +15,8 @@ public class TimerEntity {
 
     @Column
     private Long totalTime; // 토탈 값
+
+    public void update(Long elapsedTime) {
+        this.totalTime += elapsedTime;
+    }
 }
