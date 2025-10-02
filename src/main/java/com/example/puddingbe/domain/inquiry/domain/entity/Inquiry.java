@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "tbl_inquiry")
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +37,7 @@ public class Inquiry {
         this.reply = reply;
     }
 
+    @Builder
     public Inquiry(Long userId, String title, String content, LocalDateTime createdAt) {
         this.userId = userId;
         this.title = title;

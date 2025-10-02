@@ -4,12 +4,12 @@ import com.example.puddingbe.domain.inquiry.domain.dto.InquiryReplyRequest;
 import com.example.puddingbe.domain.inquiry.domain.dto.InquiryResponse;
 import com.example.puddingbe.domain.inquiry.service.InquiryReadService;
 import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
+import com.example.puddingbe.global.detail.UserDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 import com.example.puddingbe.domain.inquiry.service.InquiryDeleteService;
 import com.example.puddingbe.domain.inquiry.domain.dto.InquiryRequest;
 import com.example.puddingbe.domain.inquiry.service.InquiryCreateService;
@@ -27,38 +27,31 @@ public class InquiryController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<InquiryResponse> getAllInquiries() {
-        //TODO: ADMIN 권한 체크
         return inquiryReadService.getAllInquiries();
     }
 
     @GetMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.OK)
-    public InquiryResponse getInquiryById(@PathVariable("inquiry-id") Long id) {
-        //TODO: ADMIN, 작성자 권한 체크
-        return inquiryReadService.getInquiryById(id);
+    public InquiryResponse getInquiryById(@PathVariable("inquiry-id") Long id, @AuthenticationPrincipal UserDetail userDetail) {
+        return inquiryReadService.getInquiryById(id, userDetail);
     }
 
     @GetMapping("/my/{user-id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<InquiryResponse> getMyInquiries(@PathVariable("user-id") Long userId) {
-        //TODO: 작성자 권한 체크
-        return inquiryReadService.getMyInquiries(userId);
+    public List<InquiryResponse> getMyInquiries(@PathVariable("user-id") Long userId, @AuthenticationPrincipal UserDetail userDetail) {
+        return inquiryReadService.getMyInquiries(userId, userDetail);
     }
 
     @PostMapping("/{inquiry-id}/reply")
     @ResponseStatus(HttpStatus.CREATED)
     public void replyToInquiry(@PathVariable("inquiry-id") Long id, @RequestBody InquiryReplyRequest request) {
-        //TODO: ADMIN 권한 체크
-        boolean isAdmin = true; //임시
-        inquiryUpdateService.replyToInquiry(id, request, isAdmin);
+        inquiryUpdateService.replyToInquiry(id, request);
     }
 
     @DeleteMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteInquiry(@PathVariable("inquiry-id") Long id) {
-        Long currentUserId = 0L; //임시 값 TODO: 로그인 사용자 ID 체크
-        boolean isAdmin = false; //임시 값 TODO: 로그인 사용자 권한 체크
-        inquiryDeleteService.deleteInquiry(id, currentUserId, isAdmin);
+    public void deleteInquiry(@PathVariable("inquiry-id") Long id, @AuthenticationPrincipal UserDetail userDetail) {
+        inquiryDeleteService.deleteInquiry(id, userDetail);
     }
 
     @PostMapping
