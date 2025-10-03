@@ -4,7 +4,6 @@ import lombok.Getter;
 
 @Getter
 public class PostRequestDTO {
-    private Long userId;
     private String title;
     private String content;
 }

@@ -8,9 +8,12 @@ import com.example.puddingbe.domain.feed.service.PostCreateService;
 import com.example.puddingbe.domain.feed.service.PostDeleteService;
 import com.example.puddingbe.domain.feed.service.PostReadService;
 import com.example.puddingbe.domain.feed.service.PostUpdateService;
+import com.example.puddingbe.domain.user.domain.User;
+import com.example.puddingbe.global.detail.UserDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +31,9 @@ public class PostController {
     // 게시글 생성
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Validated PostRequestDTO req) {
-        postCreateService.createPost(req);
+    public void create(@RequestBody @Validated PostRequestDTO req, @AuthenticationPrincipal UserDetail userDetail) {
+        System.out.println(userDetail);
+        postCreateService.createPost(req, userDetail);
     }
 
     // 게시글 리스트 가져오기
@@ -49,14 +53,14 @@ public class PostController {
     // 게시글 수정하기
     @PatchMapping("/update/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto){
-        postUpdateService.updatePost(id, dto);
+    public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto, @AuthenticationPrincipal UserDetail userDetail){
+        postUpdateService.updatePost(id, dto, userDetail);
     }
 
-    // 게시글 삭제하기 - 일단 임시로 path로 userId가져옴
-    @DeleteMapping("/delete/{post-id}/{user-id}")
+    // 게시글 삭제하기
+    @DeleteMapping("/delete/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePost(@PathVariable("post-id") Long postId, @PathVariable("user-id") Long userId) {
-        postDeleteService.delete(postId, userId);
+    public void deletePost(@PathVariable("post-id") Long postId, @AuthenticationPrincipal UserDetail userDetail) {
+        postDeleteService.delete(postId, userDetail);
     }
 }

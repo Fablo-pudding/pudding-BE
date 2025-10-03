@@ -3,8 +3,11 @@ package com.example.puddingbe.domain.feed.service;
 import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
+import com.example.puddingbe.global.detail.UserDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -13,15 +16,15 @@ import org.springframework.web.server.ResponseStatusException;
 public class PostCreateService {
     private final PostRepository postRepository;
 
-    public void createPost(PostRequestDTO dto){
+    public void createPost(PostRequestDTO dto, UserDetail userDetail){
         // null이거나 비어있거나 공백일 경우 400
-        if (dto.getTitle() == null || dto.getContent() == null || dto.getTitle().trim().isEmpty() || dto.getContent().trim().isEmpty()) {
+        if (dto.getTitle().trim().isEmpty() || dto.getContent().trim().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
         try {
             Post post = Post.builder()
-                    .userId(dto.getUserId())
+                    .userId(userDetail.getUserId())
                     .title(dto.getTitle())
                     .content(dto.getContent())
                     .build();
