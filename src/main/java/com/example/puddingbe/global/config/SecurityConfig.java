@@ -56,8 +56,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
 
-                        // feed & comment는 모두 허용
-                        .requestMatchers("/feed/**", "/comment/**").permitAll()
+                        // feed
+                        .requestMatchers("/feed/**").authenticated()
+
+                        // comments
+                        .requestMatchers("/comment/**").authenticated()
 
                         .anyRequest().permitAll()
                 )
