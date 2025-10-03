@@ -18,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -70,18 +69,11 @@ public class PostController {
 
     private Long getUserId(String token) {
         String name;
-        try {
-            if(token.startsWith("Bearer ")) {
-                name = tokenProvider.getNameFromToken(token.substring(7).trim());
-            }else {
-                name = tokenProvider.getNameFromToken(token.trim());
-            }
-            return userRepository.findByName(name).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)).getId();
-        }catch (ResponseStatusException e) {
-            throw e;
+        if(token.startsWith("Bearer ")) {
+            name = tokenProvider.getNameFromToken(token.substring(7).trim());
+        }else {
+            name = tokenProvider.getNameFromToken(token.trim());
         }
-        catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "잘못된 토큰");
-        }
+        return userRepository.findByName(name).get().getId();
     }
 }
