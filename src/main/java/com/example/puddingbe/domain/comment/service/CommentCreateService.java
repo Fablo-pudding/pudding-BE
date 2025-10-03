@@ -16,17 +16,17 @@ public class CommentCreateService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
-    public void create(Long postId, CommentRequestDTO dto){
+    public void create(Long postId, CommentRequestDTO dto, Long userId){
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        if (dto.getContent() == null || dto.getContent().trim().isEmpty()) {
+        if (dto.getContent().trim().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
         try {
             Comment comment = Comment.builder()
                     .postId(post.getPostId())
-                    .userId(dto.getUserId())
+                    .userId(userId)
                     .content(dto.getContent())
                     .build();
 
