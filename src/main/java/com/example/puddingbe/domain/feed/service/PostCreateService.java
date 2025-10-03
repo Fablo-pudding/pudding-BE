@@ -16,7 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class PostCreateService {
     private final PostRepository postRepository;
 
-    public void createPost(PostRequestDTO dto, UserDetail userDetail){
+    public void createPost(PostRequestDTO dto, Long userId){
         // null이거나 비어있거나 공백일 경우 400
         if (dto.getTitle().trim().isEmpty() || dto.getContent().trim().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -24,7 +24,7 @@ public class PostCreateService {
 
         try {
             Post post = Post.builder()
-                    .userId(userDetail.getUserId())
+                    .userId(userId)
                     .title(dto.getTitle())
                     .content(dto.getContent())
                     .build();

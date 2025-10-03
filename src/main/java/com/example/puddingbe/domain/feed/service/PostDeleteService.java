@@ -15,13 +15,14 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class PostDeleteService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
-    public void delete(Long postId, UserDetail userDetail){
+    public void delete(Long postId, Long userId){
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        boolean isAdmin = userDetail.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+        boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
 
         // 관리자 확인, 맞는 아이디인지 확인
-        if (!isAdmin && !post.getUserId().equals(userDetail.getUserId())) {
+        if (!isAdmin && !post.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 

@@ -15,14 +15,14 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class PostUpdateService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
 
-    public void updatePost(Long postId, PostRequestDTO req, UserDetail userDetail){
+    public void updatePost(Long postId, PostRequestDTO req, Long userId){
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        boolean isAdmin = userDetail.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("RULE_ADMIN"));
-
+        boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
         // 유저 확인
-        if(!isAdmin && !post.getUserId().equals(userDetail.getUserId())){
+        if(!isAdmin && !post.getUserId().equals(userId)){
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
