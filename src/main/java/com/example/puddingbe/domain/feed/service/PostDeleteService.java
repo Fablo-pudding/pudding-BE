@@ -5,6 +5,7 @@ import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserDetail;
+import com.example.puddingbe.global.detail.UserFacade;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,8 +17,10 @@ import org.springframework.web.server.ResponseStatusException;
 public class PostDeleteService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final UserFacade userFacade;
 
-    public void delete(Long postId, Long userId){
+    public void delete(Long postId){
+        Long userId = userFacade.getUserId();
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
 

@@ -4,6 +4,7 @@ import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
 import com.example.puddingbe.global.detail.UserDetail;
+import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,12 +16,15 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class PostCreateService {
     private final PostRepository postRepository;
+    private final UserFacade userFacade;
 
-    public void createPost(PostRequestDTO dto, Long userId){
+    public void createPost(PostRequestDTO dto){
         // null이거나 비어있거나 공백일 경우 400
         if (dto.getTitle().trim().isEmpty() || dto.getContent().trim().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+
+        Long userId = userFacade.getUserId();
 
         try {
             Post post = Post.builder()

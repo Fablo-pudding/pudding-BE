@@ -5,6 +5,7 @@ import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
 import com.example.puddingbe.domain.user.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserDetail;
+import com.example.puddingbe.global.detail.UserFacade;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class PostUpdateService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final UserFacade userFacade;
 
 
-    public void updatePost(Long postId, PostRequestDTO req, Long userId){
+    public void updatePost(Long postId, PostRequestDTO req){
+        Long userId = userFacade.getUserId();
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
         // 유저 확인

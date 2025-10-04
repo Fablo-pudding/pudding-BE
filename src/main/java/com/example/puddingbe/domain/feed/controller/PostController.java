@@ -30,14 +30,12 @@ public class PostController {
     private final PostReadService postReadService;
     private final PostUpdateService postUpdateService;
     private final PostDeleteService postDeleteService;
-    private final JwtTokenProvider tokenProvider;
-    private final UserRepository userRepository;
 
     // 게시글 생성
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Validated PostRequestDTO req, @RequestHeader("Authorization") String token) {
-        postCreateService.createPost(req, getUserId(token));
+    public void create(@RequestBody @Validated PostRequestDTO req) {
+        postCreateService.createPost(req);
     }
 
     // 게시글 리스트 가져오기
@@ -57,31 +55,15 @@ public class PostController {
     // 게시글 수정하기
     @PatchMapping("/update/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto, @RequestHeader("Authorization") String token){
-        postUpdateService.updatePost(id, dto, getUserId(token));
+    public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto){
+        postUpdateService.updatePost(id, dto);
     }
 
     // 게시글 삭제하기
     @DeleteMapping("/delete/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePost(@PathVariable("post-id") Long postId, @RequestHeader("Authorization") String token) {
-        postDeleteService.delete(postId, getUserId(token));
+    public void deletePost(@PathVariable("post-id") Long postId) {
+        postDeleteService.delete(postId);
     }
-
-    private Long getUserId(String token) {
-        String name;
-        try {
-            if(token.startsWith("Bearer ")) {
-                name = tokenProvider.getNameFromToken(token.substring(7).trim());
-            }else {
-                name = tokenProvider.getNameFromToken(token.trim());
-            }
-            return userRepository.findByName(name).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)).getId();
-        }catch (ResponseStatusException e) {
-            throw e;
-        }
-        catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "잘못된 토큰");
-        }
-    }
+    
 }
