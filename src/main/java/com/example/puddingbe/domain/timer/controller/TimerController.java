@@ -1,7 +1,9 @@
 package com.example.puddingbe.domain.timer.controller;
 
+import com.example.puddingbe.domain.timer.domain.dto.TimerResponse;
 import com.example.puddingbe.domain.timer.sevice.TimerCreateService;
 import com.example.puddingbe.domain.timer.domain.dto.TimerRequest;
+import com.example.puddingbe.domain.timer.sevice.TimerReadService;
 import com.example.puddingbe.domain.timer.sevice.TimerUpdateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class TimerController {
     private final TimerCreateService timerCreateService;
     private final TimerUpdateService timerUpdateService;
+    private final TimerReadService timerReadService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -24,5 +27,11 @@ public class TimerController {
     @ResponseStatus(HttpStatus.OK)
     public void updateTimer(@PathVariable Long id, @RequestBody TimerRequest timerRequest) {
         timerUpdateService.updateTimer(id, timerRequest);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public TimerResponse getTimer(@PathVariable Long id) { // 서비스에 넘겨주는 id
+        return timerReadService.readTimer(id);
     }
 }
