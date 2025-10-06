@@ -19,6 +19,7 @@ public class TimerReadService {
 
         return TimerResponse.builder()
                 .totalTime(timerEntity.getTotalTime())
+                .id(timerEntity.getId())
                 .build();
     }
 }
