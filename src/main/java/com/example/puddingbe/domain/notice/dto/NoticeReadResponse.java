@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.notice.dto;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,3 +31,7 @@ public class NoticeReadResponse {
         this.updateEmployeeNo = noticeUser.getUpdateEmployeeNo();
     }
 }
+=======
+public class NoticeReadResponse {
+}
+>>>>>>> origin/notice
