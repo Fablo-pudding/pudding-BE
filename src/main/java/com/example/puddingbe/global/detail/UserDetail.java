@@ -14,7 +14,7 @@ public class UserDetail implements UserDetails { // 로그인 과정에서 검�
         this.user = user;
     }
 
-    public Long getId() {
+    public Long getUserId() {
         return user.getId();
     }
 
