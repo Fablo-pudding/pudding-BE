@@ -1,7 +1,6 @@
 package com.example.puddingbe.domain.inquiry.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

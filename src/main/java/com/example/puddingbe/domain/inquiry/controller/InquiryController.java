@@ -4,10 +4,8 @@ import com.example.puddingbe.domain.inquiry.domain.dto.InquiryReplyRequest;
 import com.example.puddingbe.domain.inquiry.domain.dto.InquiryResponse;
 import com.example.puddingbe.domain.inquiry.service.InquiryReadService;
 import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
-import com.example.puddingbe.global.detail.UserDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.example.puddingbe.domain.inquiry.service.InquiryDeleteService;
@@ -32,14 +30,14 @@ public class InquiryController {
 
     @GetMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.OK)
-    public InquiryResponse getInquiryById(@PathVariable("inquiry-id") Long id, @AuthenticationPrincipal UserDetail userDetail) {
-        return inquiryReadService.getInquiryById(id, userDetail);
+    public InquiryResponse getInquiryById(@PathVariable("inquiry-id") Long id) {
+        return inquiryReadService.getInquiryById(id);
     }
 
     @GetMapping("/my/{user-id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<InquiryResponse> getMyInquiries(@PathVariable("user-id") Long userId, @AuthenticationPrincipal UserDetail userDetail) {
-        return inquiryReadService.getMyInquiries(userId, userDetail);
+    public List<InquiryResponse> getMyInquiries() {
+        return inquiryReadService.getMyInquiries();
     }
 
     @PostMapping("/{inquiry-id}/reply")
@@ -50,8 +48,8 @@ public class InquiryController {
 
     @DeleteMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteInquiry(@PathVariable("inquiry-id") Long id, @AuthenticationPrincipal UserDetail userDetail) {
-        inquiryDeleteService.deleteInquiry(id, userDetail);
+    public void deleteInquiry(@PathVariable("inquiry-id") Long id) {
+        inquiryDeleteService.deleteInquiry(id);
     }
 
     @PostMapping

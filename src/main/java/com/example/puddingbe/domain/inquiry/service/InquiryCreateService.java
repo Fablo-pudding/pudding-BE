@@ -19,5 +19,6 @@ public class InquiryCreateService {
                 .content(request.getContent())
                 .createdAt(LocalDateTime.now())
                 .build();
+        inquiryRepository.save(inquiry);
     }
 }
