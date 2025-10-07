@@ -2,6 +2,11 @@ package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
+import com.example.puddingbe.domain.user.domain.User;
+import com.example.puddingbe.domain.user.repository.UserRepository;
+import com.example.puddingbe.global.detail.UserDetail;
+import com.example.puddingbe.global.detail.UserFacade;
+import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -11,11 +16,16 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class PostDeleteService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
+    private final UserFacade userFacade;
 
-    public void delete(Long postId, Long userId){
+    public void delete(Long postId){
+        Long userId = userFacade.getUserId();
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        // userId 맞는지 확인
-        if (!post.getUserId().equals(userId)) {
+        boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
+
+        // 관리자 확인, 맞는 아이디인지 확인
+        if (!isAdmin && !post.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
