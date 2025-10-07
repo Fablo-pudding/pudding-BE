@@ -58,8 +58,11 @@ public class SecurityConfig {
 
                         // feed
                         .requestMatchers("/feed/**").authenticated()
-
+                                       
                         // comments
+
+                        //comment
+
                         .requestMatchers("/comment/**").authenticated()
 
                         .anyRequest().permitAll()

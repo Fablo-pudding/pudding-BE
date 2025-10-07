@@ -8,11 +8,17 @@ import com.example.puddingbe.domain.feed.service.PostCreateService;
 import com.example.puddingbe.domain.feed.service.PostDeleteService;
 import com.example.puddingbe.domain.feed.service.PostReadService;
 import com.example.puddingbe.domain.feed.service.PostUpdateService;
+import com.example.puddingbe.domain.user.domain.User;
+import com.example.puddingbe.domain.user.repository.UserRepository;
+import com.example.puddingbe.global.detail.UserDetail;
+import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -53,10 +59,11 @@ public class PostController {
         postUpdateService.updatePost(id, dto);
     }
 
-    // 게시글 삭제하기 - 일단 임시로 path로 userId가져옴
-    @DeleteMapping("/delete/{post-id}/{user-id}")
+    // 게시글 삭제하기
+    @DeleteMapping("/delete/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePost(@PathVariable("post-id") Long postId, @PathVariable("user-id") Long userId) {
-        postDeleteService.delete(postId, userId);
+    public void deletePost(@PathVariable("post-id") Long postId) {
+        postDeleteService.delete(postId);
     }
+    
 }
