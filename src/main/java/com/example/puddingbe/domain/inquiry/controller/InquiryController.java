@@ -7,9 +7,7 @@ import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 import com.example.puddingbe.domain.inquiry.service.InquiryDeleteService;
 import com.example.puddingbe.domain.inquiry.domain.dto.InquiryRequest;
 import com.example.puddingbe.domain.inquiry.service.InquiryCreateService;
@@ -27,38 +25,31 @@ public class InquiryController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<InquiryResponse> getAllInquiries() {
-        //TODO: ADMIN 권한 체크
         return inquiryReadService.getAllInquiries();
     }
 
     @GetMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.OK)
     public InquiryResponse getInquiryById(@PathVariable("inquiry-id") Long id) {
-        //TODO: ADMIN, 작성자 권한 체크
         return inquiryReadService.getInquiryById(id);
     }
 
     @GetMapping("/my/{user-id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<InquiryResponse> getMyInquiries(@PathVariable("user-id") Long userId) {
-        //TODO: 작성자 권한 체크
-        return inquiryReadService.getMyInquiries(userId);
+    public List<InquiryResponse> getMyInquiries() {
+        return inquiryReadService.getMyInquiries();
     }
 
     @PostMapping("/{inquiry-id}/reply")
     @ResponseStatus(HttpStatus.CREATED)
     public void replyToInquiry(@PathVariable("inquiry-id") Long id, @RequestBody InquiryReplyRequest request) {
-        //TODO: ADMIN 권한 체크
-        boolean isAdmin = true; //임시
-        inquiryUpdateService.replyToInquiry(id, request, isAdmin);
+        inquiryUpdateService.replyToInquiry(id, request);
     }
 
     @DeleteMapping("/{inquiry-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteInquiry(@PathVariable("inquiry-id") Long id) {
-        Long currentUserId = 0L; //임시 값 TODO: 로그인 사용자 ID 체크
-        boolean isAdmin = false; //임시 값 TODO: 로그인 사용자 권한 체크
-        inquiryDeleteService.deleteInquiry(id, currentUserId, isAdmin);
+        inquiryDeleteService.deleteInquiry(id);
     }
 
     @PostMapping
