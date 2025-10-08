@@ -4,11 +4,14 @@ import com.example.puddingbe.domain.comment.entity.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.service.CommentCreateService;
 import com.example.puddingbe.domain.comment.service.CommentDeleteService;
 import com.example.puddingbe.domain.comment.service.CommentUpdateService;
+import com.example.puddingbe.domain.user.repository.UserRepository;
+import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -34,10 +37,11 @@ public class CommentController {
         commentUpdateService.update(commentId, dto);
     }
 
-    // 댓글 삭제 - 일단 임시로 path로 userId가져옴
-    @DeleteMapping("/delete/{comment-id}/{user-id}")
+    // 댓글 삭제
+    @DeleteMapping("/delete/{comment-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteComment(@PathVariable("comment-id") Long commentId, @PathVariable("user-id") Long userId) {
-        commentDeleteService.Delete(commentId, userId);
+    public void deleteComment(@PathVariable("comment-id") Long commentId) {
+        commentDeleteService.Delete(commentId);
     }
+    
 }
