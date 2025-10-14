@@ -3,13 +3,11 @@ package com.example.puddingbe.domain.notice.dto;
 <<<<<<< HEAD
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import java.time.LocalDateTime;
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
 
 @Getter
-@Builder
 @AllArgsConstructor
 public class NoticeReadResponse {
 
