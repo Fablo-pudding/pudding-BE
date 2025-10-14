@@ -2,15 +2,18 @@ package com.example.puddingbe.domain.notice.service;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
 import com.example.puddingbe.domain.notice.repository.NoticeUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
 public class NoticeUserDeleteService {
-    @Autowired
-    private NoticeUserRepository noticeUserRepository;
+
+    private final NoticeUserRepository noticeUserRepository;
+
+    public NoticeUserDeleteService(NoticeUserRepository noticeUserRepository) {
+        this.noticeUserRepository = noticeUserRepository;
+    }
 
     public ResponseEntity<NoticeUser> deleteNotice(Long id) {
         Optional<NoticeUser> optNoticeUser = this.noticeUserRepository.findById(id);
