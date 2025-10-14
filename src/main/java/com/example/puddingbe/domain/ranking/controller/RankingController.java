@@ -1,7 +1,8 @@
 package com.example.puddingbe.domain.ranking.controller;
 
+import com.example.puddingbe.domain.ranking.domain.dto.RankingResponse;
 import com.example.puddingbe.domain.ranking.domain.entity.Ranking;
-import com.example.puddingbe.domain.ranking.repository.RankingRepository;
+import com.example.puddingbe.domain.ranking.service.RankingReadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +12,17 @@ import java.util.List;
 @RequestMapping("/ranking")
 @RequiredArgsConstructor
 public class RankingController {
-    private RankingRepository rankingRepository;
+    private RankingReadService rankingReadService;
 
     @GetMapping("/global")
     @ResponseStatus(HttpStatus.OK)
-    public List<Ranking> getAllRankng() {
-        return rankingRepository.findAllByOrderByTotalPuddingDesc();
+    public List<RankingResponse> getAllRanking() {
+        return rankingReadService.getAllRanking();
     }
 
     @GetMapping("/{user-id}")
     @ResponseStatus(HttpStatus.OK)
     public Ranking getUserRanking(@PathVariable Long userId) {
-        return rankingRepository.findByUserId(userId)
-                .orElseThrow(()->new RuntimeException("유저를 찾을 수 없습니다."));
+        return rankingReadService.getUserRanking();
     }
 }
