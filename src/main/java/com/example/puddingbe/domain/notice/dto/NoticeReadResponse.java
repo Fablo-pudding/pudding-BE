@@ -1,10 +1,5 @@
 package com.example.puddingbe.domain.notice.dto;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/notice
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import java.time.LocalDateTime;

@@ -2,11 +2,9 @@ package com.example.puddingbe.domain.notice.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
-
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,7 +17,7 @@ import java.time.LocalDateTime;
 public class NoticeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column (columnDefinition = "VARCHAR(200)")
     private String title;
@@ -27,7 +25,7 @@ public class NoticeUser {
     @Column (columnDefinition = "TEXT")
     private String content;
 
-    @CreatedDate
+    @UpdateTimestamp
     @NotNull
     private LocalDateTime updateDatetime;
 
