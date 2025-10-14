@@ -58,10 +58,16 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
 
                         // feed
-                        .requestMatchers("/feed/**").authenticated()
-
-                        //comment
-                        .requestMatchers("/comment/**").authenticated()
+                        .requestMatchers("/feed/create").authenticated()
+                        .requestMatchers("/feed/get-list/").permitAll()
+                        .requestMatchers("/feed/get-detail/{post-id}").authenticated()
+                        .requestMatchers("/feed/update/{post-id}").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/feed/delete/{post-id}").hasAnyRole("USER", "ADMIN")
+                                       
+                        // comments
+                        .requestMatchers("/comment/create").authenticated()
+                        .requestMatchers("/comment/update/{comment-id}").authenticated()
+                        .requestMatchers("comment/delete/{comment-id}").authenticated()
 
                         .anyRequest().permitAll()
                 )
