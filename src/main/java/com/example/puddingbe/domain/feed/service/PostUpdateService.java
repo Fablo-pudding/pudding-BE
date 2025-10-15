@@ -29,6 +29,7 @@ public class PostUpdateService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
+
         post.update(req.getTitle(), req.getContent());
         postRepository.save(post);
     }
