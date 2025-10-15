@@ -39,7 +39,7 @@ public class NoticeUserController {
     }
 
     //update
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Void> updateNotice(@PathVariable Long id, @Valid @RequestBody NoticeUpdateRequest request) {
         noticeUserUpdateService.updateNotice(id, request);
         return ResponseEntity.ok().build();
