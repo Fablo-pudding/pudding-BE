@@ -28,6 +28,7 @@ public class PostUpdateService {
         if(!isAdmin && !post.getUserId().equals(userId)){
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
+        
 
         post.update(req.getTitle(), req.getContent());
         postRepository.save(post);
