@@ -1,10 +1,14 @@
 package com.example.puddingbe.domain.notice.controller;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
+import com.example.puddingbe.domain.notice.dto.NoticeCreateRequest;
+import com.example.puddingbe.domain.notice.dto.NoticeReadResponse;
+import com.example.puddingbe.domain.notice.dto.NoticeUpdateRequest;
 import com.example.puddingbe.domain.notice.service.NoticeUserCreateService;
 import com.example.puddingbe.domain.notice.service.NoticeUserDeleteService;
 import com.example.puddingbe.domain.notice.service.NoticeUserReadService;
 import com.example.puddingbe.domain.notice.service.NoticeUserUpdateService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,21 +26,23 @@ public class NoticeUserController {
 
 
     //create
-    @PostMapping("")
-    public ResponseEntity<NoticeUser> createNotice(@RequestBody NoticeUser noticeUser) {
-        return this.noticeUserCreateService.createNotice(noticeUser);
+    @PostMapping
+    public ResponseEntity<Void> createNotice(@Valid @RequestBody NoticeCreateRequest request) {
+        noticeUserCreateService.createNotice(request);
+        return ResponseEntity.ok().build();
     }
 
     //read
     @GetMapping("")
-    public List<NoticeUser> readNotices(){
+    public List<NoticeReadResponse> readNotices(){
         return this.noticeUserReadService.readNotices();
     }
 
     //update
-    @PutMapping("/{id}")
-    public ResponseEntity<NoticeUser> updateNotice(@RequestBody NoticeUser noticeUser, @PathVariable Long id) {
-        return this.noticeUserUpdateService.updateNotice(noticeUser, id);
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> updateNotice(@PathVariable Long id, @Valid @RequestBody NoticeUpdateRequest request) {
+        noticeUserUpdateService.updateNotice(id, request);
+        return ResponseEntity.ok().build();
     }
 
     //delete

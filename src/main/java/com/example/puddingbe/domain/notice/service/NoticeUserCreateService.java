@@ -1,24 +1,27 @@
 package com.example.puddingbe.domain.notice.service;
 
-import com.example.puddingbe.domain.notice.repository.NoticeUserRepository;
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import com.example.puddingbe.domain.notice.dto.NoticeCreateRequest;
+import com.example.puddingbe.domain.notice.repository.NoticeUserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+
 @Service
-
+@RequiredArgsConstructor
 public class NoticeUserCreateService {
-    @Autowired
-    private NoticeUserRepository noticeUserRepository;
-    private LocalDateTime localDateTime = LocalDateTime.now();
 
-    public ResponseEntity<NoticeUser> createNotice(NoticeUser noticeUser) {
-        noticeUser.setUpdateDatetime(localDateTime);
-        noticeUser.setRegisterDatetime(localDateTime);
+    private final NoticeUserRepository noticeUserRepository;
+    public void createNotice(NoticeCreateRequest request) {
+        NoticeUser noticeUser = NoticeUser.builder()
+                .title(request.getTitle())
+                .content(request.getContent())
+                .registerEmployeeNo("admin")
+                .updateEmployeeNo("admin")
+                .registerDatetime(LocalDateTime.now())
+                .updateDatetime(LocalDateTime.now())
+                .build();
 
-        this.noticeUserRepository.save(noticeUser);
-
-        return ResponseEntity.ok().build();
+        noticeUserRepository.save(noticeUser);
     }
 }

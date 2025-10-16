@@ -29,6 +29,7 @@ public class PostDeleteService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
+        
         try
         {
             postRepository.delete(post);
