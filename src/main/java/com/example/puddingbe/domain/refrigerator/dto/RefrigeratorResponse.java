@@ -12,10 +12,12 @@ public class RefrigeratorResponse {
     private Long id;
     private IngredientType ingredientType;
     private PuddingLevel puddingLevel;
+    private Integer quantity;
 
     public RefrigeratorResponse(Ingredient ingredient) {
-        this.id = ingredient.getId();
-        this.ingredientType = ingredient.getType();
-        this.puddingLevel = ingredient.getLevel();
+        id = ingredient.getId();
+        ingredientType = ingredient.getType();
+        puddingLevel = ingredient.getLevel();
+        quantity = ingredient.getQuantity();
     }
 }

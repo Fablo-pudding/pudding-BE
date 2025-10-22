@@ -21,6 +21,9 @@ public class Ingredient {
     @Enumerated(EnumType.STRING)
     private PuddingLevel level;
 
+    @Column(length = 2)
+    private Integer quantity;
+
 
 }
 
