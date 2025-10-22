@@ -14,11 +14,11 @@ spring:
       hibernate:
         format_sql: true
 
-data:
-  redis:
-    client-type: lettuce
-    host: ${REDIS_HOST}
-    port: ${REDIS_PORT}
+  data:
+    redis:
+      client-type: lettuce
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
 
 logging:
   level:

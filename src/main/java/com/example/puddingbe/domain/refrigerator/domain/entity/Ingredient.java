@@ -22,11 +22,6 @@ public class Ingredient {
     private PuddingLevel level;
 
 
-    public Ingredient(IngredientType type, PuddingLevel level) {
-        this.type = type;
-        this.level = level;
-    }
-
 }
 
 

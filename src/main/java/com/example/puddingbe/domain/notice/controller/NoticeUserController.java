@@ -35,7 +35,7 @@ public class NoticeUserController {
     //read
     @GetMapping("")
     public List<NoticeReadResponse> readNotices(){
-        return this.noticeUserReadService.readNotices();
+        return noticeUserReadService.readNotices();
     }
 
     //update
@@ -48,6 +48,6 @@ public class NoticeUserController {
     //delete
     @DeleteMapping("/{id}")
     public ResponseEntity<NoticeUser> deleteNotice(@PathVariable Long id) {
-        return this.noticeUserDeleteService.deleteNotice(id);
+        return noticeUserDeleteService.deleteNotice(id);
     }
 }
