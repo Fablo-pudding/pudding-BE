@@ -1,7 +1,8 @@
-package com.example.puddingbe.domain.inquiry.controller;
+package com.example.puddingbe.domain.inquiry.presentation;
 
-import com.example.puddingbe.domain.inquiry.domain.dto.InquiryReplyRequest;
-import com.example.puddingbe.domain.inquiry.domain.dto.InquiryResponse;
+import com.example.puddingbe.domain.inquiry.presentation.dto.request.InquiryReplyRequest;
+import com.example.puddingbe.domain.inquiry.presentation.dto.request.InquiryRequest;
+import com.example.puddingbe.domain.inquiry.presentation.dto.response.InquiryResponse;
 import com.example.puddingbe.domain.inquiry.service.InquiryReadService;
 import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import com.example.puddingbe.domain.inquiry.service.InquiryDeleteService;
-import com.example.puddingbe.domain.inquiry.domain.dto.InquiryRequest;
 import com.example.puddingbe.domain.inquiry.service.InquiryCreateService;
 
 

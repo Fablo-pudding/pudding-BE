@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.inquiry.domain.entity;
+package com.example.puddingbe.domain.inquiry.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;
