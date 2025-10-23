@@ -10,6 +10,7 @@ import com.example.puddingbe.domain.notice.service.NoticeUserReadService;
 import com.example.puddingbe.domain.notice.service.NoticeUserUpdateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -35,7 +36,7 @@ public class NoticeUserController {
     //read
     @GetMapping("")
     public List<NoticeReadResponse> readNotices(){
-        return this.noticeUserReadService.readNotices();
+        return noticeUserReadService.readNotices();
     }
 
     //update
@@ -48,6 +49,6 @@ public class NoticeUserController {
     //delete
     @DeleteMapping("/{id}")
     public ResponseEntity<NoticeUser> deleteNotice(@PathVariable Long id) {
-        return this.noticeUserDeleteService.deleteNotice(id);
+        return noticeUserDeleteService.deleteNotice(id);
     }
 }
