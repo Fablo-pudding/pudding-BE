@@ -1,6 +1,6 @@
 package com.example.puddingbe.domain.feed.entity;
 
-import com.example.puddingbe.domain.comment.domain.Comment;
+import com.example.puddingbe.domain.comment.entity.Comment;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
