@@ -1,7 +1,7 @@
 package com.example.puddingbe.domain.comment.service;
 
 import com.example.puddingbe.domain.comment.entity.Comment;
-import com.example.puddingbe.domain.comment.entity.dto.CommentRequestDTO;
+import com.example.puddingbe.domain.comment.presentation.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.entity.repository.CommentRepository;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
