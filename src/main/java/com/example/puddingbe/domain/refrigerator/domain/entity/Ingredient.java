@@ -20,6 +20,10 @@ public class Ingredient {
     @Column(columnDefinition = "INT DEFAULT 0")
     private Integer quantity;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "PuddingLevel",nullable = false)
+    private Pudding pudding;
+
 
 }
 

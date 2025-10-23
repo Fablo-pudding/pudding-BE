@@ -18,5 +18,6 @@ public class RefrigeratorResponse {
         id = ingredient.getId();
         ingredientType = ingredient.getType();
         quantity = ingredient.getQuantity();
+        puddingLevel = ingredient.getPudding().getLevel();
     }
 }
