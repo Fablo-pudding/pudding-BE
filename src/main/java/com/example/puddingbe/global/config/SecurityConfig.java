@@ -59,7 +59,7 @@ public class SecurityConfig {
 
                         // feed
                         .requestMatchers("/feed/create").authenticated()
-                        .requestMatchers("/feed/get-list/").permitAll()
+                        .requestMatchers("/feed/get-list/").authenticated()
                         .requestMatchers("/feed/get-detail/{post-id}").authenticated()
                         .requestMatchers("/feed/update/{post-id}").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/feed/delete/{post-id}").hasAnyRole("USER", "ADMIN")
