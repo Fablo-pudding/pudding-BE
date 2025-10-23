@@ -1,8 +1,8 @@
 package com.example.puddingbe.domain.timer.sevice;
 
-import com.example.puddingbe.domain.timer.domain.dto.TimerRequest;
-import com.example.puddingbe.domain.timer.domain.entity.TimerEntity;
-import com.example.puddingbe.domain.timer.repository.TimerRepository;
+import com.example.puddingbe.domain.timer.presentation.dto.TimerRequest;
+import com.example.puddingbe.domain.timer.domain.TimerEntity;
+import com.example.puddingbe.domain.timer.domain.repository.TimerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

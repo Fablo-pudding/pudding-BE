@@ -3,22 +3,14 @@ package com.example.puddingbe.domain.feed.controller;
 import com.example.puddingbe.domain.feed.entity.dto.PostDetailResponseDTO;
 import com.example.puddingbe.domain.feed.entity.dto.PostListResponseDTO;
 import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
-import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.service.PostCreateService;
 import com.example.puddingbe.domain.feed.service.PostDeleteService;
 import com.example.puddingbe.domain.feed.service.PostReadService;
 import com.example.puddingbe.domain.feed.service.PostUpdateService;
-import com.example.puddingbe.domain.user.domain.User;
-import com.example.puddingbe.domain.user.repository.UserRepository;
-import com.example.puddingbe.global.detail.UserDetail;
-import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 

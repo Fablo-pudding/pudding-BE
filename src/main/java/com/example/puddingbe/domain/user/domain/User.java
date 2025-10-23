@@ -3,6 +3,7 @@ package com.example.puddingbe.domain.user.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "tbl_user")
 @AllArgsConstructor
 @Builder
 @Entity
@@ -16,7 +17,7 @@ public class User {
     @Column(nullable = false, length = 30)
     private String name;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 225)
     private String password;
 
     @Column(nullable = false)

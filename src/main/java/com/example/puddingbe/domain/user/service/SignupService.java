@@ -2,9 +2,9 @@ package com.example.puddingbe.domain.user.service;
 
 import com.example.puddingbe.domain.user.domain.Role;
 import com.example.puddingbe.domain.user.exception.DuplicateUserException;
-import com.example.puddingbe.domain.user.request.SignUpRequest;
+import com.example.puddingbe.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.puddingbe.domain.user.domain.User;
-import com.example.puddingbe.domain.user.repository.UserRepository;
+import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

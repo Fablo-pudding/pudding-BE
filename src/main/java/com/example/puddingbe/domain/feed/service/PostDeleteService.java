@@ -2,11 +2,8 @@ package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.feed.entity.Post;
 import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
-import com.example.puddingbe.domain.user.domain.User;
-import com.example.puddingbe.domain.user.repository.UserRepository;
-import com.example.puddingbe.global.detail.UserDetail;
+import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
-import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

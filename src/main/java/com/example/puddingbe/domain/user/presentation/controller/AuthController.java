@@ -1,10 +1,10 @@
-package com.example.puddingbe.domain.user.controller;
+package com.example.puddingbe.domain.user.presentation.controller;
 
 
-import com.example.puddingbe.domain.user.request.SignUpRequest;
+import com.example.puddingbe.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.puddingbe.domain.user.service.SignupService;
 import com.example.puddingbe.global.jwt.JwtToken;
-import com.example.puddingbe.domain.user.request.LoginRequest;
+import com.example.puddingbe.domain.user.presentation.dto.request.LoginRequest;
 import com.example.puddingbe.domain.user.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

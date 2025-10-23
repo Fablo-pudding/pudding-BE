@@ -1,8 +1,8 @@
-package com.example.puddingbe.domain.timer.controller;
+package com.example.puddingbe.domain.timer.presentation;
 
-import com.example.puddingbe.domain.timer.domain.dto.TimerResponse;
+import com.example.puddingbe.domain.timer.presentation.dto.TimerResponse;
 import com.example.puddingbe.domain.timer.sevice.TimerCreateService;
-import com.example.puddingbe.domain.timer.domain.dto.TimerRequest;
+import com.example.puddingbe.domain.timer.presentation.dto.TimerRequest;
 import com.example.puddingbe.domain.timer.sevice.TimerReadService;
 import com.example.puddingbe.domain.timer.sevice.TimerUpdateService;
 import lombok.RequiredArgsConstructor;

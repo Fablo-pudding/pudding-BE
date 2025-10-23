@@ -4,16 +4,10 @@ import com.example.puddingbe.domain.comment.entity.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.service.CommentCreateService;
 import com.example.puddingbe.domain.comment.service.CommentDeleteService;
 import com.example.puddingbe.domain.comment.service.CommentUpdateService;
-import com.example.puddingbe.domain.user.repository.UserRepository;
-import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/comment")

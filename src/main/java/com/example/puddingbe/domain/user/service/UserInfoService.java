@@ -1,9 +1,9 @@
 package com.example.puddingbe.domain.user.service;
 
-import com.example.puddingbe.domain.user.response.UserInfoResponse;
+import com.example.puddingbe.domain.user.presentation.dto.response.UserInfoResponse;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import com.example.puddingbe.domain.user.domain.User;
-import com.example.puddingbe.domain.user.repository.UserRepository;
+import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

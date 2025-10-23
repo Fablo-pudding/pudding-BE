@@ -1,8 +1,9 @@
-package com.example.puddingbe.domain.timer.domain.entity;
+package com.example.puddingbe.domain.timer.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "tbl_timer")
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

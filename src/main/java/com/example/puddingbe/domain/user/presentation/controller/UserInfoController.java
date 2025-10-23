@@ -1,6 +1,6 @@
-package com.example.puddingbe.domain.user.controller;
+package com.example.puddingbe.domain.user.presentation.controller;
 
-import com.example.puddingbe.domain.user.response.UserInfoResponse;
+import com.example.puddingbe.domain.user.presentation.dto.response.UserInfoResponse;
 import com.example.puddingbe.domain.user.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -4,7 +4,7 @@ import com.example.puddingbe.global.detail.UserDetail;
 import com.example.puddingbe.global.jwt.JwtToken;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import com.example.puddingbe.domain.user.domain.User;
-import com.example.puddingbe.domain.user.repository.UserRepository;
+import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
