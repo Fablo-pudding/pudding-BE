@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.user.response;
+package com.example.puddingbe.domain.user.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.timer.domain.dto;
+package com.example.puddingbe.domain.timer.presentation.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

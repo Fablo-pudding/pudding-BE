@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.user.repository;
+package com.example.puddingbe.domain.user.domain.repository;
 
 import com.example.puddingbe.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

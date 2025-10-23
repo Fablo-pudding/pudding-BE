@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.user.request;
+package com.example.puddingbe.domain.user.presentation.dto.request;
 
 import com.example.puddingbe.domain.user.domain.Gender;
 import jakarta.validation.constraints.NotBlank;
