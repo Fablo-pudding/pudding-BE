@@ -1,21 +1,11 @@
-- presentation
-
-    controller
-  - dto-dto
-  
-- service
-
-    service
-    
-- domain
-
-    entity
-  - repository-repo
-  
-- exception
-
-    exception
-    
-- facade
-
-    facade
+├── domain
+|    └── user
+│   │    ├── presentation
+│   │    ├── service
+│   │    ├── entity
+│   │    └── exception
+└── global
+|    └── config
+│    │   ├── exceptionConfig
+│    │   └── securityConfig 
+└──
