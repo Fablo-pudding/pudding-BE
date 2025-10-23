@@ -1,4 +1,4 @@
-├── domain
+├── domain \n
 |    └── user
 │   │    ├── presentation
 │   │    ├── service
