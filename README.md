@@ -1,11 +1,11 @@
-├── domain \n
-|    └── user
-│   │    ├── presentation
-│   │    ├── service
-│   │    ├── entity
-│   │    └── exception
-└── global
-|    └── config
-│    │   ├── exceptionConfig
-│    │   └── securityConfig 
-└──
+├── domain  
+|    └── user  
+│   │    ├── presentation  
+│   │    ├── service  
+│   │    ├── entity  
+│   │    └── exception  
+└── global  
+|    └── config  
+│    │   ├── exceptionConfig  
+│    │   └── securityConfig   
+└──  
