@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.inquiry.presentation.dto;
+package com.example.puddingbe.domain.inquiry.presentation.dto.response;
 
 import com.example.puddingbe.domain.inquiry.domain.Inquiry;
 import lombok.Getter;

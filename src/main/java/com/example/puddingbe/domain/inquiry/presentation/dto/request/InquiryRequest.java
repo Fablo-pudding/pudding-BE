@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.inquiry.presentation.dto;
+package com.example.puddingbe.domain.inquiry.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

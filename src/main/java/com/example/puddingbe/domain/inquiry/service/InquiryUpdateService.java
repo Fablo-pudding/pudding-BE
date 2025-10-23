@@ -1,9 +1,9 @@
 package com.example.puddingbe.domain.inquiry.service;
 
-import com.example.puddingbe.domain.inquiry.domain.dto.InquiryReplyRequest;
-import com.example.puddingbe.domain.inquiry.repository.InquiryRepository;
-import com.example.puddingbe.global.exception.InquiryNotFoundException;
-import com.example.puddingbe.domain.inquiry.domain.entity.Inquiry;
+import com.example.puddingbe.domain.inquiry.domain.Inquiry;
+import com.example.puddingbe.domain.inquiry.domain.repository.InquiryRepository;
+import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
+import com.example.puddingbe.domain.inquiry.presentation.dto.request.InquiryReplyRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
