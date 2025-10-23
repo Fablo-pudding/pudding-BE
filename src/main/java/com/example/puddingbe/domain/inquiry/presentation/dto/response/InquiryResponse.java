@@ -1,6 +1,6 @@
-package com.example.puddingbe.domain.inquiry.domain.dto;
+package com.example.puddingbe.domain.inquiry.presentation.dto;
 
-import com.example.puddingbe.domain.inquiry.domain.entity.Inquiry;
+import com.example.puddingbe.domain.inquiry.domain.Inquiry;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
