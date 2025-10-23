@@ -3,10 +3,10 @@ package com.example.puddingbe.domain.refrigerator.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "tbl_pudding")
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
 @Getter
 public class Pudding {
     @Id

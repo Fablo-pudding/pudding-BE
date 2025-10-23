@@ -3,10 +3,10 @@ package com.example.puddingbe.domain.refrigerator.dto;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import com.example.puddingbe.domain.refrigerator.domain.entity.PuddingLevel;
 import com.example.puddingbe.domain.refrigerator.domain.entity.IngredientType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 public class RefrigeratorResponse {
     private Long id;

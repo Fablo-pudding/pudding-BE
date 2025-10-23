@@ -3,11 +3,12 @@ package com.example.puddingbe.domain.refrigerator.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "tbl_ingredient")
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
 @AllArgsConstructor
+
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +24,4 @@ public class Ingredient {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PuddingLevel",nullable = false)
     private Pudding pudding;
-
-
 }
-
-
