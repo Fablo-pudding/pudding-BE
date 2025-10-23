@@ -3,24 +3,18 @@ package com.example.puddingbe.domain.refrigerator.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
+@NoArgsConstructor
 @AllArgsConstructor
-public class Ingredient {
+@Builder
+@Getter
+public class Pudding {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private IngredientType type;
-
-    @Column(columnDefinition = "INT DEFAULT 0")
-    private Integer quantity;
-
+    private PuddingLevel level;
 
 }
-
-

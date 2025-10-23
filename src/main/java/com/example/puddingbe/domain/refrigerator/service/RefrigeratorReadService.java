@@ -15,7 +15,6 @@ public class RefrigeratorReadService {
 
     private final RefrigeratorRepository refrigeratorRepository;
 
-    // Entity → DTO 변환
     public List<RefrigeratorResponse> getRefrigerator() {
         List<Ingredient> ingredients = refrigeratorRepository.findAll();
         return ingredients.stream()
