@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.refrigerator.repository;
+package com.example.puddingbe.domain.refrigerator.domain.entity.repository;
 
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;

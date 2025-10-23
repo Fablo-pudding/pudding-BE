@@ -1,8 +1,8 @@
 package com.example.puddingbe.domain.notice.service;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
-import com.example.puddingbe.domain.notice.dto.NoticeUpdateRequest;
-import com.example.puddingbe.domain.notice.repository.NoticeUserRepository;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeUpdateRequest;
+import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

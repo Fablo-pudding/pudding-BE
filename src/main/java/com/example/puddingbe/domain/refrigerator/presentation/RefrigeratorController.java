@@ -1,6 +1,6 @@
-package com.example.puddingbe.domain.refrigerator.controller;
+package com.example.puddingbe.domain.refrigerator.presentation;
 
-import com.example.puddingbe.domain.refrigerator.dto.RefrigeratorResponse;
+import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorResponse;
 import com.example.puddingbe.domain.refrigerator.service.RefrigeratorReadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

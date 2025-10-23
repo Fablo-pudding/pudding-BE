@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.notice.dto;
+package com.example.puddingbe.domain.notice.presentation.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

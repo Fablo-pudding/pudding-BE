@@ -1,16 +1,15 @@
-package com.example.puddingbe.domain.notice.controller;
+package com.example.puddingbe.domain.notice.presentation;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
-import com.example.puddingbe.domain.notice.dto.NoticeCreateRequest;
-import com.example.puddingbe.domain.notice.dto.NoticeReadResponse;
-import com.example.puddingbe.domain.notice.dto.NoticeUpdateRequest;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateRequest;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeReadResponse;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeUpdateRequest;
 import com.example.puddingbe.domain.notice.service.NoticeUserCreateService;
 import com.example.puddingbe.domain.notice.service.NoticeUserDeleteService;
 import com.example.puddingbe.domain.notice.service.NoticeUserReadService;
 import com.example.puddingbe.domain.notice.service.NoticeUserUpdateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

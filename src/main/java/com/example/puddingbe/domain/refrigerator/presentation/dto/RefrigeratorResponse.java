@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.refrigerator.dto;
+package com.example.puddingbe.domain.refrigerator.presentation.dto;
 
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import com.example.puddingbe.domain.refrigerator.domain.entity.PuddingLevel;

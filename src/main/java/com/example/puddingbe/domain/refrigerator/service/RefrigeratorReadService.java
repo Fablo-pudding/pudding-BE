@@ -1,8 +1,8 @@
 package com.example.puddingbe.domain.refrigerator.service;
 
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
-import com.example.puddingbe.domain.refrigerator.dto.RefrigeratorResponse;
-import com.example.puddingbe.domain.refrigerator.repository.RefrigeratorRepository;
+import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorResponse;
+import com.example.puddingbe.domain.refrigerator.domain.entity.repository.RefrigeratorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

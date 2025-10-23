@@ -1,7 +1,7 @@
 package com.example.puddingbe.domain.notice.service;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
-import com.example.puddingbe.domain.notice.repository.NoticeUserRepository;
+import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.notice.dto;
+package com.example.puddingbe.domain.notice.presentation.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
