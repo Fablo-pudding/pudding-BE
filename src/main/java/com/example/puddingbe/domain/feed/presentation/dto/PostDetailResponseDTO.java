@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.feed.entity.dto;
+package com.example.puddingbe.domain.feed.presentation.dto;
 
 import com.example.puddingbe.domain.comment.entity.Comment;
 import lombok.AllArgsConstructor;
