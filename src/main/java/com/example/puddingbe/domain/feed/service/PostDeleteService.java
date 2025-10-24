@@ -1,7 +1,7 @@
 package com.example.puddingbe.domain.feed.service;
 
-import com.example.puddingbe.domain.feed.entity.Post;
-import com.example.puddingbe.domain.feed.entity.repository.PostRepository;
+import com.example.puddingbe.domain.feed.domain.Post;
+import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;

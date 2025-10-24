@@ -1,18 +1,16 @@
-package com.example.puddingbe.domain.feed.entity.dto;
+package com.example.puddingbe.domain.feed.presentation.dto;
 
-import com.example.puddingbe.domain.comment.domain.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class PostDetailResponseDTO {
+public class PostListResponseDTO {
     Long postId;
     Long userId;
     String title;
     String content;
     LocalDateTime createdAt;
-    List<Comment> comments;
 }

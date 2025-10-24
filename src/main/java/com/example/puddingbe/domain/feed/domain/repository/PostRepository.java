@@ -1,6 +1,6 @@
-package com.example.puddingbe.domain.feed.entity.repository;
+package com.example.puddingbe.domain.feed.domain.repository;
 
-import com.example.puddingbe.domain.feed.entity.Post;
+import com.example.puddingbe.domain.feed.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

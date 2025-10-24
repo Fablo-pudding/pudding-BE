@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.feed.entity;
+package com.example.puddingbe.domain.feed.domain;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
 import jakarta.persistence.*;

@@ -1,8 +1,8 @@
-package com.example.puddingbe.domain.feed.controller;
+package com.example.puddingbe.domain.feed.presentation;
 
-import com.example.puddingbe.domain.feed.entity.dto.PostDetailResponseDTO;
-import com.example.puddingbe.domain.feed.entity.dto.PostListResponseDTO;
-import com.example.puddingbe.domain.feed.entity.dto.PostRequestDTO;
+import com.example.puddingbe.domain.feed.presentation.dto.PostDetailResponseDTO;
+import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
+import com.example.puddingbe.domain.feed.presentation.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.service.PostCreateService;
 import com.example.puddingbe.domain.feed.service.PostDeleteService;
 import com.example.puddingbe.domain.feed.service.PostReadService;
