@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.feed.entity;
+package com.example.puddingbe.domain.feed.domain;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
 import jakarta.persistence.*;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Entity
-@Table(name = "post")
+@Table(name = "tbl_post")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post {
 

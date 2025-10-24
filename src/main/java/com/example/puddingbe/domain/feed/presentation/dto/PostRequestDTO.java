@@ -1,4 +1,4 @@
-package com.example.puddingbe.domain.feed.entity.dto;
+package com.example.puddingbe.domain.feed.presentation.dto;
 
 import lombok.Getter;
 
