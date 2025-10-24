@@ -4,13 +4,7 @@ import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorRe
 import com.example.puddingbe.domain.refrigerator.service.RefrigeratorReadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/storage")
@@ -19,10 +13,9 @@ public class RefrigeratorController {
 
     private final RefrigeratorReadService refrigeratorReadService;
 
-    @GetMapping
+    @GetMapping("/{user-Id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<RefrigeratorResponse>> getRefrigerator() {
-        List<RefrigeratorResponse> response = refrigeratorReadService.getRefrigerator();
-        return ResponseEntity.ok(response);
+    public RefrigeratorResponse getRefrigerator(@PathVariable Long userId) {
+        return refrigeratorReadService.getRefrigerator(userId);
     }
 }
