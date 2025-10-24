@@ -7,19 +7,17 @@ import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorRe
 import com.example.puddingbe.domain.refrigerator.domain.entity.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class RefrigeratorReadService {
-
     private final IngredientRepository ingredientRepository;
     private final PuddingRepository puddingRepository;
 
-    public RefrigeratorResponse getRefrigerator() {
-        List<Ingredient> ingredients = ingredientRepository.findAll();
-        List<Pudding> puddings = puddingRepository.findAll();
+    public RefrigeratorResponse getRefrigerator(Long userId) {
+        List<Ingredient> ingredients = ingredientRepository.findByUserId(userId);
+        List<Pudding> puddings = puddingRepository.findByUserId(userId);
         return new RefrigeratorResponse(ingredients, puddings);
     }
 }

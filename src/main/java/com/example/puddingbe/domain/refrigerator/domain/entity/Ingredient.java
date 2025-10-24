@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.refrigerator.domain.entity;
 
+import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,4 +24,7 @@ public class Ingredient {
     @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
     private Long egg;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

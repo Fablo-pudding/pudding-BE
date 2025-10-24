@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.refrigerator.domain.entity;
 
+import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,12 +15,16 @@ public class Pudding {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,columnDefinition = "INT DEFAULT 0")
-    private Long pudding_1;
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Long pudding_level_1;
 
-    @Column(nullable = false,columnDefinition = "INT DEFAULT 0")
-    private Long pudding_2;
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Long pudding_level_2;
 
-    @Column(nullable = false,columnDefinition = "INT DEFAULT 0")
-    private Long pudding_3;
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Long pudding_level_3;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

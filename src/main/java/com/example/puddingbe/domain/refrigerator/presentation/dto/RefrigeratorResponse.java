@@ -8,7 +8,6 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-
 public class RefrigeratorResponse {
     private List<Ingredient> ingredients;
     private List<Pudding> puddings;
