@@ -1,8 +1,5 @@
-package com.example.puddingbe.domain.comment.entity;
+package com.example.puddingbe.domain.comment.domain;
 
-import com.example.puddingbe.domain.feed.entity.Post;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

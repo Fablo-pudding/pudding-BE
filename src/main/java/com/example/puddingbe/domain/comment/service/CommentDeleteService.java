@@ -1,7 +1,7 @@
 package com.example.puddingbe.domain.comment.service;
 
-import com.example.puddingbe.domain.comment.entity.Comment;
-import com.example.puddingbe.domain.comment.entity.repository.CommentRepository;
+import com.example.puddingbe.domain.comment.domain.Comment;
+import com.example.puddingbe.domain.comment.domain.repository.CommentRepository;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
