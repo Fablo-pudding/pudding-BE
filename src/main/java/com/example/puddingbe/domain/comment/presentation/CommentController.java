@@ -1,6 +1,6 @@
-package com.example.puddingbe.domain.comment.controller;
+package com.example.puddingbe.domain.comment.presentation;
 
-import com.example.puddingbe.domain.comment.entity.dto.CommentRequestDTO;
+import com.example.puddingbe.domain.comment.presentation.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.service.CommentCreateService;
 import com.example.puddingbe.domain.comment.service.CommentDeleteService;
 import com.example.puddingbe.domain.comment.service.CommentUpdateService;
