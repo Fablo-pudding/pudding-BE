@@ -1,23 +1,20 @@
 package com.example.puddingbe.domain.refrigerator.presentation.dto;
 
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
-import com.example.puddingbe.domain.refrigerator.domain.entity.PuddingLevel;
-import com.example.puddingbe.domain.refrigerator.domain.entity.IngredientType;
+import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
-@NoArgsConstructor
 @Getter
-public class RefrigeratorResponse {
-    private Long id;
-    private IngredientType ingredientType;
-    private PuddingLevel puddingLevel;
-    private Integer quantity;
+@NoArgsConstructor
 
-    public RefrigeratorResponse(Ingredient ingredient) {
-        id = ingredient.getId();
-        ingredientType = ingredient.getType();
-        quantity = ingredient.getQuantity();
-        puddingLevel = ingredient.getPudding().getLevel();
+public class RefrigeratorResponse {
+    private List<Ingredient> ingredients;
+    private List<Pudding> puddings;
+
+    public RefrigeratorResponse(List<Ingredient> ingredients, List<Pudding> puddings) {
+        this.ingredients = ingredients;
+        this.puddings = puddings;
     }
 }

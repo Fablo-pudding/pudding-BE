@@ -8,13 +8,18 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+
 public class Pudding {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private PuddingLevel level;
+    @Column(nullable = false,columnDefinition = "INT DEFAULT 0")
+    private Long pudding_1;
 
+    @Column(nullable = false,columnDefinition = "INT DEFAULT 0")
+    private Long pudding_2;
+
+    @Column(nullable = false,columnDefinition = "INT DEFAULT 0")
+    private Long pudding_3;
 }

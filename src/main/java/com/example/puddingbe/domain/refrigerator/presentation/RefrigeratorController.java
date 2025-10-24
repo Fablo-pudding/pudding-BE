@@ -1,5 +1,7 @@
 package com.example.puddingbe.domain.refrigerator.presentation;
 
+import com.example.puddingbe.domain.refrigerator.domain.entity.repository.IngredientRepository;
+import com.example.puddingbe.domain.refrigerator.domain.entity.repository.PuddingRepository;
 import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorResponse;
 import com.example.puddingbe.domain.refrigerator.service.RefrigeratorReadService;
 import lombok.RequiredArgsConstructor;
@@ -10,19 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/storage")
 @RequiredArgsConstructor
+
 public class RefrigeratorController {
 
     private final RefrigeratorReadService refrigeratorReadService;
+    private final IngredientRepository ingredientRepository;
+    private final PuddingRepository puddingRepository;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<RefrigeratorResponse>> getRefrigerator() {
-        List<RefrigeratorResponse> response = refrigeratorReadService.getRefrigerator();
+    public ResponseEntity<RefrigeratorResponse> getRefrigerator() {
+        RefrigeratorResponse response = refrigeratorReadService.getRefrigerator();
         return ResponseEntity.ok(response);
     }
 }

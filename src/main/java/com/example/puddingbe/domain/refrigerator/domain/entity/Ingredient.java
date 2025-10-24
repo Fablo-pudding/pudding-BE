@@ -14,14 +14,13 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private IngredientType type;
+    @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
+    private Long milk;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
-    private Integer quantity;
+    @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
+    private Long sugar;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PuddingLevel",nullable = false)
-    private Pudding pudding;
+    @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
+    private Long egg;
+
 }
