@@ -12,9 +12,10 @@ public class RankingResponse {
     private long userId;
     private long totalPudding;
 
-    public RankingResponse(Ranking ranking) {
-        this.rank = getRank();
-        this.userId = getUserId();
-        this.totalPudding = getTotalPudding();
+    public RankingResponse(Ranking ranking, int rank) {
+        this.rank = rank;
+        this.id = ranking.getId();
+        this.userId = ranking.getUserId();
+        this.totalPudding = ranking.getTotalPudding();
     }
 }
