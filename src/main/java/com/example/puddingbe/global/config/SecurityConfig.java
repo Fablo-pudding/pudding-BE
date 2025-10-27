@@ -57,6 +57,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
 
+                        //ranking API
+                        .requestMatchers(HttpMethod.GET, "/ranking/global").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/ranking/{user-id}").authenticated()
+
                         // feed
                         .requestMatchers("/feed/create").authenticated()
                         .requestMatchers("/feed/get-list/").permitAll()

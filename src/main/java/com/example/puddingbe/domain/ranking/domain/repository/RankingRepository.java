@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RankingRepository extends JpaRepository<Ranking, Long> {
-    String rankingQuery = "SELECT * FROM pudding_be ORDER BY total_pudding DESC";
+    String rankingQuery = "SELECT * FROM tbl_ranking ORDER BY total_pudding DESC";
 
     @Query(value = rankingQuery, nativeQuery = true)
     List<RankingResponse> findAllOrderByTotalPuddingDesc();
+
     Optional<RankingResponse> findByUserId(Long userId);
+
+    Optional<Ranking> findEntityByUserId(Long userId);
 }
