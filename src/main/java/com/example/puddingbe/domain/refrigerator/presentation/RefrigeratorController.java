@@ -13,7 +13,7 @@ public class RefrigeratorController {
 
     private final RefrigeratorReadService refrigeratorReadService;
 
-    @GetMapping("/{user-Id}")
+    @GetMapping("/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public RefrigeratorResponse getRefrigerator(@PathVariable Long userId) {
         return refrigeratorReadService.getRefrigerator(userId);
