@@ -19,8 +19,4 @@ public class Ranking {
 
     @Column(name = "total_pudding", nullable = false)
     private int totalPudding;
-
-    public void updateTotalPudding(int total) {
-        this.totalPudding = total;
-    }
 }
