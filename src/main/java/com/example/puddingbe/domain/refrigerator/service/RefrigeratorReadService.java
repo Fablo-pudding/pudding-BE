@@ -24,6 +24,6 @@ public class RefrigeratorReadService {
                 .stream().findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저의 푸딩 정보를 찾을 수 없습니다."));
 
-        return new RefrigeratorResponse(ingredient, pudding);
+        return new RefrigeratorResponse(ingredient.getSugar(), ingredient.getMilk(), ingredient.getEgg(), pudding.getPuddingCount());
     }
 }

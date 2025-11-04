@@ -1,22 +1,15 @@
 package com.example.puddingbe.domain.refrigerator.presentation.dto;
 
-import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
-import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
+@Builder
 @Getter
-@NoArgsConstructor
+@AllArgsConstructor
 public class RefrigeratorResponse {
-    private Long milk;
-    private Long sugar;
-    private Long egg;
-    private Long puddingCount;
-
-    public RefrigeratorResponse(Ingredient ingredient, Pudding pudding) {
-        this.milk = ingredient.getMilk();
-        this.sugar = ingredient.getSugar();
-        this.egg = ingredient.getEgg();
-        this.puddingCount = pudding.getPuddingCount();
-    }
+    private final Long milk;
+    private final Long sugar;
+    private final Long egg;
+    private final Long puddingCount;
 }
