@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.timer.domain;
 
+import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,7 +18,7 @@ public class TimerEntity {
     @Column
     private Long totalTime; // 토탈 값
 
-    public void update(Long elapsedTime) {
-        this.totalTime += elapsedTime;
-    }
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
