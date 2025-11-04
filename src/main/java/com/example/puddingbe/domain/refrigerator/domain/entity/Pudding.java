@@ -15,14 +15,8 @@ public class Pudding {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Long pudding_level_1;
-
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Long pudding_level_2;
-
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Long pudding_level_3;
+    @Column(nullable = false)
+    private Long puddingCount = 0L;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
