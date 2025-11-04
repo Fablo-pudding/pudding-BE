@@ -7,7 +7,6 @@ import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorRe
 import com.example.puddingbe.domain.refrigerator.domain.entity.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,8 +15,15 @@ public class RefrigeratorReadService {
     private final PuddingRepository puddingRepository;
 
     public RefrigeratorResponse getRefrigerator(Long userId) {
-        List<Ingredient> ingredients = ingredientRepository.findByUserId(userId);
-        List<Pudding> puddings = puddingRepository.findByUserId(userId);
-        return new RefrigeratorResponse(ingredients, puddings);
+
+        Ingredient ingredient = ingredientRepository.findByUserId(userId)
+                .stream().findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저의 재료를 찾을 수 없습니다."));
+
+        Pudding pudding = puddingRepository.findByUserId(userId)
+                .stream().findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저의 푸딩 정보를 찾을 수 없습니다."));
+
+        return new RefrigeratorResponse(ingredient.getSugar(), ingredient.getMilk(), ingredient.getEgg(), pudding.getPuddingCount());
     }
 }
