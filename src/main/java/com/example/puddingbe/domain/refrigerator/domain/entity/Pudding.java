@@ -16,7 +16,7 @@ public class Pudding {
     private Long id;
 
     @Column(nullable = false)
-    private Long puddingCount = 0L;
+    private final Long puddingCount = 0L;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
