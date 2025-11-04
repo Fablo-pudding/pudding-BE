@@ -46,7 +46,6 @@ public class SecurityConfig {
 
                         //timer API
                         .requestMatchers("/timer").authenticated()
-                        .requestMatchers("/timer/update").authenticated()
                         .requestMatchers("/timer/read").authenticated()
 
                         // inquiry API
