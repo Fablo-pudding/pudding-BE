@@ -5,6 +5,7 @@ import com.example.puddingbe.domain.inquiry.presentation.dto.request.InquiryRequ
 import com.example.puddingbe.domain.inquiry.presentation.dto.response.InquiryResponse;
 import com.example.puddingbe.domain.inquiry.service.InquiryReadService;
 import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
+import com.example.puddingbe.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,8 @@ public class InquiryController {
 
     @GetMapping("/my/{user-id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<InquiryResponse> getMyInquiries() {
-        return inquiryReadService.getMyInquiries();
+    public List<InquiryResponse> getMyInquiries(@PathVariable("user-id") User user) {
+        return inquiryReadService.getMyInquiries(user);
     }
 
     @PostMapping("/{inquiry-id}/reply")

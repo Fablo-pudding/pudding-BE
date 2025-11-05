@@ -14,7 +14,7 @@ public class InquiryCreateService {
 
     public void createInquiry(InquiryRequest request) {
         Inquiry inquiry = Inquiry.builder()
-                .userId(request.getUserId())
+                .user(request.getUser())
                 .title(request.getTitle())
                 .content(request.getContent())
                 .createdAt(LocalDateTime.now())

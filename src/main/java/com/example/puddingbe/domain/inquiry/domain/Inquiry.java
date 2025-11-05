@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.inquiry.domain;
 
+import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,8 +17,9 @@ public class Inquiry {
     @Column(name = "inquiry_id")
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @OneToMany
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(name = "title", length = 100, nullable = false)
     private String title;
@@ -37,8 +39,8 @@ public class Inquiry {
     }
 
     @Builder
-    public Inquiry(Long userId, String title, String content, LocalDateTime createdAt) {
-        this.userId = userId;
+    public Inquiry(User user, String title, String content, LocalDateTime createdAt) {
+        this.user = user;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;

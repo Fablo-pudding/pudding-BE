@@ -5,6 +5,7 @@ import com.example.puddingbe.domain.inquiry.domain.repository.InquiryRepository;
 import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
 import com.example.puddingbe.domain.inquiry.exception.UnauthorizedException;
 import com.example.puddingbe.domain.inquiry.presentation.dto.response.InquiryResponse;
+import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,9 +25,9 @@ public class InquiryReadService {
                 .collect(Collectors.toList());
     }
 
-    public List<InquiryResponse> getMyInquiries() {
+    public List<InquiryResponse> getMyInquiries(User user) {
         Long userId = userFacade.getUserId();
-        return inquiryRepository.findByUserId(userId).stream()
+        return inquiryRepository.findByUserId(user).stream()
                 .map(InquiryResponse::new)
                 .collect(Collectors.toList());
     }
@@ -37,7 +38,7 @@ public class InquiryReadService {
         Long userId = userFacade.getUserId();
         boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
                 .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
-        if (!isAdmin && !inquiry.getUserId().equals(userId)) {
+        if (!isAdmin && !inquiry.getUser().equals(userId)) {
             throw new UnauthorizedException("작성자 본인 또는 관리자만 접근할 수 있습니다.");
         }
         return new InquiryResponse(inquiry);
