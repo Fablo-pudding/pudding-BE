@@ -16,14 +16,13 @@ public class RefrigeratorReadService {
 
     public RefrigeratorResponse getRefrigerator(Long userId) {
 
-        Ingredient ingredient = ingredientRepository.findByUserId(userId)
-                .stream().findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("해당 유저의 재료를 찾을 수 없습니다."));
-
-        Pudding pudding = puddingRepository.findByUserId(userId)
-                .stream().findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("해당 유저의 푸딩 정보를 찾을 수 없습니다."));
-
-        return new RefrigeratorResponse(ingredient.getSugar(), ingredient.getMilk(), ingredient.getEgg(), pudding.getPuddingCount());
+        Ingredient ingredient = ingredientRepository.findByUserId(userId);
+            Pudding pudding = puddingRepository.findByUserId(userId);
+            return RefrigeratorResponse.builder()
+                    .milk(ingredient.getMilk())
+                    .sugar(ingredient.getSugar())
+                    .egg(ingredient.getEgg())
+                    .puddingCount(pudding.getPuddingCount())
+                    .build();
     }
 }
