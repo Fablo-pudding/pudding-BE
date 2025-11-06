@@ -21,7 +21,7 @@ public class InquiryDeleteService {
         Long userId = userFacade.getUserId();
         boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
                 .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
-        if(!isAdmin && !inquiry.getUser().equals(userId)) {
+        if(!isAdmin && !inquiry.getUser().getId().equals(userId)) {
             throw new UnauthorizedException("작성자 본인 또는 관리자만 접근할 수 있습니다.");
         }
         inquiryRepository.deleteById(id);
