@@ -35,10 +35,10 @@ public class InquiryController {
         return inquiryReadService.getInquiryById(id);
     }
 
-    @GetMapping("/my/{user-id}")
+    @GetMapping("/my")
     @ResponseStatus(HttpStatus.OK)
-    public List<InquiryResponse> getMyInquiries(@PathVariable("user-id") User user) {
-        return inquiryReadService.getMyInquiries(user);
+    public List<InquiryResponse> getMyInquiries() {
+        return inquiryReadService.getMyInquiries();
     }
 
     @PostMapping("/{inquiry-id}/reply")
