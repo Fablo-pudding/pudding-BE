@@ -42,6 +42,7 @@ public class SecurityConfig {
 
                         //user API
                         .requestMatchers("/user/signup", "/user/login").permitAll()
+                        .requestMatchers("/user/logout").authenticated()
                         .requestMatchers("/user/info").authenticated()
 
                         //timer API
