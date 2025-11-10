@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
+@Getter
 @Builder
-public class RefrigeratorResponse {
-    private final Long milk;
-    private final Long sugar;
-    private final Long egg;
-    private final Long puddingCount;
+public class RefrigeratorCreateResponse {
+    private Long puddingCount;
+    private Long milk;
+    private Long egg;
+    private Long sugar;
 }

@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.refrigerator.domain.entity;
 
+import com.example.puddingbe.domain.refrigerator.exception.LessIngredientException;
 import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +10,6 @@ import lombok.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +27,13 @@ public class Ingredient {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public void useForPudding(){
+        if(this.egg < 2 || this.sugar < 2 || this.milk < 1){
+            throw new LessIngredientException(user);
+        }
+        this.egg -= 2;
+        this.sugar -= 2;
+        this.milk -= 1;
+    }
 }
