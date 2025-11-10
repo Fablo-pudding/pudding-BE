@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-@Builder
 @AllArgsConstructor
 @Getter
+@Builder
 public class RefrigeratorCreateResponse {
     private Long puddingCount;
     private Long milk;
