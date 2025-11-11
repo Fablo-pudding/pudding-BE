@@ -61,6 +61,7 @@ public class JwtTokenProvider { // secretKey 생성
         String refreshToken = generateRefreshToken(name, refreshTokenExpireTime);
 
         redisDao.setValues(name, refreshToken, Duration.ofSeconds(REFRESH_TOKEN_EXPIRE_TIME));
+        // key : value를 name : 토큰 형식으로 redis에 저장함. (access 토큰은 redis에 저장하지 않습니다.)
 
         return JwtToken.builder()
                 .grantType(GRANT_TYPE)
@@ -126,7 +127,7 @@ public class JwtTokenProvider { // secretKey 생성
     }
 
     public String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
+        String bearerToken = request.getHeader("Authorization"); // 토큰만 추출하기.
         if(bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
