@@ -43,7 +43,7 @@ jobs:
 
       # ec2 ssh 접속  후 pull
       - name: SSH to EC2 deploy
-        uses: appleboy/ssh-action@v3
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{secrets.EC2_HOST}}
           username: ${{secrets.EC2_USER}}
