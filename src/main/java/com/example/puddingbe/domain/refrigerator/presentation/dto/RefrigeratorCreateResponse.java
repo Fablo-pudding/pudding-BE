@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class RefrigeratorCreateResponse {
-    private Long puddingCount;
+    private Long pudding_1;
     private Long milk;
     private Long egg;
     private Long sugar;
