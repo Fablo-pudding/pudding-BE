@@ -27,3 +27,4 @@ jobs:
         uses: gradle/gradle-build-action@v3
         with:
           arguments: build
+          
