@@ -1,6 +1,5 @@
 package com.example.puddingbe.domain.refrigerator.service;
 
-import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
 import com.example.puddingbe.domain.refrigerator.domain.repository.PuddingRepository;
