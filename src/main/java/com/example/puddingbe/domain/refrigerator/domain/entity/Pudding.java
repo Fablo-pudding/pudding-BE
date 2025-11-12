@@ -38,13 +38,13 @@ public class Pudding {
     public void upgradeFor_3(){
         this.pudding_3++;
     }
-    public void UsePuddingFor_2(){
+    public void usePuddingFor_2(){
         if(this.pudding_1 < 3){
             throw new LessPuddingOne();
         }
         this.pudding_1-=3;
     }
-    public void UsePuddingFor_3(){
+    public void usePuddingFor_3(){
         if(this.pudding_2 < 3){
             throw new LessPuddingTwo();
         }
