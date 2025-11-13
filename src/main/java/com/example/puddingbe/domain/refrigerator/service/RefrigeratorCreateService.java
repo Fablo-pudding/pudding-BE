@@ -30,7 +30,7 @@ public class RefrigeratorCreateService {
             puddingRepository.save(pudding);
 
             return RefrigeratorCreateResponse.builder()
-                    .puddingCount(pudding.getPuddingCount())
+                    .pudding_1(pudding.getPudding_1())
                     .milk(ingredient.getMilk())
                     .egg(ingredient.getEgg())
                     .sugar(ingredient.getSugar())
