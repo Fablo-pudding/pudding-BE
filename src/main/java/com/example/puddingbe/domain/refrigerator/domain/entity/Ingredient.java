@@ -30,11 +30,21 @@ public class Ingredient {
 
     public void useForPudding(){
         if(this.egg < 2 || this.sugar < 2 || this.milk < 1){
-            throw new LessIngredientException(user);
+            throw new LessIngredientException();
         }
         this.egg -= 2;
         this.sugar -= 2;
         this.milk -= 1;
+    }
+
+    public void addMilk(){
+        this.milk += 1;
+    }
+    public void addSugar(){
+        this.sugar += 1;
+    }
+    public void addEgg(){
+        this.egg += 1;
     }
 
 }
