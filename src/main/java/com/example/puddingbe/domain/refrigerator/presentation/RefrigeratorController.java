@@ -47,18 +47,21 @@ public class RefrigeratorController {
     }
 
     @PostMapping("/get-milk")
+    @ResponseStatus(HttpStatus.OK)
     public IngredientAddResponse getMilk() {
         Long userId = userFacade.getUserId();
         return addMilkService.addSomeMilk(userId);
     }
 
     @PostMapping("/get-egg")
+    @ResponseStatus(HttpStatus.OK)
     public IngredientAddResponse getEgg() {
         Long userId = userFacade.getUserId();
         return addEggService.addSomeEgg(userId);
     }
 
     @PostMapping("/get-sugar")
+    @ResponseStatus(HttpStatus.OK)
     public IngredientAddResponse getSugar() {
         Long userId = userFacade.getUserId();
         return addSugarService.addSomeSugar(userId);
