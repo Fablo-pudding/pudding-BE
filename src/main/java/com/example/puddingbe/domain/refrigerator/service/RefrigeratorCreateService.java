@@ -20,7 +20,7 @@ public class RefrigeratorCreateService {
         Pudding pudding = puddingRepository.findByUserId(userId);
 
             if(ingredient == null) {
-                throw new IngredientNotFoundException(userId);
+                throw IngredientNotFoundException.EXCEPTION;
             }
 
             ingredient.useForPudding();

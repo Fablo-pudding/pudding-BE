@@ -1,13 +1,8 @@
 package com.example.puddingbe.domain.refrigerator.presentation;
 
-import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorCreateResponse;
-import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorResponse;
-import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorUpdateResponse;
-import com.example.puddingbe.domain.refrigerator.presentation.dto.RefrigeratorUpdateTwoResponse;
-import com.example.puddingbe.domain.refrigerator.service.PuddingUpgradeOneService;
-import com.example.puddingbe.domain.refrigerator.service.PuddingUpgradeTwoService;
-import com.example.puddingbe.domain.refrigerator.service.RefrigeratorCreateService;
-import com.example.puddingbe.domain.refrigerator.service.RefrigeratorReadService;
+import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
+import com.example.puddingbe.domain.refrigerator.presentation.dto.*;
+import com.example.puddingbe.domain.refrigerator.service.*;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +17,9 @@ public class RefrigeratorController {
     private final RefrigeratorCreateService refrigeratorCreateService;
     private final PuddingUpgradeOneService puddingUpgradeService;
     private final PuddingUpgradeTwoService puddingUpgradeTwoService;
+    private final AddMilkService addMilkService;
+    private final AddSugarService addSugarService;
+    private final AddEggService addEggService;
     private final UserFacade userFacade;
 
     @GetMapping("/{userId}")
@@ -46,6 +44,24 @@ public class RefrigeratorController {
     public RefrigeratorUpdateTwoResponse upgradePuddingTwo() {
         Long userId = userFacade.getUserId();
         return puddingUpgradeTwoService.upgradePuddingTwo(userId);
+    }
+
+    @PostMapping("/get-milk")
+    public IngredientAddResponse getMilk() {
+        Long userId = userFacade.getUserId();
+        return addMilkService.addSomeMilk(userId);
+    }
+
+    @PostMapping("/get-egg")
+    public IngredientAddResponse getEgg() {
+        Long userId = userFacade.getUserId();
+        return addEggService.addSomeEgg(userId);
+    }
+
+    @PostMapping("/get-sugar")
+    public IngredientAddResponse getSugar() {
+        Long userId = userFacade.getUserId();
+        return addSugarService.addSomeSugar(userId);
     }
 
 }
