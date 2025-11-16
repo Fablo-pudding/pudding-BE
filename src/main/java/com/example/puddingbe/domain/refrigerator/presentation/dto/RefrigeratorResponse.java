@@ -11,5 +11,7 @@ public class RefrigeratorResponse {
     private final Long milk;
     private final Long sugar;
     private final Long egg;
-    private final Long puddingCount;
+    private final Long pudding_1;
+    private final Long pudding_2;
+    private final Long pudding_3;
 }

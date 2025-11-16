@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class PuddingNotFoundException extends RuntimeException {
-    public PuddingNotFoundException(Long userId) {
+    public PuddingNotFoundException() {
         super("사용자의 푸딩을 찾을수없습니다");
     }
 }

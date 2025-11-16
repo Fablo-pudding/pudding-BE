@@ -36,4 +36,5 @@ public class Ingredient {
         this.sugar -= 2;
         this.milk -= 1;
     }
+
 }

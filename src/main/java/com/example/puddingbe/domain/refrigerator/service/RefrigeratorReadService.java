@@ -1,6 +1,5 @@
 package com.example.puddingbe.domain.refrigerator.service;
 
-import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
 import com.example.puddingbe.domain.refrigerator.domain.repository.PuddingRepository;
@@ -25,13 +24,15 @@ public class RefrigeratorReadService {
         }
             Pudding pudding = puddingRepository.findByUserId(userId);
         if (pudding == null) {
-            throw new PuddingNotFoundException(userId);
+            throw new PuddingNotFoundException();
         }
             return RefrigeratorResponse.builder()
                     .milk(ingredient.getMilk())
                     .sugar(ingredient.getSugar())
                     .egg(ingredient.getEgg())
-                    .puddingCount(pudding.getPuddingCount())
+                    .pudding_1(pudding.getPudding_1())
+                    .pudding_2(pudding.getPudding_2())
+                    .pudding_3(pudding.getPudding_3())
                     .build();
     }
 }
