@@ -6,11 +6,13 @@ import com.example.puddingbe.domain.refrigerator.domain.repository.IngredientRep
 import com.example.puddingbe.domain.refrigerator.domain.repository.PuddingRepository;
 import com.example.puddingbe.domain.user.domain.Role;
 import com.example.puddingbe.domain.user.exception.DuplicateUserException;
+import com.example.puddingbe.domain.user.presentation.dto.request.LoginRequest;
 import com.example.puddingbe.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
