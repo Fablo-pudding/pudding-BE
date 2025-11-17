@@ -13,4 +13,5 @@ public class PostListResponseDTO {
     String title;
     String content;
     LocalDateTime createdAt;
+    Long commentCount;
 }
