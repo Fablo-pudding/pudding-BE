@@ -16,9 +16,9 @@ public enum ErrorCode {
 
 //Notice
     Notice_Not_Found_Exception(404,"공지를 찾을수없습니다"),
-    Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다."),
-    Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다."),
     Only_Admin_Update_Notice_Exception(403,"관리자만 공지를 수정할 수 있습니다"),
+    Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다."),
+    Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다."),
 
 //Inquiry
     Inquiry_Not_Found_Exception(404, "문의를 찾을 수 없습니다"),
@@ -27,6 +27,10 @@ public enum ErrorCode {
     Only_Admin_Or_Author_Read_Inquiry_Exception(403, "작성자 본인 또는 관리자만 조회할 수 있습니다"),
     Only_Admin_Or_Author_Delete_Inquiry_Exception(403, "작성자 본인 또는 관리자만 삭제할 수 있습니다");
 
+//user
+    DuplicateUserException(409, "중복된 사용자 이름입니다"),
+    UnauthorizedUserPasswordException(401, "비밀번호가 일치하지 않습니다"),
+    UnauthorizedUserNameException(401, "찾을 수 없는 사용자입니다");
     private final Integer status;
     private final String message;
 
