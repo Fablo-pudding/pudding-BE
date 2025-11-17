@@ -1,7 +1,7 @@
 package com.example.puddingbe.domain.refrigerator.domain.entity;
 
-import com.example.puddingbe.domain.refrigerator.exception.LessPuddingOne;
-import com.example.puddingbe.domain.refrigerator.exception.LessPuddingTwo;
+import com.example.puddingbe.domain.refrigerator.exception.LessPuddingOneException;
+import com.example.puddingbe.domain.refrigerator.exception.LessPuddingTwoException;
 import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -40,13 +40,13 @@ public class Pudding {
     }
     public void usePuddingFor_2(){
         if(this.pudding_1 < 3){
-            throw new LessPuddingOne();
+            throw new LessPuddingOneException();
         }
         this.pudding_1-=3;
     }
     public void usePuddingFor_3(){
         if(this.pudding_2 < 3){
-            throw new LessPuddingTwo();
+            throw new LessPuddingTwoException();
         }
         this.pudding_2-=3;
     }
