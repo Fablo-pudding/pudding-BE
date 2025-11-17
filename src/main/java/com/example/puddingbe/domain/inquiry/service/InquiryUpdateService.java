@@ -14,7 +14,7 @@ public class InquiryUpdateService {
 
     public void replyToInquiry(Long id, InquiryReplyRequest request) {
         Inquiry inquiry = inquiryRepository.findById(id)
-                .orElseThrow(()->new InquiryNotFoundException(id));
+                .orElseThrow(()-> InquiryNotFoundException.EXCEPTION);
         inquiry.replyToInquiry(request.getReply());
         inquiryRepository.save(inquiry);
     }
