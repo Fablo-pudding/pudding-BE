@@ -27,7 +27,8 @@ public class PostReadService {
                 post.getUserId(),
                 post.getTitle(),
                 post.getContent(),
-                post.getCreatedAt()
+                post.getCreatedAt(),
+                post.getComments().stream().count()
         )).collect(Collectors.toList());
     }
 
@@ -41,7 +42,8 @@ public class PostReadService {
                     post.getTitle(),
                     post.getContent(),
                     post.getCreatedAt(),
-                    post.getComments()
+                    post.getComments(),
+                    post.getComments().stream().count()
             );
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
