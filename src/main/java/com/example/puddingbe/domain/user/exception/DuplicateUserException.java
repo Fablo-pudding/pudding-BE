@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.CONFLICT)
 public class DuplicateUserException extends RuntimeException {
-    public DuplicateUserException(String message) {
-        super(message);
+    public DuplicateUserException() {
+        super("중복된 사용자 이름입니다");
     }
 }
