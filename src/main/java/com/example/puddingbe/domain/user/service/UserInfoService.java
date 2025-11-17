@@ -29,7 +29,6 @@ public class UserInfoService {
         return UserInfoResponse.builder()
                 .userId(findUser.getId())
                 .name(findUser.getName())
-                .statusMessage("푸딩과함께 공부하자")
                 .ranking(null)
                 .profileImageUrl("https://default.image.url/profile.png")
                 .build();
