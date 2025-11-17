@@ -15,4 +15,5 @@ public class PostDetailResponseDTO {
     String content;
     LocalDateTime createdAt;
     List<Comment> comments;
+    Long commentCount;
 }
