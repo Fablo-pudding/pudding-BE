@@ -26,27 +26,27 @@ public class NoticeUserController {
 
 
     //create
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Void> createNotice(@Valid @RequestBody NoticeCreateRequest request) {
         noticeUserCreateService.createNotice(request);
         return ResponseEntity.ok().build();
     }
 
     //read
-    @GetMapping("")
+    @GetMapping("/get-list")
     public List<NoticeReadResponse> readNotices(){
         return noticeUserReadService.readNotices();
     }
 
     //update
-    @PatchMapping("/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<Void> updateNotice(@PathVariable Long id, @Valid @RequestBody NoticeUpdateRequest request) {
         noticeUserUpdateService.updateNotice(id, request);
         return ResponseEntity.ok().build();
     }
 
     //delete
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<NoticeUser> deleteNotice(@PathVariable Long id) {
         return noticeUserDeleteService.deleteNotice(id);
     }
