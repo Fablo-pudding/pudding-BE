@@ -15,9 +15,16 @@ public enum ErrorCode {
     Less_Pudding_Two_Exception(400,"2성 푸딩 갯수가 부족합니다"),
 
 //Notice
-    Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다"),
-    Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다"),
-    Only_Admin_Update_Notice_Exception(403,"관리자만 공지를 수정할 수 있습니다");
+    Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다."),
+    Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다."),
+    Only_Admin_Update_Notice_Exception(403,"관리자만 공지를 수정할 수 있습니다"),
+
+//Inquiry
+    Inquiry_Not_Found_Exception(404, "문의를 찾을 수 없습니다"),
+    Only_Admin_Read_Inquiry_Exception(403, "관리자만 문의를 조회할 수 있습니다"),
+    Only_Admin_Update_Inquiry_Exception(403, "관리자만 답변을 작성할 수 있습니다"),
+    Only_Admin_Or_Author_Read_Inquiry_Exception(403, "작성자 본인 또는 관리자만 조회할 수 있습니다"),
+    Only_Admin_Or_Author_Delete_Inquiry_Exception(403, "작성자 본인 또는 관리자만 삭제할 수 있습니다");
 
     private final Integer status;
     private final String message;

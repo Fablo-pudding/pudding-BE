@@ -50,10 +50,10 @@ public class SecurityConfig {
                         .requestMatchers("/timer/read").authenticated()
 
                         // inquiry API
-                        .requestMatchers(HttpMethod.GET, "/inquiry").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/inquiry").authenticated()
                         .requestMatchers(HttpMethod.GET, "/inquiry/my/{user-id}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/inquiry/{inquiry-id}").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
 

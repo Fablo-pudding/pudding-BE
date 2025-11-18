@@ -3,7 +3,8 @@ package com.example.puddingbe.domain.inquiry.service;
 import com.example.puddingbe.domain.inquiry.domain.Inquiry;
 import com.example.puddingbe.domain.inquiry.domain.repository.InquiryRepository;
 import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
-import com.example.puddingbe.domain.inquiry.exception.UnauthorizedException;
+import com.example.puddingbe.domain.inquiry.exception.OnlyAdminOrAuthorReadInquiryException;
+import com.example.puddingbe.domain.inquiry.exception.OnlyAdminReadInquiryException;
 import com.example.puddingbe.domain.inquiry.presentation.dto.response.InquiryResponse;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
@@ -22,6 +23,10 @@ public class InquiryReadService {
     private final UserFacade userFacade;
 
     public List<InquiryResponse> getAllInquiries() {
+        if (!(SecurityContextHolder.getContext().getAuthentication().getAuthorities()
+                .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN")))){
+            throw OnlyAdminReadInquiryException.EXCEPTION;
+        }
         return inquiryRepository.findAll().stream()
                 .map(InquiryResponse::new)
                 .collect(Collectors.toList());
@@ -38,12 +43,12 @@ public class InquiryReadService {
 
     public InquiryResponse getInquiryById(Long id) {
         Inquiry inquiry = inquiryRepository.findById(id)
-                .orElseThrow(()->new InquiryNotFoundException(id));
+                .orElseThrow(()->InquiryNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
         boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
                 .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
         if (!isAdmin && !inquiry.getUser().getId().equals(userId)) {
-            throw new UnauthorizedException("작성자 본인 또는 관리자만 접근할 수 있습니다.");
+            throw OnlyAdminOrAuthorReadInquiryException.EXCEPTION;
         }
         return new InquiryResponse(inquiry);
     }

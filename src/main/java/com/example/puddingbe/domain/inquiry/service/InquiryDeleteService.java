@@ -3,7 +3,7 @@ package com.example.puddingbe.domain.inquiry.service;
 import com.example.puddingbe.domain.inquiry.domain.Inquiry;
 import com.example.puddingbe.domain.inquiry.domain.repository.InquiryRepository;
 import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
-import com.example.puddingbe.domain.inquiry.exception.UnauthorizedException;
+import com.example.puddingbe.domain.inquiry.exception.OnlyAdminOrAuthorDeleteInquiryException;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,12 +17,12 @@ public class InquiryDeleteService {
 
     public void deleteInquiry(Long id) {
         Inquiry inquiry = inquiryRepository.findById(id)
-                .orElseThrow(() -> new InquiryNotFoundException(id));
+                .orElseThrow(() -> InquiryNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
         boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
                 .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
         if(!isAdmin && !inquiry.getUser().getId().equals(userId)) {
-            throw new UnauthorizedException("작성자 본인 또는 관리자만 접근할 수 있습니다.");
+            throw OnlyAdminOrAuthorDeleteInquiryException.EXCEPTION;
         }
         inquiryRepository.deleteById(id);
     }
