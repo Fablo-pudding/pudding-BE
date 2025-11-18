@@ -15,6 +15,7 @@ public enum ErrorCode {
     Less_Pudding_Two_Exception(400,"2성 푸딩 갯수가 부족합니다"),
 
 //Notice
+    Notice_Not_Found_Exception(404,"공지를 찾을수없습니다"),
     Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다."),
     Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다."),
     Only_Admin_Update_Notice_Exception(403,"관리자만 공지를 수정할 수 있습니다"),

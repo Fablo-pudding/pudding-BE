@@ -2,6 +2,7 @@ package com.example.puddingbe.domain.notice.service;
 
 import com.example.puddingbe.domain.inquiry.exception.UnauthorizedException;
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
+import com.example.puddingbe.domain.notice.exception.NoticeAdminCanCreate;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateRequest;
 import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
@@ -26,7 +27,7 @@ public class NoticeUserCreateService {
                 .stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
         if (!isAdmin) {
-            throw new UnauthorizedException("관리자만 공지를 작성할 수 있습니다.");
+            throw NoticeAdminCanCreate.EXCEPTION;
         }
 
         NoticeUser noticeUser = NoticeUser.builder()
