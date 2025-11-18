@@ -22,7 +22,7 @@ public class InquiryDeleteService {
         boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
                 .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
         if(!isAdmin && !inquiry.getUser().getId().equals(userId)) {
-            throw new OnlyAdminOrAuthorDeleteInquiryException();
+            throw OnlyAdminOrAuthorDeleteInquiryException.EXCEPTION;
         }
         inquiryRepository.deleteById(id);
     }
