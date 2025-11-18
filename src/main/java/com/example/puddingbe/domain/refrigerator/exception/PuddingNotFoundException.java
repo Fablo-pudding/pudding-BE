@@ -1,12 +1,15 @@
 package com.example.puddingbe.domain.refrigerator.exception;
 
 
+import com.example.puddingbe.global.error.exception.ErrorCode;
+import com.example.puddingbe.global.error.exception.PuddingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class PuddingNotFoundException extends RuntimeException {
+public class PuddingNotFoundException extends PuddingException {
+    public static final PuddingNotFoundException EXCEPTION = new PuddingNotFoundException();
     public PuddingNotFoundException() {
-        super("사용자의 푸딩을 찾을수없습니다");
+        super(ErrorCode.Pudding_Not_Found_Exception);
     }
 }
