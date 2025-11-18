@@ -2,6 +2,8 @@ package com.example.puddingbe.domain.notice.service;
 
 import com.example.puddingbe.domain.inquiry.exception.UnauthorizedException;
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
+import com.example.puddingbe.domain.notice.exception.NoticeAdminCanUpdate;
+import com.example.puddingbe.domain.notice.exception.NoticeNotFoundException;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeUpdateRequest;
 import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +22,11 @@ public class NoticeUserUpdateService {
                 .stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
         if (!isAdmin) {
-            throw new UnauthorizedException("관리자만 공지를 수정할 수 있습니다.");
+            throw (NoticeAdminCanUpdate.EXCEPTION);
         }
 
         NoticeUser noticeUser = noticeUserRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 공지가 존재하지 않습니다."));
+                .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
 
         noticeUser.setTitle(request.getTitle());
         noticeUser.setContent(request.getContent());
