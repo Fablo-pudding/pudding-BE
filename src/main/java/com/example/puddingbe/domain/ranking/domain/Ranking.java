@@ -18,5 +18,5 @@ public class Ranking {
     private Long userId;
 
     @Column(name = "total_pudding", nullable = false)
-    private int totalPudding;
+    private long totalPudding;
 }

@@ -8,5 +8,5 @@ import lombok.Getter;
 public class RankingResponse {
     private long id;
     private long userId;
-    private int totalPudding;
+    private long totalPudding;
 }
