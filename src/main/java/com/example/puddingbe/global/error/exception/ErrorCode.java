@@ -15,7 +15,7 @@ public enum ErrorCode {
     Less_Pudding_Two_Exception(400,"2성 푸딩 갯수가 부족합니다"),
 
 //Notice
-<<<<<<< HEAD
+    Notice_Not_Found_Exception(404,"공지를 찾을수없습니다"),
     Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다."),
     Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다."),
     Only_Admin_Update_Notice_Exception(403,"관리자만 공지를 수정할 수 있습니다"),
@@ -26,12 +26,6 @@ public enum ErrorCode {
     Only_Admin_Update_Inquiry_Exception(403, "관리자만 답변을 작성할 수 있습니다"),
     Only_Admin_Or_Author_Read_Inquiry_Exception(403, "작성자 본인 또는 관리자만 조회할 수 있습니다"),
     Only_Admin_Or_Author_Delete_Inquiry_Exception(403, "작성자 본인 또는 관리자만 삭제할 수 있습니다");
-=======
-    Notice_Not_Found_Exception(404,"공지를 찾을수없습니다"),
-    Only_Admin_Create_Notice_Exception(403,"관리자만 공지를 작성할 수 있습니다"),
-    Only_Admin_Delete_Notice_Exception(403,"관리자만 공지를 삭제할 수 있습니다"),
-    Only_Admin_Update_Notice_Exception(403,"관리자만 공지를 수정할 수 있습니다");
->>>>>>> 672ab9f (feat: notice 예외처리 완료)
 
     private final Integer status;
     private final String message;
