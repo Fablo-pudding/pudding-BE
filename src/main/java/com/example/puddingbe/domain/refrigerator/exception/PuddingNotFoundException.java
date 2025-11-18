@@ -1,6 +1,5 @@
 package com.example.puddingbe.domain.refrigerator.exception;
 
-
 import com.example.puddingbe.global.error.exception.ErrorCode;
 import com.example.puddingbe.global.error.exception.PuddingException;
 import org.springframework.http.HttpStatus;
