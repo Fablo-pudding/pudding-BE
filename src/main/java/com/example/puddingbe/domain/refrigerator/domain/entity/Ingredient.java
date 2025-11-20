@@ -8,6 +8,7 @@ import lombok.*;
 @Table(name = "tbl_ingredient")
 @Getter
 @Entity
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Ingredient {
@@ -15,14 +16,17 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
-    private Long milk;
+    @Column(nullable = false)
+    @Builder.Default
+    private Long milk = 0L;
 
-    @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
-    private Long sugar;
+    @Column(nullable = false)
+    @Builder.Default
+    private Long sugar = 0L;
 
-    @Column(nullable = false,columnDefinition = "BIGINT DEFAULT 0")
-    private Long egg;
+    @Column(nullable = false)
+    @Builder.Default
+    private Long egg = 0L;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

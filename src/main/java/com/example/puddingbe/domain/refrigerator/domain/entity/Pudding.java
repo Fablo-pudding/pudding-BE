@@ -8,6 +8,7 @@ import lombok.*;
 
 @Table(name = "tbl_pudding")
 @Entity
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
@@ -17,12 +18,15 @@ public class Pudding {
     private Long id;
 
     @Column(nullable = false)
+    @Builder.Default
     private Long pudding_1 = 0L;
 
     @Column(nullable = false)
+    @Builder.Default
     private Long pudding_2 = 0L;
 
     @Column(nullable = false)
+    @Builder.Default
     private Long pudding_3 = 0L;
 
     @OneToOne(fetch = FetchType.LAZY)
