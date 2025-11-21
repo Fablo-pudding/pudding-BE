@@ -9,11 +9,11 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class PostDetailResponseDTO {
-    Long postId;
-    Long userId;
+    Long post_id;
+    Long user_id;
     String title;
     String content;
-    LocalDateTime createdAt;
+    LocalDateTime created_at;
     List<Comment> comments;
-    Long commentCount;
+    Long comment_count;
 }
