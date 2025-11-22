@@ -13,6 +13,7 @@ public class AddMilkService {
 
     public IngredientAddResponse addSomeMilk(Long userId){
         Ingredient ingredient = ingredientRepository.findByUserId(userId);
+
         ingredient.addMilk();
 
         ingredientRepository.save(ingredient);

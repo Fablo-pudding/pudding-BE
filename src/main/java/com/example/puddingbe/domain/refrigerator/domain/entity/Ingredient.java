@@ -32,6 +32,9 @@ public class Ingredient {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
+
     public void useForPudding(){
         if(this.egg < 2 || this.sugar < 2 || this.milk < 1){
             throw new LessIngredientException();
