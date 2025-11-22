@@ -14,6 +14,7 @@ public class AddEggService {
 
     public IngredientAddResponse addSomeEgg(Long userId) {
         Ingredient ingredient = ingredientRepository.findByUserId(userId);
+
         ingredient.addEgg();
 
         ingredientRepository.save(ingredient);

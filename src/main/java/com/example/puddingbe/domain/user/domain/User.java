@@ -1,5 +1,7 @@
 package com.example.puddingbe.domain.user.domain;
 
+import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
+import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +36,12 @@ public class User {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Ingredient ingredient;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Pudding pudding;
 
     public User(String name, String password, Long birth, Long batch, Gender gender, Role role) {
         this.name = name;
