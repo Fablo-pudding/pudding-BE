@@ -26,7 +26,6 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<HttpStatus> signup(@Validated @RequestBody SignUpRequest signUpRequest) { // Valid를 추가해야 dto의 조건들 적용가능
-
         signupService.save( signUpRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
