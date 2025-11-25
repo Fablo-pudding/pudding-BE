@@ -1,8 +1,7 @@
 package com.example.puddingbe.global.jwt;
 
-
 import com.example.puddingbe.global.detail.DetailService;
-import com.example.puddingbe.global.exception.CustomJwtException;
+import com.example.puddingbe.global.error.exception.CustomJwtException;
 import com.example.puddingbe.global.redis.RedisDao;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

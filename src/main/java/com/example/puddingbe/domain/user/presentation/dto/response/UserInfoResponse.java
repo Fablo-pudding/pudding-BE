@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class UserInfoResponse {
     private Long userId;
     private String name;
-    private String statusMessage;
-    private Long ranking;
+    private int ranking;
     private String profileImageUrl;
 }

@@ -1,5 +1,7 @@
 package com.example.puddingbe.domain.user.service;
 
+import com.example.puddingbe.domain.ranking.service.MyRankingService;
+import com.example.puddingbe.domain.user.exception.ForbiddenUserInformationException;
 import com.example.puddingbe.domain.user.presentation.dto.response.UserInfoResponse;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
 import com.example.puddingbe.domain.user.domain.User;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserInfoService {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
+    private final MyRankingService myRankingService;
 
     public UserInfoResponse showInformation(String authorizationHeader) {
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
@@ -24,13 +27,12 @@ public class UserInfoService {
         String name = jwtTokenProvider.getNameFromToken(token); // 이름 추출
 
         User findUser = userRepository.findByName(name) // 저장된 name 값과 이름 일치 여부 확인
-                .orElseThrow(() -> new RuntimeException("해당 사용자가 존재하지 않습니다."));
+                .orElseThrow(() -> ForbiddenUserInformationException.EXCEPTION);
 
         return UserInfoResponse.builder()
                 .userId(findUser.getId())
                 .name(findUser.getName())
-                .statusMessage("푸딩과함께 공부하자")
-                .ranking(null)
+                .ranking(myRankingService.getMyRanking().getRank())
                 .profileImageUrl("https://default.image.url/profile.png")
                 .build();
     }

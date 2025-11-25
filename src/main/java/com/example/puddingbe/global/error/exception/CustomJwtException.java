@@ -1,4 +1,4 @@
-package com.example.puddingbe.global.exception;
+package com.example.puddingbe.global.error.exception;
 
 public class CustomJwtException extends RuntimeException { // jwt 커스텀 예외 (직접 설정가능한 메세지)
     public CustomJwtException(String message) {
