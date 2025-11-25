@@ -30,11 +30,9 @@ public enum ErrorCode {
     Only_Admin_Or_Author_Delete_Inquiry_Exception(403, "작성자 본인 또는 관리자만 삭제할 수 있습니다");
 
 //user
-    DuplicateUserException(409, "중복된 사용자 이름입니다"),
-    UnauthorizedUserPasswordException(401, "비밀번호가 일치하지 않습니다"),
-    UnauthorizedUserNameException(401, "찾을 수 없는 사용자입니다"),
-    ForbiddenUserInformationException(403, "본인의 정보만 조회 가능합니다");
-
+    Duplicate_User_Exception(409, "중복된 사용자 아이디입니다"),
+    Unauthorized_User_Exception(401, "유저정보가 유효하지 않습니다"),
+    Forbidden_User_Information_Exception(403, "본인의 정보만 조회 가능합니다");
     private final Integer status;
     private final String message;
 

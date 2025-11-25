@@ -1,7 +1,6 @@
 package com.example.puddingbe.domain.user.service;
 
-import com.example.puddingbe.domain.user.exception.UnauthorizedUserNameException;
-import com.example.puddingbe.domain.user.exception.UnauthorizedUserPasswordException;
+import com.example.puddingbe.domain.user.exception.UnauthorizedUserException;
 import com.example.puddingbe.global.detail.UserDetail;
 import com.example.puddingbe.global.jwt.JwtToken;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
@@ -23,10 +22,10 @@ public class LoginService {
 
     public JwtToken login(String name, String password) {
         User user = userRepository.findByName(name)
-                .orElseThrow(() -> new UnauthorizedUserNameException());
+                .orElseThrow(() -> UnauthorizedUserException.EXCEPTION);
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new UnauthorizedUserPasswordException();
+            throw UnauthorizedUserException.EXCEPTION;
         }
 
         UserDetail userDetail = new UserDetail(user);
