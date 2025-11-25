@@ -26,13 +26,8 @@ public class SignupService {
     @Transactional
     public void save(SignUpRequest signUpRequest) {
 
-<<<<<<< HEAD
-        if (userRepository.existsByName(signUpRequest.getName())) {
-            throw new DuplicateUserException("중복된 사용자 이름입니다");
-=======
         if(userRepository.existsByName(signUpRequest.getName())) {
             throw DuplicateUserException.Exception;
->>>>>>> 8216623 (feat)
         }
 
         User user = User.builder()
