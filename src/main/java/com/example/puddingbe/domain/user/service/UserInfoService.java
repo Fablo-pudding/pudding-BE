@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.user.service;
 
+import com.example.puddingbe.domain.ranking.service.MyRankingService;
 import com.example.puddingbe.domain.user.exception.ForbiddenUserInformationException;
 import com.example.puddingbe.domain.user.presentation.dto.response.UserInfoResponse;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserInfoService {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
+    private final MyRankingService myRankingService;
 
     public UserInfoResponse showInformation(String authorizationHeader) {
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
@@ -30,7 +32,7 @@ public class UserInfoService {
         return UserInfoResponse.builder()
                 .userId(findUser.getId())
                 .name(findUser.getName())
-                .ranking(null)
+                .ranking(myRankingService.getMyRanking().getRank())
                 .profileImageUrl("https://default.image.url/profile.png")
                 .build();
     }

@@ -5,7 +5,6 @@ import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
 import com.example.puddingbe.domain.refrigerator.domain.repository.PuddingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
