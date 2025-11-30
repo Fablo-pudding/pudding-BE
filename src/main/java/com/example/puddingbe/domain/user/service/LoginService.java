@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.user.service;
 
+import com.example.puddingbe.domain.user.exception.UnauthorizedUserException;
 import com.example.puddingbe.global.detail.UserDetail;
 import com.example.puddingbe.global.jwt.JwtToken;
 import com.example.puddingbe.global.jwt.JwtTokenProvider;
@@ -21,10 +22,10 @@ public class LoginService {
 
     public JwtToken login(String name, String password) {
         User user = userRepository.findByName(name)
-                .orElseThrow(() -> new RuntimeException("찾을 수 없는 사용자입니다." + name));
+                .orElseThrow(() -> UnauthorizedUserException.EXCEPTION);
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+            throw UnauthorizedUserException.EXCEPTION;
         }
 
         UserDetail userDetail = new UserDetail(user);

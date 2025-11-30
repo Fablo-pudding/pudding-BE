@@ -9,7 +9,6 @@ import com.example.puddingbe.domain.user.exception.DuplicateUserException;
 import com.example.puddingbe.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,8 +26,8 @@ public class SignupService {
     @Transactional
     public void save(SignUpRequest signUpRequest) {
 
-        if (userRepository.existsByName(signUpRequest.getName())) {
-            throw new DuplicateUserException("중복된 사용자 이름입니다");
+        if(userRepository.existsByName(signUpRequest.getName())) {
+            throw DuplicateUserException.Exception;
         }
 
         User user = User.builder()
