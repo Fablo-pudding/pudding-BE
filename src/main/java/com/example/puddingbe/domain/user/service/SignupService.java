@@ -44,11 +44,17 @@ public class SignupService {
 
         Ingredient ingredient = Ingredient.builder()
                 .user(user)
+                .egg(0L)
+                .sugar(0L)
+                .milk(0L)
                 .build();
         ingredientRepository.save(ingredient);
 
         Pudding pudding = Pudding.builder()
                 .user(user)
+                .pudding_1(0L)
+                .pudding_2(0L)
+                .pudding_3(0L)
                 .build();
         puddingRepository.save(pudding);
     }

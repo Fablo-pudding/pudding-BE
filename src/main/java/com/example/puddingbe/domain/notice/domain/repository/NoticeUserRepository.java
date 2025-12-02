@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface NoticeUserRepository extends JpaRepository<NoticeUser, Long> {
-
     List<NoticeUser> Id(Long id);
 }
