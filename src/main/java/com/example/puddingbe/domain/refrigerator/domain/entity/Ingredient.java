@@ -17,15 +17,12 @@ public class Ingredient {
     private Long id;
 
     @Column(nullable = false)
-    @Builder.Default
     private Long milk = 0L;
 
     @Column(nullable = false)
-    @Builder.Default
     private Long sugar = 0L;
 
     @Column(nullable = false)
-    @Builder.Default
     private Long egg = 0L;
 
     @OneToOne(fetch = FetchType.LAZY)
