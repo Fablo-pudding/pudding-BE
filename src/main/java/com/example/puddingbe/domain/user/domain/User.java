@@ -24,16 +24,6 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private Long birth;
-
-    @Column(nullable = false)
-    private Long batch;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING) //DB에 문자열로 저장
-    private Gender gender;
-
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
 
@@ -43,12 +33,9 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Pudding pudding;
 
-    public User(String name, String password, Long birth, Long batch, Gender gender, Role role) {
+    public User(String name, String password,Role role) {
         this.name = name;
         this.password = password;
-        this.birth = birth;
-        this.batch = batch;
-        this.gender = gender;
         this.role = role;
     }
 }
