@@ -28,15 +28,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
 
-    @NotNull
-    private String image;
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Ingredient ingredient;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Pudding pudding;
 
+    @Column(nullable = true)
     private String profileImageUrl;
 
     public User(String name, String password,Role role) {

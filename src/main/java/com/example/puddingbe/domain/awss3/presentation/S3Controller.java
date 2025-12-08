@@ -17,13 +17,11 @@ public class S3Controller {
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadProfile(
-            @RequestParam("file") MultipartFile file,   // 🔥 key = file
-            @RequestParam("userId") Long userId         // 🔥 key = userId
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("userId") Long userId
     ) {
-        // S3 업로드
         String url = s3Service.upload(file, userId);
 
-        // DB 업데이트
         userService.updateProfileUrl(userId, url);
 
         return ResponseEntity.ok(url);
