@@ -3,6 +3,7 @@ package com.example.puddingbe.domain.user.domain;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Pudding;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Table(name = "tbl_user")
@@ -33,9 +34,16 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Pudding pudding;
 
+    @Column(nullable = true)
+    private String profileImageUrl;
+
     public User(String name, String password,Role role) {
         this.name = name;
         this.password = password;
         this.role = role;
+    }
+
+    public void updateProfileImage(String url) {
+        this.profileImageUrl = url;
     }
 }

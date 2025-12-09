@@ -30,7 +30,14 @@ public enum ErrorCode {
 //user
     Duplicate_User_Exception(409, "중복된 사용자 아이디입니다"),
     Unauthorized_User_Exception(401, "유저정보가 유효하지 않습니다"),
-    Forbidden_User_Information_Exception(403, "본인의 정보만 조회 가능합니다");
+    Forbidden_User_Information_Exception(403, "본인의 정보만 조회 가능합니다"),
+
+//S3
+    Empty_File(400, "빈 파일은 업로드할수없습니다"),
+    Null_File(400,"파일이 존재하지않습니다"),
+    Only_Can_Img(400, "이미지형식의 파일만 게시할수있습니다"),
+    User_Not_Found(404, "유저ID를 찾을수없습니다");
+
 
     private final Integer status;
     private final String message;

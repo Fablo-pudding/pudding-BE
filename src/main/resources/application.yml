@@ -31,3 +31,17 @@ jwt:
   refresh-token:
 
     expire-time: 2592000
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${S3_KEY}
+      secret-key: ${S3_SECRET_KEY}
+    s3:
+      bucket: ${S3_bucket}
+    region:
+      static: eu-north-1
+    stack:
+      auto: false
+
+
