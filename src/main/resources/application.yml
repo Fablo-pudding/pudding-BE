@@ -38,7 +38,7 @@ cloud:
       access-key: ${S3_KEY}
       secret-key: ${S3_SECRET_KEY}
     s3:
-      bucket: pudding-s3
+      bucket: ${S3_bucket}
     region:
       static: eu-north-1
     stack:
