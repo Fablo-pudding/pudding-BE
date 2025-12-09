@@ -10,7 +10,7 @@ public class UserNotFound extends PuddingException {
 
     public static final UserNotFound EXCEPTION = new UserNotFound();
 
-    private UserNotFound() {
+    public UserNotFound() {
         super(ErrorCode.User_Not_Found);
     }
 }

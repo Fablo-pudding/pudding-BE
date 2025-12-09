@@ -3,6 +3,9 @@ package com.example.puddingbe.domain.awss3.service;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.example.puddingbe.domain.awss3.exception.EmptyFile;
+import com.example.puddingbe.domain.awss3.exception.NullFile;
+import com.example.puddingbe.domain.awss3.exception.OnlyCanImg;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,15 +26,15 @@ public class S3Service {
     public String upload(MultipartFile file, Long userId) {
 
         if (file.isEmpty()) {
-            throw new IllegalArgumentException("빈 파일은 업로드할수없습니다");
+            throw new EmptyFile();
         }
         if (file == null){
-            throw new IllegalArgumentException("파일이 존재하지않습니다");
+            throw new NullFile();
         }
 
         String contentType = file.getContentType();
         if (contentType == null || !contentType.startsWith("image")) {
-            throw new IllegalArgumentException("이미지 파일만 업로드할 수 있습니다.");
+            throw new OnlyCanImg();
         }
 
         String originalName = file.getOriginalFilename();

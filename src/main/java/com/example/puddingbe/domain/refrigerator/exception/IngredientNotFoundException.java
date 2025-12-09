@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class IngredientNotFoundException extends PuddingException {
     public static final IngredientNotFoundException EXCEPTION = new IngredientNotFoundException();
 
-    private IngredientNotFoundException() {
+    public IngredientNotFoundException() {
         super(ErrorCode.Ingredient_Not_Found_Exception);
     }
 }
