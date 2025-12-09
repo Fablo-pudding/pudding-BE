@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.awss3.service;
 
+import com.example.puddingbe.domain.awss3.exception.UserNotFound;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,12 +12,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public void updateProfileUrl(Long userId, String url) {
+    public User updateProfileImage(Long userId, String url) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
+                .orElseThrow(() ->  UserNotFound.EXCEPTION);
 
         user.updateProfileImage(url);
 
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 }

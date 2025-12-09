@@ -21,6 +21,19 @@ public class S3Service {
     private String bucket;
 
     public String upload(MultipartFile file, Long userId) {
+
+        if (file.isEmpty()) {
+            throw new IllegalArgumentException("빈 파일은 업로드할수없습니다");
+        }
+        if (file == null){
+            throw new IllegalArgumentException("파일이 존재하지않습니다");
+        }
+
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image")) {
+            throw new IllegalArgumentException("이미지 파일만 업로드할 수 있습니다.");
+        }
+
         String originalName = file.getOriginalFilename();
         String key = "profile/" + userId + "/" + UUID.randomUUID() + "_" + originalName;
 
