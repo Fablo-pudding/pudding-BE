@@ -13,12 +13,13 @@ import lombok.*;
 public class TimerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "timer_id")
     private Long id; // db 식별
 
     @Column
     private Long totalTime; // 토탈 값
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 }

@@ -21,9 +21,9 @@ public class TimerController {
         timerCreateService.createTimer(timerRequest);
     }
 
-    @GetMapping("/{timer-id}")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public TimerResponse getTimer(@PathVariable("timer-id") Long id) { // 서비스에 넘겨주는 id
-        return timerReadService.readTimer(id);
+    public TimerResponse getTimer() { // 타이머 조회는 한유저 당 한개의 타이머만 가능하기 때문에 토큰으로 검증 가능
+        return timerReadService.readTimer();
     }
 }
