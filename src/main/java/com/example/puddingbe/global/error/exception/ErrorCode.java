@@ -32,6 +32,10 @@ public enum ErrorCode {
     Unauthorized_User_Exception(401, "유저정보가 유효하지 않습니다"),
     Forbidden_User_Information_Exception(403, "본인의 정보만 조회 가능합니다"),
 
+//timer
+    Already_Exist_Timer_Exception(409, "타이머가 이미 생성되어있습니다"),
+    Timer_Not_Found_Exception(404, "타이머가 생성되지 않았습니다"),
+
 //S3
     Empty_File(400, "빈 파일은 업로드할수없습니다"),
     Null_File(400,"파일이 존재하지않습니다"),
