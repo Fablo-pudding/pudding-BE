@@ -34,7 +34,7 @@ public enum ErrorCode {
 
 //timer
     Already_Exist_Timer_Exception(409, "타이머가 이미 생성되어있습니다"),
-    Timer_Not_Found_Exception(404, "타이머가 생성되지 않았습니다");
+    Timer_Not_Found_Exception(404, "타이머가 생성되지 않았습니다"),
 
 //S3
     Empty_File(400, "빈 파일은 업로드할수없습니다"),
