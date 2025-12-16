@@ -33,7 +33,7 @@ public class UserInfoService {
                 .userId(findUser.getId())
                 .name(findUser.getName())
                 .ranking(myRankingService.getMyRanking().getRank())
-                .profileImageUrl("https://default.image.url/profile.png")
+                .profileImageUrl(findUser.getProfileImageUrl())
                 .build();
     }
 }
