@@ -16,4 +16,9 @@ public class UserFacade {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByName(name).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)).getId();
     }
+
+    public Boolean isAdmin() {
+        return SecurityContextHolder.getContext().getAuthentication().getAuthorities()
+                .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
+    }
 }

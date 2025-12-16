@@ -6,7 +6,6 @@ import com.example.puddingbe.domain.inquiry.exception.InquiryNotFoundException;
 import com.example.puddingbe.domain.inquiry.exception.OnlyAdminOrAuthorDeleteInquiryException;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -19,8 +18,7 @@ public class InquiryDeleteService {
         Inquiry inquiry = inquiryRepository.findById(id)
                 .orElseThrow(() -> InquiryNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
-        boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
-                .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
+        boolean isAdmin = userFacade.isAdmin();
         if(!isAdmin && !inquiry.getUser().getId().equals(userId)) {
             throw OnlyAdminOrAuthorDeleteInquiryException.EXCEPTION;
         }
