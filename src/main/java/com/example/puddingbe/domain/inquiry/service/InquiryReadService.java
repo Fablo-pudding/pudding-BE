@@ -10,7 +10,6 @@ import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,8 +22,8 @@ public class InquiryReadService {
     private final UserFacade userFacade;
 
     public List<InquiryResponse> getAllInquiries() {
-        if (!(SecurityContextHolder.getContext().getAuthentication().getAuthorities()
-                .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN")))){
+        boolean isAdmin = userFacade.isAdmin();
+        if (!isAdmin) {
             throw OnlyAdminReadInquiryException.EXCEPTION;
         }
         return inquiryRepository.findAll().stream()
@@ -45,8 +44,7 @@ public class InquiryReadService {
         Inquiry inquiry = inquiryRepository.findById(id)
                 .orElseThrow(()->InquiryNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
-        boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
-                .stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
+        boolean isAdmin = userFacade.isAdmin();
         if (!isAdmin && !inquiry.getUser().getId().equals(userId)) {
             throw OnlyAdminOrAuthorReadInquiryException.EXCEPTION;
         }

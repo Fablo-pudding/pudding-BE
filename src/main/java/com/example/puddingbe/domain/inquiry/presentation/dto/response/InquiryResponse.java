@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 public class InquiryResponse {
     private long id;
     private long userId;
+    private String userName;
+    private String userProfileImageUrl;
     private String title;
     private String content;
     private LocalDateTime createdAt;
@@ -18,6 +20,8 @@ public class InquiryResponse {
     public InquiryResponse(Inquiry inquiry) {
         this.id = inquiry.getId();
         this.userId = inquiry.getUser().getId();
+        this.userName = inquiry.getUser().getName();
+        this.userProfileImageUrl = inquiry.getUser().getProfileImageUrl();
         this.title = inquiry.getTitle();
         this.content = inquiry.getContent();
         this.createdAt = inquiry.getCreatedAt();
