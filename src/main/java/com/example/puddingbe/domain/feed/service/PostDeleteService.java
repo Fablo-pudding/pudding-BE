@@ -19,7 +19,7 @@ public class PostDeleteService {
     public void delete(Long postId){
         Long userId = userFacade.getUserId();
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
+        boolean isAdmin = userFacade.isAdmin();
 
         // 관리자 확인, 맞는 아이디인지 확인
         if (!isAdmin && !post.getUserId().equals(userId)) {
