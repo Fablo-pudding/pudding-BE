@@ -21,7 +21,7 @@ public class PostUpdateService {
     public void updatePost(Long postId, PostRequestDTO req){
         Long userId = userFacade.getUserId();
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        boolean isAdmin = userRepository.findById(userId).get().getRole().equals("ADMIN");
+        boolean isAdmin = userFacade.isAdmin();
         // 유저 확인
         if(!isAdmin && !post.getUserId().equals(userId)){
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
