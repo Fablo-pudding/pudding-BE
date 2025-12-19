@@ -6,6 +6,7 @@ import com.example.puddingbe.domain.notice.exception.NoticeAdminCanUpdate;
 import com.example.puddingbe.domain.notice.exception.NoticeNotFoundException;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeUpdateRequest;
 import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
+import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,10 @@ import org.springframework.stereotype.Service;
 public class NoticeUserUpdateService {
 
     private final NoticeUserRepository noticeUserRepository;
+    private final UserFacade userFacade;
 
     public void updateNotice(Long id, NoticeUpdateRequest request) {
-        Boolean isAdmin = SecurityContextHolder.getContext().getAuthentication()
-                .getAuthorities()
-                .stream()
-                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+        Boolean isAdmin = userFacade.isAdmin();
         if (!isAdmin) {
             throw (NoticeAdminCanUpdate.EXCEPTION);
         }
