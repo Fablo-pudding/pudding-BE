@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.feed.service;
 
+import com.example.puddingbe.domain.comment.presentation.dto.CommentResponseDTO;
 import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.presentation.dto.PostDetailResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
@@ -42,7 +43,14 @@ public class PostReadService {
                     post.getTitle(),
                     post.getContent(),
                     post.getCreatedAt(),
-                    post.getComments(),
+                    post.getComments().stream().map(
+                            comment -> new CommentResponseDTO(
+                                    comment.getCommentId(),
+                                    comment.getUserId(),
+                                    comment.getContent(),
+                                    comment.getCreatedAt()
+                            )
+                    ).toList(),
                     post.getComments().stream().count()
             );
         } catch (Exception e) {
