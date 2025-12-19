@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.comment.service;
 
+import com.amazonaws.services.kms.model.NotFoundException;
 import com.example.puddingbe.domain.comment.domain.Comment;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.domain.repository.CommentRepository;
@@ -29,7 +30,7 @@ public class CommentCreateService {
 
         try {
             Comment comment = Comment.builder()
-                    .postId(post.getPostId())
+                    .post(post)
                     .userId(userId)
                     .content(dto.getContent())
                     .build();
