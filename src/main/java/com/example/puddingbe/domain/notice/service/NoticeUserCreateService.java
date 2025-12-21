@@ -22,10 +22,7 @@ public class NoticeUserCreateService {
     private final UserFacade userFacade;
 
     public void createNotice(NoticeCreateRequest request) {
-        Boolean isAdmin = SecurityContextHolder.getContext().getAuthentication()
-                .getAuthorities()
-                .stream()
-                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+        Boolean isAdmin = userFacade.isAdmin();
         if (!isAdmin) {
             throw NoticeAdminCanCreate.EXCEPTION;
         }
