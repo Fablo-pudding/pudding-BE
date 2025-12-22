@@ -22,9 +22,10 @@ public class RefrigeratorController {
     private final AddEggService addEggService;
     private final UserFacade userFacade;
 
-    @GetMapping("/{userId}")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public RefrigeratorResponse getRefrigerator(@PathVariable Long userId) {
+    public RefrigeratorResponse getRefrigerator() {
+        Long userId = userFacade.getUserId();
         return refrigeratorReadService.getRefrigerator(userId);
     }
     @PostMapping("/make")
