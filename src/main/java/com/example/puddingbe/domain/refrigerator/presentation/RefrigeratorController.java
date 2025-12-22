@@ -22,7 +22,7 @@ public class RefrigeratorController {
     private final AddEggService addEggService;
     private final UserFacade userFacade;
 
-    @GetMapping("")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public RefrigeratorResponse getRefrigerator() {
         Long userId = userFacade.getUserId();
