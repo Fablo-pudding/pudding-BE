@@ -1,6 +1,8 @@
 package com.example.puddingbe.domain.comment.service;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
+import com.example.puddingbe.domain.comment.exception.CommentNotFoundException;
+import com.example.puddingbe.domain.comment.exception.CommentOnlyAuthorUpdateException;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.domain.repository.CommentRepository;
 import com.example.puddingbe.global.detail.UserFacade;
@@ -18,11 +20,11 @@ public class CommentUpdateService {
 
     @Transactional
     public void update(Long commentId, CommentRequestDTO dto) {
-        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> CommentNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
 
         if(!comment.getUserId().equals(userId)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw CommentOnlyAuthorUpdateException.EXCEPTION;
         }
 
         comment.update(dto.getContent());
