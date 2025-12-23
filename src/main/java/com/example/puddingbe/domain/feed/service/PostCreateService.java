@@ -1,6 +1,7 @@
 package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.feed.domain.Post;
+import com.example.puddingbe.domain.feed.exception.PostBadRequestExcpetion;
 import com.example.puddingbe.domain.feed.presentation.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
 import com.example.puddingbe.global.detail.UserFacade;
@@ -18,7 +19,7 @@ public class PostCreateService {
     public void createPost(PostRequestDTO dto){
         // null이거나 비어있거나 공백일 경우 400
         if (dto.getTitle().trim().isEmpty() || dto.getContent().trim().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw PostBadRequestExcpetion.EXCPETION;
         }
 
         Long userId = userFacade.getUserId();

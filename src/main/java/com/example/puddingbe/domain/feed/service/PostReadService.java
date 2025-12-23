@@ -1,8 +1,10 @@
 package com.example.puddingbe.domain.feed.service;
 
+import com.example.puddingbe.domain.awss3.exception.UserNotFound;
 import com.example.puddingbe.domain.comment.domain.Comment;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentResponseDTO;
 import com.example.puddingbe.domain.feed.domain.Post;
+import com.example.puddingbe.domain.feed.exception.PostNotFoundExcpetion;
 import com.example.puddingbe.domain.feed.presentation.dto.PostDetailResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
@@ -39,8 +41,8 @@ public class PostReadService {
     }
 
     public PostDetailResponseDTO getPostDetail(Long postId){
-        Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        User postUser = userRepository.findById(post.getUserId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Post post = postRepository.findById(postId).orElseThrow(() -> PostNotFoundExcpetion.EXCPETION);
+        User postUser = userRepository.findById(post.getUserId()).orElseThrow(() -> UserNotFound.EXCEPTION);
 
         try {
             return new PostDetailResponseDTO(

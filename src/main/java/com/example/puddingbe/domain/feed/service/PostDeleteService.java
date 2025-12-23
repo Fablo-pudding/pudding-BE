@@ -2,6 +2,8 @@ package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
+import com.example.puddingbe.domain.feed.exception.PostOnlyAuthorDeleteException;
+import com.example.puddingbe.domain.feed.exception.PostNotFoundExcpetion;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -13,17 +15,16 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class PostDeleteService {
     private final PostRepository postRepository;
-    private final UserRepository userRepository;
     private final UserFacade userFacade;
 
     public void delete(Long postId){
         Long userId = userFacade.getUserId();
-        Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Post post = postRepository.findById(postId).orElseThrow(() -> PostNotFoundExcpetion.EXCPETION);
         boolean isAdmin = userFacade.isAdmin();
 
         // 관리자 확인, 맞는 아이디인지 확인
         if (!isAdmin && !post.getUserId().equals(userId)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw PostOnlyAuthorDeleteException.EXCPETION;
         }
 
         
