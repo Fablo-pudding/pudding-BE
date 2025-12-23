@@ -43,5 +43,3 @@ cloud:
       static: eu-north-1
     stack:
       auto: false
-
-
