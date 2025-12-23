@@ -1,10 +1,12 @@
 package com.example.puddingbe.domain.comment.service;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
+import com.example.puddingbe.domain.comment.exception.CommentBadRequestException;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentRequestDTO;
 import com.example.puddingbe.domain.comment.domain.repository.CommentRepository;
 import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
+import com.example.puddingbe.domain.feed.exception.PostNotFoundException;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,12 +21,12 @@ public class CommentCreateService {
     private final UserFacade userFacade;
 
     public void create(Long postId, CommentRequestDTO dto){
-        Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Post post = postRepository.findById(postId).orElseThrow(() -> PostNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
 
 
         if (dto.getContent().trim().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw CommentBadRequestException.EXCEPTION;
         }
 
         try {
