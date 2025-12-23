@@ -1,6 +1,8 @@
 package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.feed.domain.Post;
+import com.example.puddingbe.domain.feed.exception.PostNotFoundExcpetion;
+import com.example.puddingbe.domain.feed.exception.PostOnlyAuthorUpdateException;
 import com.example.puddingbe.domain.feed.presentation.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
@@ -20,11 +22,11 @@ public class PostUpdateService {
 
     public void updatePost(Long postId, PostRequestDTO req){
         Long userId = userFacade.getUserId();
-        Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Post post = postRepository.findById(postId).orElseThrow(() -> PostNotFoundExcpetion.EXCPETION);
         boolean isAdmin = userFacade.isAdmin();
         // 유저 확인
         if(!isAdmin && !post.getUserId().equals(userId)){
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw PostOnlyAuthorUpdateException.EXCPETION;
         }
 
 

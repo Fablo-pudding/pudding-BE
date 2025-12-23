@@ -40,7 +40,13 @@ public enum ErrorCode {
     Empty_File(400, "빈 파일은 업로드할수없습니다"),
     Null_File(400,"파일이 존재하지않습니다"),
     Only_Can_Img(400, "이미지형식의 파일만 게시할수있습니다"),
-    User_Not_Found(404, "유저ID를 찾을수없습니다");
+    User_Not_Found(404, "유저ID를 찾을수없습니다"),
+
+//feed
+    Post_Not_Found_Exception(404, "게시글을 찾을 수 없습니다"),
+    Post_Bad_Request_Exception(400, "잘못된 게시글 요청입니다"),
+    Only_Author_Update_Post_Exception(403, "게시글 작성자 혹은 관리자만 수정할 수 있습니다"),
+    Only_Author_Delete_Post_Exception(403, "게시글 작성자 혹은 관리자만 삭제할 수 있습니다");
 
 
     private final Integer status;
