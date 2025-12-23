@@ -2,6 +2,8 @@ package com.example.puddingbe.domain.comment.service;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
 import com.example.puddingbe.domain.comment.domain.repository.CommentRepository;
+import com.example.puddingbe.domain.comment.exception.CommentNotFoundException;
+import com.example.puddingbe.domain.comment.exception.CommentOnlyAuthorDeleteException;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,11 +17,11 @@ public class CommentDeleteService {
     private final UserFacade userFacade;
 
     public void Delete(Long commentId) {
-        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> CommentNotFoundException.EXCEPTION);
         Long userId = userFacade.getUserId();
 
         if(!comment.getUserId().equals(userId)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw CommentOnlyAuthorDeleteException.EXCEPTION;
         }
 
         commentRepository.delete(comment);

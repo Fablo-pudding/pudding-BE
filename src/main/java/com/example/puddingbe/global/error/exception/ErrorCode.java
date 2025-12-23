@@ -46,7 +46,13 @@ public enum ErrorCode {
     Post_Not_Found_Exception(404, "게시글을 찾을 수 없습니다"),
     Post_Bad_Request_Exception(400, "잘못된 게시글 요청입니다"),
     Only_Author_Update_Post_Exception(403, "게시글 작성자 혹은 관리자만 수정할 수 있습니다"),
-    Only_Author_Delete_Post_Exception(403, "게시글 작성자 혹은 관리자만 삭제할 수 있습니다");
+    Only_Author_Delete_Post_Exception(403, "게시글 작성자 혹은 관리자만 삭제할 수 있습니다"),
+
+//comment
+    Comment_Not_Found_Exception(404, "댓글을 찾을 수 없습니다"),
+    Comment_Bad_Request_Exception(400, "잘못된 댓글 요청입니다"),
+    Only_Author_Update_Comment_Exception(403, "댓글 작성자 혹은 관리자만 수정할 수 있습니다"),
+    Only_Author_Delete_Comment_Exception(403, "댓글 작성자 혹은 관리자만 삭제할 수 있습니다");
 
 
     private final Integer status;
