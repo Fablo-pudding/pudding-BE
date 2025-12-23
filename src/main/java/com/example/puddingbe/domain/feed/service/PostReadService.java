@@ -54,6 +54,7 @@ public class PostReadService {
                             comment -> new CommentResponseDTO(
                                     comment.getCommentId(),
                                     comment.getUserId(),
+                                    userRepository.findById(comment.getUserId()).get().getProfileImageUrl(),
                                     comment.getContent(),
                                     comment.getCreatedAt()
                             )
