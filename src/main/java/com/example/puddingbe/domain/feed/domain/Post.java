@@ -1,6 +1,7 @@
 package com.example.puddingbe.domain.feed.domain;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
+import com.example.puddingbe.domain.comment.presentation.dto.CommentResponseDTO;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -34,8 +35,7 @@ public class Post {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "post_id")
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 
     @Builder

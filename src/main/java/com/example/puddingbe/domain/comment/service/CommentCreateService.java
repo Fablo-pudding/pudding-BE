@@ -29,7 +29,7 @@ public class CommentCreateService {
 
         try {
             Comment comment = Comment.builder()
-                    .postId(post.getPostId())
+                    .post(post)
                     .userId(userId)
                     .content(dto.getContent())
                     .build();

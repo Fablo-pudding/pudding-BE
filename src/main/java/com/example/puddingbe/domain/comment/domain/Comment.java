@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.comment.domain;
 
+import com.example.puddingbe.domain.feed.domain.Post;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,8 +19,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
 
-    @Column(name = "post_id", nullable = false)
-    private Long postId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Post post;
 
     @Column(name = "user_id", nullable = false)
     private Long userId;
@@ -31,8 +32,8 @@ public class Comment {
     private LocalDateTime createdAt;
 
     @Builder
-    public Comment(Long postId,Long userId, String content) {
-        this.postId = postId;
+    public Comment(Post post,Long userId, String content) {
+        this.post = post;
         this.userId = userId;
         this.content = content;
         this.createdAt = LocalDateTime.now();
