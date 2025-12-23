@@ -5,6 +5,7 @@ import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.presentation.dto.PostDetailResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
+import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostReadService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     //모두 가져오기, 자세한 내용(하나만) 가져오기
     public List<PostListResponseDTO> getPosts() {
