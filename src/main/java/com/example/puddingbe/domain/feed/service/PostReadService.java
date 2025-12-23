@@ -1,10 +1,14 @@
 package com.example.puddingbe.domain.feed.service;
 
+import com.example.puddingbe.domain.comment.domain.Comment;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentResponseDTO;
 import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.presentation.dto.PostDetailResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
+import com.example.puddingbe.domain.user.domain.User;
+import com.example.puddingbe.domain.user.domain.repository.UserRepository;
+import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostReadService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     //모두 가져오기, 자세한 내용(하나만) 가져오기
     public List<PostListResponseDTO> getPosts() {
@@ -35,11 +40,13 @@ public class PostReadService {
 
     public PostDetailResponseDTO getPostDetail(Long postId){
         Post post = postRepository.findById(postId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        User postUser = userRepository.findById(post.getUserId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         try {
             return new PostDetailResponseDTO(
                     post.getPostId(),
                     post.getUserId(),
+                    postUser.getProfileImageUrl(),
                     post.getTitle(),
                     post.getContent(),
                     post.getCreatedAt(),
