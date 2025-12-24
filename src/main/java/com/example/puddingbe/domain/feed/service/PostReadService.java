@@ -33,6 +33,7 @@ public class PostReadService {
         return posts.stream().map(post -> new PostListResponseDTO(
                 post.getPostId(),
                 post.getUserId(),
+                userRepository.findById(post.getUserId()).get().getProfileImageUrl(),
                 post.getTitle(),
                 post.getContent(),
                 post.getCreatedAt(),
