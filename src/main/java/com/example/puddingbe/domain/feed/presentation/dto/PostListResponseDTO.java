@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class PostListResponseDTO {
     Long postId;
     Long userId;
+    String profileImageUrl;
     String title;
     String content;
     LocalDateTime createdAt;
