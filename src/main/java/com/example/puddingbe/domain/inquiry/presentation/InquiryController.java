@@ -53,7 +53,7 @@ public class InquiryController {
         inquiryDeleteService.deleteInquiry(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createInquiry(@RequestBody InquiryRequest request) {
         inquiryCreateService.createInquiry(request);
