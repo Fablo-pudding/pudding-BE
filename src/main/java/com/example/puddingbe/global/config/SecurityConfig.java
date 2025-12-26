@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -55,7 +54,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/inquiry/{inquiry-id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/inquiry").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/inquiry/create").authenticated()
 
                         // ranking API
                         .requestMatchers(HttpMethod.GET, "/ranking/global").permitAll()
