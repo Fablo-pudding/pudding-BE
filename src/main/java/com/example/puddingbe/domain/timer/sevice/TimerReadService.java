@@ -30,7 +30,6 @@ public class TimerReadService {
 
         return TimerResponse.builder() // return 문은 완전히 끝나는 구문.
                 .totalTime(timerEntity.getTotalTime())
-                .id(timerEntity.getId())
                 .build();
     }
 }
