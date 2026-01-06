@@ -11,5 +11,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TimerResponse {
     private Long totalTime;
-    private Long id;
 }
