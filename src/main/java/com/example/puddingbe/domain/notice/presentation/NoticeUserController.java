@@ -1,13 +1,11 @@
 package com.example.puddingbe.domain.notice.presentation;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeCheckResponse;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateRequest;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeReadResponse;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeUpdateRequest;
-import com.example.puddingbe.domain.notice.service.NoticeUserCreateService;
-import com.example.puddingbe.domain.notice.service.NoticeUserDeleteService;
-import com.example.puddingbe.domain.notice.service.NoticeUserReadService;
-import com.example.puddingbe.domain.notice.service.NoticeUserUpdateService;
+import com.example.puddingbe.domain.notice.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +21,7 @@ public class NoticeUserController {
     private final NoticeUserReadService noticeUserReadService;
     private final NoticeUserUpdateService noticeUserUpdateService;
     private final NoticeUserDeleteService noticeUserDeleteService;
+    private final NoticeUserCheckService noticeUserCheckService;
 
 
     //create
@@ -49,5 +48,10 @@ public class NoticeUserController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<NoticeUser> deleteNotice(@PathVariable Long id) {
         return noticeUserDeleteService.deleteNotice(id);
+    }
+
+    @GetMapping("/read/{id}")
+    public ResponseEntity<NoticeCheckResponse> checkNotice(@PathVariable Long id) {
+        return ResponseEntity.ok(noticeUserCheckService.readOne(id));
     }
 }
