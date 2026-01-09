@@ -10,12 +10,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class NoticeCheckResponse {
     private Long id;
+    private String registerEmployeeNo;
     private String title;
     private String content;
     private LocalDateTime createdAt;
 
     public NoticeCheckResponse(NoticeUser noticeUser) {
         this.id = noticeUser.getId();
+        this.registerEmployeeNo = noticeUser.getRegisterEmployeeNo();
         this.title = noticeUser.getTitle();
         this.content = noticeUser.getContent();
         this.createdAt = LocalDateTime.now();
