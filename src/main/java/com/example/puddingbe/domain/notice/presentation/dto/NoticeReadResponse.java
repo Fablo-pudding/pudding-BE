@@ -11,19 +11,13 @@ public class NoticeReadResponse {
 
     private long id;
     private String title;
-    private String content;
-    private LocalDateTime registerDateTime;
-    private LocalDateTime updateDateTime;
     private String registerEmployeeNo;
-    private String updateEmployeeNo;
+    private LocalDateTime createdAt;
 
     public NoticeReadResponse(NoticeUser noticeUser) {
         this.id = noticeUser.getId();
         this.title = noticeUser.getTitle();
-        this.content = noticeUser.getContent();
-        this.registerDateTime = noticeUser.getRegisterDatetime();
-        this.updateDateTime = noticeUser.getUpdateDatetime();
+        this.createdAt = noticeUser.getRegisterDatetime();
         this.registerEmployeeNo = noticeUser.getRegisterEmployeeNo();
-        this.updateEmployeeNo = noticeUser.getUpdateEmployeeNo();
     }
 }

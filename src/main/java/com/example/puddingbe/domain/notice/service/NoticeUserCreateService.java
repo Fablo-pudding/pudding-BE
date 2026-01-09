@@ -1,16 +1,12 @@
 package com.example.puddingbe.domain.notice.service;
 
-import com.example.puddingbe.domain.inquiry.exception.UnauthorizedException;
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
 import com.example.puddingbe.domain.notice.exception.NoticeAdminCanCreate;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateRequest;
 import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 
