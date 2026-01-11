@@ -2,6 +2,7 @@ package com.example.puddingbe.domain.feed.domain;
 
 import com.example.puddingbe.domain.comment.domain.Comment;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentResponseDTO;
+import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class Post {
     @Column(name = "post_id")
     private Long postId;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false , updatable = false, insertable = false)
     private Long userId;
 
     @Column(nullable = false, length = 100)
@@ -37,6 +38,10 @@ public class Post {
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Builder
     public Post(Long userId, String title, String content) {

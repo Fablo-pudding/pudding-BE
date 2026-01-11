@@ -14,9 +14,11 @@ public class NoticeCheckResponse {
     private String title;
     private String content;
     private LocalDateTime createdAt;
+    private String profileImageUrl;
 
     public NoticeCheckResponse(NoticeUser noticeUser) {
         this.id = noticeUser.getId();
+        this.profileImageUrl = noticeUser.getUser().getProfileImageUrl();
         this.registerEmployeeNo = noticeUser.getRegisterEmployeeNo();
         this.title = noticeUser.getTitle();
         this.content = noticeUser.getContent();
