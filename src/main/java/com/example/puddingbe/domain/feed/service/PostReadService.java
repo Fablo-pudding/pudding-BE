@@ -31,11 +31,9 @@ public class PostReadService {
 
         //List<Post>타입을 List<PostResponse>타입으로 변경
         return posts.stream().map(post -> new PostListResponseDTO(
-                post.getPostId(),
-                post.getUserId(),
                 userRepository.findById(post.getUserId()).get().getProfileImageUrl(),
                 post.getTitle(),
-                post.getContent(),
+                userRepository.findById(post.getUserId()).get().getName(),
                 post.getCreatedAt(),
                 post.getComments().stream().count()
         )).collect(Collectors.toList());
