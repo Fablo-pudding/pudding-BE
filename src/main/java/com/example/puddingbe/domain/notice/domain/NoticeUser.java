@@ -1,5 +1,6 @@
 package com.example.puddingbe.domain.notice.domain;
 
+import com.example.puddingbe.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotNull;
@@ -19,6 +20,13 @@ public class NoticeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column (columnDefinition = "VARCHAR(200)")
     private String title;
