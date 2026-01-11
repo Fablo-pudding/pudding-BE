@@ -27,7 +27,7 @@ public class PostDeleteService {
             throw PostOnlyAuthorDeleteException.EXCPETION;
         }
 
-        
+
         try
         {
             postRepository.delete(post);

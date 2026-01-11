@@ -1,6 +1,7 @@
 package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.awss3.exception.UserNotFound;
+import com.example.puddingbe.domain.comment.domain.Comment;
 import com.example.puddingbe.domain.comment.presentation.dto.CommentResponseDTO;
 import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.exception.PostNotFoundExcpetion;
@@ -9,6 +10,7 @@ import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
+import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,9 +29,16 @@ public class PostReadService {
     public List<PostListResponseDTO> getPosts() {
         List<Post> posts = postRepository.findAll();
 
-        return posts.stream()
-                .map(post -> new PostListResponseDTO(post))
-                .collect(Collectors.toList());
+        //List<Post>타입을 List<PostResponse>타입으로 변경
+        return posts.stream().map(post -> new PostListResponseDTO(
+                post.getPostId(),
+                post.getUserId(),
+                userRepository.findById(post.getUserId()).get().getProfileImageUrl(),
+                post.getTitle(),
+                post.getContent(),
+                post.getCreatedAt(),
+                post.getComments().stream().count()
+        )).collect(Collectors.toList());
     }
 
     public PostDetailResponseDTO getPostDetail(Long postId){
