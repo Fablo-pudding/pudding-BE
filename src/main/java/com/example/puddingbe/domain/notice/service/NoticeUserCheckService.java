@@ -15,9 +15,9 @@ public class NoticeUserCheckService {
 
     @Transactional(readOnly = true)
     public NoticeCheckResponse readOne(Long id) {
-    NoticeUser noticeUser = noticeUserRepository.findById(id)
-            .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
-    return new NoticeCheckResponse(noticeUser);
+        NoticeUser noticeUser = noticeUserRepository.findById(id)
+                .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
+        return new NoticeCheckResponse(noticeUser);
     }
 
 }

@@ -41,5 +41,5 @@ public class NoticeUserCreateService {
                 .build();
 
         noticeUserRepository.save(noticeUser);
-        }
     }
+}
