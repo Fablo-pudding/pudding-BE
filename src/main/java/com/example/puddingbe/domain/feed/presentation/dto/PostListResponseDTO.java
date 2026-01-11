@@ -8,11 +8,9 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class PostListResponseDTO {
-    Long postId;
-    Long userId;
     String profileImageUrl;
     String title;
-    String content;
+    String name;
     LocalDateTime createdAt;
     Long commentCount;
 }
