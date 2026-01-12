@@ -41,14 +41,14 @@ public class Ingredient {
         this.milk -= 1;
     }
 
-    public void addMilk(){
-        this.milk += 1;
+    public void addMilk(int amount){
+        this.milk += amount;
     }
-    public void addSugar(){
-        this.sugar += 1;
+    public void addSugar(int amount){
+        this.sugar += amount;
     }
-    public void addEgg(){
-        this.egg += 1;
+    public void addEgg(int amount){
+        this.egg += amount;
     }
 
 }

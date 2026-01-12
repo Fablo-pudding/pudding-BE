@@ -1,11 +1,13 @@
 package com.example.puddingbe.domain.refrigerator.presentation;
 
+import com.example.puddingbe.domain.refrigerator.domain.IngredientType;
 import com.example.puddingbe.domain.refrigerator.domain.entity.Ingredient;
 import com.example.puddingbe.domain.refrigerator.presentation.dto.*;
 import com.example.puddingbe.domain.refrigerator.service.*;
 import com.example.puddingbe.global.detail.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,9 +19,7 @@ public class RefrigeratorController {
     private final RefrigeratorCreateService refrigeratorCreateService;
     private final PuddingUpgradeOneService puddingUpgradeService;
     private final PuddingUpgradeTwoService puddingUpgradeTwoService;
-    private final AddMilkService addMilkService;
-    private final AddSugarService addSugarService;
-    private final AddEggService addEggService;
+    private final AddIngredientService addIngredientService;
     private final UserFacade userFacade;
 
     @GetMapping
@@ -47,25 +47,12 @@ public class RefrigeratorController {
         return puddingUpgradeTwoService.upgradePuddingTwo(userId);
     }
 
-    @PostMapping("/get-milk")
+    @PostMapping("/get-ingredient")
     @ResponseStatus(HttpStatus.OK)
-    public IngredientAddResponse getMilk() {
+    public ResponseEntity<Void> addIngredient(@RequestParam IngredientType type){
         Long userId = userFacade.getUserId();
-        return addMilkService.addSomeMilk(userId);
-    }
-
-    @PostMapping("/get-egg")
-    @ResponseStatus(HttpStatus.OK)
-    public IngredientAddResponse getEgg() {
-        Long userId = userFacade.getUserId();
-        return addEggService.addSomeEgg(userId);
-    }
-
-    @PostMapping("/get-sugar")
-    @ResponseStatus(HttpStatus.OK)
-    public IngredientAddResponse getSugar() {
-        Long userId = userFacade.getUserId();
-        return addSugarService.addSomeSugar(userId);
+        addIngredientService.addIngredient(userId, type);
+        return ResponseEntity.ok().build();
     }
 
 }
