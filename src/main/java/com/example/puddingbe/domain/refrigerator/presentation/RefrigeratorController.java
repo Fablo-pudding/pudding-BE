@@ -49,10 +49,9 @@ public class RefrigeratorController {
 
     @PostMapping("/get-ingredient")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Void> addIngredient(@RequestParam IngredientType type){
+    public void addIngredient(@RequestParam IngredientType type){
         Long userId = userFacade.getUserId();
         addIngredientService.addIngredient(userId, type);
-        return ResponseEntity.ok().build();
     }
 
 }
