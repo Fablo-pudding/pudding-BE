@@ -30,13 +30,18 @@ public class PostReadService {
         List<Post> posts = postRepository.findAll();
 
         //List<Post>타입을 List<PostResponse>타입으로 변경
-        return posts.stream().map(post -> new PostListResponseDTO(
-                userRepository.findById(post.getUserId()).get().getProfileImageUrl(),
-                post.getTitle(),
-                userRepository.findById(post.getUserId()).get().getName(),
-                post.getCreatedAt(),
-                post.getComments().stream().count()
-        )).collect(Collectors.toList());
+        return posts.stream().map(post -> {
+            User user = userRepository.findById(post.getUserId()).orElseThrow(() -> UserNotFound.EXCEPTION);
+
+            return new PostListResponseDTO(
+                    post.getPostId(),
+                    user.getProfileImageUrl(),
+                    post.getTitle(),
+                    user.getName(),
+                    post.getCreatedAt(),
+                    post.getComments().size()
+            );
+        }).collect(Collectors.toList());
     }
 
     public PostDetailResponseDTO getPostDetail(Long postId){
