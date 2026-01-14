@@ -12,6 +12,7 @@ import java.util.List;
 public class PostDetailResponseDTO {
     Long postId;
     Long userId;
+    String userName;
     String profileImageUrl;
     String title;
     String content;

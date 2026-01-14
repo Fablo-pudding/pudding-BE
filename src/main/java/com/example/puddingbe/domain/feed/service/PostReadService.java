@@ -52,6 +52,7 @@ public class PostReadService {
             return new PostDetailResponseDTO(
                     post.getPostId(),
                     post.getUserId(),
+                    userRepository.findById(post.getUserId()).get().getName(),
                     postUser.getProfileImageUrl(),
                     post.getTitle(),
                     post.getContent(),
