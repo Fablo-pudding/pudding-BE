@@ -34,6 +34,7 @@ public class UserInfoService {
                 .name(findUser.getName())
                 .ranking(myRankingService.getMyRanking().getRank())
                 .profileImageUrl(findUser.getProfileImageUrl())
+                .role(findUser.getRole())
                 .build();
     }
 }
