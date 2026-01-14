@@ -57,14 +57,17 @@ public class PostReadService {
                     post.getTitle(),
                     post.getContent(),
                     post.getCreatedAt(),
-                    post.getComments().stream().map(
-                            comment -> new CommentResponseDTO(
-                                    comment.getCommentId(),
-                                    comment.getUserId(),
-                                    userRepository.findById(comment.getUserId()).get().getProfileImageUrl(),
-                                    comment.getContent(),
-                                    comment.getCreatedAt()
-                            )
+                    post.getComments().stream().map( comment -> {
+                        User user = userRepository.findById(comment.getUserId()).get();
+
+                        return new CommentResponseDTO(
+                                comment.getCommentId(),
+                                comment.getUserId(),
+                                user.getName(),
+                                user.getProfileImageUrl(),
+                                comment.getContent()
+                        );
+                            }
                     ).toList(),
                     post.getComments().stream().count()
             );

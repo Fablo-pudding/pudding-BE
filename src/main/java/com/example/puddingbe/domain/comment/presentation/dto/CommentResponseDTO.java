@@ -12,9 +12,9 @@ public class CommentResponseDTO {
 
     Long userId;
 
+    String userName;
+
     String profileImageUrl;
 
     String content;
-
-    LocalDateTime createdAt;
 }
