@@ -56,7 +56,6 @@ public class InquiryController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public InquiryCreateResponse createInquiry(@RequestBody InquiryRequest request) {
-        inquiryCreateService.createInquiry(request);
         return inquiryCreateService.createInquiry(request);
     }
 }
