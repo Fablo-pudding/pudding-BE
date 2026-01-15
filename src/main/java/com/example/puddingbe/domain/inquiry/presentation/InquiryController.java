@@ -29,9 +29,9 @@ public class InquiryController {
         return inquiryReadService.getAllInquiries();
     }
 
-    @GetMapping("/{inquiry-id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public InquiryResponse getInquiryById(@PathVariable("inquiry-id") Long id) {
+    public InquiryResponse getInquiryById(@PathVariable("id") Long id) {
         return inquiryReadService.getInquiryById(id);
     }
 
@@ -41,15 +41,15 @@ public class InquiryController {
         return inquiryReadService.getMyInquiries();
     }
 
-    @PostMapping("/{inquiry-id}/reply")
+    @PostMapping("/{id}/reply")
     @ResponseStatus(HttpStatus.CREATED)
-    public void replyToInquiry(@PathVariable("inquiry-id") Long id, @RequestBody InquiryReplyRequest request) {
+    public void replyToInquiry(@PathVariable("id") Long id, @RequestBody InquiryReplyRequest request) {
         inquiryUpdateService.replyToInquiry(id, request);
     }
 
-    @DeleteMapping("/{inquiry-id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteInquiry(@PathVariable("inquiry-id") Long id) {
+    public void deleteInquiry(@PathVariable("id") Long id) {
         inquiryDeleteService.deleteInquiry(id);
     }
 

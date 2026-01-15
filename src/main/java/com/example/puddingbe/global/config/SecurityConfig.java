@@ -50,10 +50,10 @@ public class SecurityConfig {
 
                         // inquiry API
                         .requestMatchers(HttpMethod.GET, "/inquiry").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/inquiry/my/{user-id}").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/inquiry/{inquiry-id}").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/inquiry/{inquiry-id}/reply").authenticated()
-                        .requestMatchers(HttpMethod.DELETE, "/inquiry/{inquiry-id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/inquiry/my").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/inquiry/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/inquiry/{id}/reply").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/inquiry/{id}").authenticated()
                         .requestMatchers(HttpMethod.POST, "/inquiry/create").authenticated()
 
                         // ranking API
