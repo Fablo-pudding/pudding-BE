@@ -2,6 +2,7 @@ package com.example.puddingbe.domain.feed.service;
 
 import com.example.puddingbe.domain.feed.domain.Post;
 import com.example.puddingbe.domain.feed.exception.PostBadRequestExcpetion;
+import com.example.puddingbe.domain.feed.presentation.dto.PostCreateResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostRequestDTO;
 import com.example.puddingbe.domain.feed.domain.repository.PostRepository;
 import com.example.puddingbe.global.detail.UserFacade;
@@ -16,7 +17,7 @@ public class PostCreateService {
     private final PostRepository postRepository;
     private final UserFacade userFacade;
 
-    public void createPost(PostRequestDTO dto){
+    public PostCreateResponseDTO createPost(PostRequestDTO dto){
         // null이거나 비어있거나 공백일 경우 400
         if (dto.getTitle().trim().isEmpty() || dto.getContent().trim().isEmpty()) {
             throw PostBadRequestExcpetion.EXCPETION;
@@ -33,6 +34,7 @@ public class PostCreateService {
 
             postRepository.save(post);
 
+            return new PostCreateResponseDTO(post.getPostId());
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
