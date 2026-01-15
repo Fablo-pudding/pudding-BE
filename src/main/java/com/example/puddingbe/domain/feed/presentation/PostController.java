@@ -26,8 +26,8 @@ public class PostController {
     // 게시글 생성
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Validated PostRequestDTO req) {
-        postCreateService.createPost(req);
+    public Long create(@RequestBody @Validated PostRequestDTO req) {
+        return postCreateService.createPost(req);
     }
 
     // 게시글 리스트 가져오기
