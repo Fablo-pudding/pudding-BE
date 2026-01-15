@@ -2,10 +2,10 @@ package com.example.puddingbe.domain.inquiry.presentation;
 
 import com.example.puddingbe.domain.inquiry.presentation.dto.request.InquiryReplyRequest;
 import com.example.puddingbe.domain.inquiry.presentation.dto.request.InquiryRequest;
+import com.example.puddingbe.domain.inquiry.presentation.dto.response.InquiryCreateResponse;
 import com.example.puddingbe.domain.inquiry.presentation.dto.response.InquiryResponse;
 import com.example.puddingbe.domain.inquiry.service.InquiryReadService;
 import com.example.puddingbe.domain.inquiry.service.InquiryUpdateService;
-import com.example.puddingbe.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +55,8 @@ public class InquiryController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createInquiry(@RequestBody InquiryRequest request) {
+    public InquiryCreateResponse createInquiry(@RequestBody InquiryRequest request) {
         inquiryCreateService.createInquiry(request);
+        return inquiryCreateService.createInquiry(request);
     }
 }
