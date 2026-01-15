@@ -38,24 +38,24 @@ public class PostController {
     }
 
     // 게시글 자세한거 가져오기
-    @GetMapping("/get-detail/{id}")
+    @GetMapping("/get-detail/{post-id}")
     @ResponseStatus(HttpStatus.OK)
-    public PostDetailResponseDTO getPostDetail(@PathVariable Long id) {
+    public PostDetailResponseDTO getPostDetail(@PathVariable("post-id") Long id) {
         return postReadService.getPostDetail(id);
     }
 
     // 게시글 수정하기
-    @PatchMapping("/update/{id}")
+    @PatchMapping("/update/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updatePost(@PathVariable Long id, @RequestBody @Validated PostRequestDTO dto){
+    public void updatePost(@PathVariable("post-id") Long id, @RequestBody @Validated PostRequestDTO dto){
         postUpdateService.updatePost(id, dto);
     }
 
     // 게시글 삭제하기
     @DeleteMapping("/delete/{post-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePost(@PathVariable("post-id") Long postId) {
-        postDeleteService.delete(postId);
+    public void deletePost(@PathVariable("post-id") Long id) {
+        postDeleteService.delete(id);
     }
     
 }
