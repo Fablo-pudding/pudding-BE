@@ -1,6 +1,5 @@
 package com.example.puddingbe.domain.feed.presentation;
 
-import com.example.puddingbe.domain.feed.presentation.dto.PostCreateResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostDetailResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostListResponseDTO;
 import com.example.puddingbe.domain.feed.presentation.dto.PostRequestDTO;
@@ -27,7 +26,7 @@ public class PostController {
     // 게시글 생성
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public PostCreateResponseDTO create(@RequestBody @Validated PostRequestDTO req) {
+    public Long create(@RequestBody @Validated PostRequestDTO req) {
         return postCreateService.createPost(req);
     }
 
