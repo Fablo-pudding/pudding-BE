@@ -1,10 +1,7 @@
 package com.example.puddingbe.domain.notice.presentation;
 
 import com.example.puddingbe.domain.notice.domain.NoticeUser;
-import com.example.puddingbe.domain.notice.presentation.dto.NoticeCheckResponse;
-import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateRequest;
-import com.example.puddingbe.domain.notice.presentation.dto.NoticeReadResponse;
-import com.example.puddingbe.domain.notice.presentation.dto.NoticeUpdateRequest;
+import com.example.puddingbe.domain.notice.presentation.dto.*;
 import com.example.puddingbe.domain.notice.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +23,8 @@ public class NoticeUserController {
 
     //create
     @PostMapping("/create")
-    public ResponseEntity<Void> createNotice(@Valid @RequestBody NoticeCreateRequest request) {
-        noticeUserCreateService.createNotice(request);
-        return ResponseEntity.ok().build();
+    public NoticeCreateResponse createNotice(@Valid @RequestBody NoticeCreateRequest request) {
+        return noticeUserCreateService.createNotice(request);
     }
 
     //read

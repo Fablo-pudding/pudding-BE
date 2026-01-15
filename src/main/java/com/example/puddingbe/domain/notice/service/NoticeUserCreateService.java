@@ -4,6 +4,8 @@ import com.example.puddingbe.domain.notice.domain.NoticeUser;
 import com.example.puddingbe.domain.notice.exception.NoticeAdminCanCreate;
 import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateRequest;
 import com.example.puddingbe.domain.notice.domain.repository.NoticeUserRepository;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeCreateResponse;
+import com.example.puddingbe.domain.notice.presentation.dto.NoticeReadResponse;
 import com.example.puddingbe.domain.user.domain.User;
 import com.example.puddingbe.domain.user.domain.repository.UserRepository;
 import com.example.puddingbe.global.detail.UserFacade;
@@ -20,7 +22,7 @@ public class NoticeUserCreateService {
     private final UserFacade userFacade;
     private final UserRepository userRepository;
 
-    public void createNotice(NoticeCreateRequest request) {
+    public NoticeCreateResponse createNotice(NoticeCreateRequest request) {
         Boolean isAdmin = userFacade.isAdmin();
         if (!isAdmin) {
             throw NoticeAdminCanCreate.EXCEPTION;
@@ -41,5 +43,6 @@ public class NoticeUserCreateService {
                 .build();
 
         noticeUserRepository.save(noticeUser);
+        return new NoticeCreateResponse(noticeUser.getId());
     }
 }
