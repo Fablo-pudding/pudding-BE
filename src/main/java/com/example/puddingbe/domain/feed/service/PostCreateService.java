@@ -34,7 +34,7 @@ public class PostCreateService {
 
             postRepository.save(post);
 
-            return post.getPostId();
+            return post.getId();
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }

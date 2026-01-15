@@ -34,7 +34,7 @@ public class PostReadService {
             User user = userRepository.findById(post.getUserId()).orElseThrow(() -> UserNotFound.EXCEPTION);
 
             return new PostListResponseDTO(
-                    post.getPostId(),
+                    post.getId(),
                     user.getProfileImageUrl(),
                     post.getTitle(),
                     user.getName(),
@@ -50,7 +50,7 @@ public class PostReadService {
 
         try {
             return new PostDetailResponseDTO(
-                    post.getPostId(),
+                    post.getId(),
                     post.getUserId(),
                     userRepository.findById(post.getUserId()).get().getName(),
                     postUser.getProfileImageUrl(),
